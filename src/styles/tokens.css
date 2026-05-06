@@ -1,0 +1,148 @@
+/* Vynho design tokens
+ * Dark theme is default; light theme uses :root[data-theme='light'] overrides.
+ */
+
+:root {
+  /* -----------------------------------------------------------------
+   * Singularity / Eclipse design system base (phase 1 compatibility)
+   * ----------------------------------------------------------------- */
+  --sg-bg-0: #000000;
+  --sg-bg-1: #050505;
+  --sg-surface-0: #0c0d10;
+  --sg-surface-1: #151821;
+  --sg-border: rgba(255, 255, 255, 0.14);
+  --sg-text-0: #f5f8ff;
+  --sg-text-1: #aeb8ce;
+  --sg-accent-lime: #c7ff2f;
+  --sg-accent-lime-soft: rgba(199, 255, 47, 0.22);
+  --sg-ring: #2a2f39;
+  --sg-particle: #e6edff;
+
+  /* Typography */
+  --font-ui: 'Radio Canada Big', Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale */
+  --fs-p2: 16px;
+
+  /* Spacing */
+  --max-content: 1280px;
+  --gutter: 20px;
+  --r-panel: 24px;
+  --r-pill: 999px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-base: 180ms;
+  --motion-distance: 22px;
+  --motion-delay: 0ms;
+  --parallax-y: 0;
+  --parallax-intensity: 16px;
+  --vh-scroll-progress: 0;
+  /* 0.6 subtle, 1 medium, 1.4 cinematic */
+  --bg-motion-intensity: 0.9;
+  --bg-motion-preset: medium; /* editorial | medium | cinematic */
+
+  /* Brand accents */
+  --accent-lime: var(--sg-accent-lime);
+  --accent-lime-soft: var(--sg-accent-lime-soft);
+  --agency-blue: #1658fa;
+  --agency-blue-soft: #6b8dff;
+
+  /* Dark theme base */
+  --agency-night: var(--sg-bg-1);
+  --agency-text: var(--sg-text-0);
+  --agency-text-muted: var(--sg-text-1);
+  --agency-text-soft: #8f9bb2;
+  --agency-border: var(--sg-border);
+  --agency-border-strong: rgba(255, 255, 255, 0.25);
+  --page-bg: var(--sg-bg-1);
+  --panel-bg: rgb(0, 0, 0);
+  --heading-color: #f7f9ff;
+  --body-color: #d7deec;
+  --muted-color: #98a6bf;
+
+  /* shadcn-compatible theme variables */
+  --background: 0 0% 2%;
+  --foreground: 210 40% 98%;
+  --card: 240 8% 8%;
+  --card-foreground: 210 40% 98%;
+  --primary: 75 100% 59%;
+  --primary-foreground: 230 65% 6%;
+  --secondary: 240 8% 14%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 240 7% 18%;
+  --muted-foreground: 220 20% 72%;
+  --accent: 75 100% 59%;
+  --accent-foreground: 230 65% 6%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 240 7% 22%;
+  --input: 240 7% 22%;
+  --ring: 75 100% 59%;
+  --radius: 1rem;
+
+  /* Background scene system */
+  --bg-scene-backdrop: var(--sg-bg-0);
+  --bg-scene-core: var(--sg-bg-1);
+  --bg-scene-ring: var(--sg-ring);
+  --bg-scene-glow: var(--sg-accent-lime);
+  --bg-scene-particle: var(--sg-particle);
+  --bg-scene-overlay-top: rgba(0, 0, 0, 0.36);
+  --bg-scene-overlay-mid: rgba(0, 0, 0, 0.16);
+  --bg-scene-overlay-bottom: rgba(0, 0, 0, 0.44);
+}
+
+:root[data-theme='light'] {
+  /* Eclipse mode base */
+  --ec-bg-0: #eef0f4;
+  --ec-bg-1: #f4f5f8;
+  --ec-surface-0: #ffffff;
+  --ec-surface-1: #e9edf4;
+  --ec-border: rgba(17, 21, 32, 0.14);
+  --ec-text-0: #111520;
+  --ec-text-1: #313d56;
+  --ec-accent-lime: #d8f585;
+  --ec-accent-lime-soft: rgba(216, 245, 133, 0.24);
+  --ec-ring: #949eac;
+  --ec-particle: #3f495b;
+  --agency-night: var(--ec-text-0);
+  --agency-text: var(--ec-text-0);
+  --agency-text-muted: var(--ec-text-1);
+  --agency-text-soft: #435271;
+  --agency-border: var(--ec-border);
+  --agency-border-strong: rgba(17, 21, 32, 0.25);
+  --page-bg: var(--ec-bg-1);
+  --panel-bg: rgba(255, 255, 255, 0.82);
+  --heading-color: #111520;
+  --body-color: #2e3950;
+  --muted-color: #5d6a84;
+
+  --background: 220 22% 96%;
+  --foreground: 230 32% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 230 32% 10%;
+  --primary: 75 100% 48%;
+  --primary-foreground: 230 65% 6%;
+  --secondary: 220 22% 90%;
+  --secondary-foreground: 230 32% 10%;
+  --muted: 220 18% 88%;
+  --muted-foreground: 223 30% 28%;
+  --accent: 75 100% 48%;
+  --accent-foreground: 230 65% 6%;
+  --destructive: 0 84% 55%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 224 20% 82%;
+  --input: 224 20% 82%;
+  --ring: 75 100% 42%;
+
+  /* Background scene system (light/eclipsed chrome mode) */
+  --bg-scene-backdrop: var(--ec-bg-0);
+  --bg-scene-core: #1a1d23;
+  --bg-scene-ring: var(--ec-ring);
+  --bg-scene-glow: #dceab4;
+  --bg-scene-particle: var(--ec-particle);
+  --bg-scene-overlay-top: rgba(238, 240, 244, 0.08);
+  --bg-scene-overlay-mid: rgba(238, 240, 244, 0.03);
+  --bg-scene-overlay-bottom: rgba(228, 231, 237, 0.12);
+}
