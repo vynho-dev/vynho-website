@@ -1,4 +1,5 @@
-import { handleContactTrigger } from '@/lib/contactModal'
+import { ContactActionLink } from '@/components/patterns/ContactActionLink'
+import { MediaCard } from '@/components/patterns/MediaCard'
 
 export interface WorkProject {
   title: string
@@ -14,20 +15,18 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const isVideo = /\.(mp4|webm|mov)$/i.test(project.image)
-
   return (
-    <article className={project.featured ? 'vwk-project-card is-featured' : 'vwk-project-card'}>
-      {isVideo ? (
-        <video src={project.image} autoPlay muted loop playsInline preload="metadata" aria-label={project.title} />
-      ) : (
-        <img src={project.image} alt={project.title} loading="lazy" />
-      )}
+    <MediaCard
+      className={project.featured ? 'vwk-project-card is-featured' : 'vwk-project-card'}
+      image={project.image}
+      imageAlt={project.title}
+      videoLabel={project.title}
+    >
       <div className="vwk-project-overlay">
         <p className="vwk-project-title">{project.title}</p>
         <div className="vwk-project-meta">
           <span>{project.category}</span>
-          <a href="/contact" onClick={handleContactTrigger}>View case</a>
+          <ContactActionLink source={`work_project_${project.title.toLowerCase().replace(/\s+/g, '-')}`}>View case</ContactActionLink>
         </div>
         <div className="vwk-project-tags">
           {project.tags.map((tag) => (
@@ -36,6 +35,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
       <em className="vwk-project-badge">{project.tag}</em>
-    </article>
+    </MediaCard>
   )
 }

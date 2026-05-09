@@ -5,9 +5,9 @@ const team = [
   { name: 'Kishore', role: 'CEO', label: 'Strategy', image: '/assets/team/leo.webp' },
   { name: 'Evan', role: 'Director', label: 'Design', image: '/assets/team/evan.webp' },
   { name: 'Niko', role: 'Lead', label: 'Engineering', image: '/assets/team/niko.webp' },
-  { name: 'Sofia', role: 'Lead', label: 'Product Strategy', image: '/assets/images/about/founder-kishore.png' },
-  { name: 'Leo', role: 'Senior', label: 'Creative Tech', image: '/assets/images/about/studio-collab-07.jpg' },
-  { name: 'Raya', role: 'Senior', label: 'Motion Design', image: '/assets/images/about/studio-collab-08.jpg' },
+  { name: 'Sofia', role: 'Lead', label: 'Product Strategy', image: '/assets/team/sofia.jpg' },
+  { name: 'Leo', role: 'Senior', label: 'Creative Tech', image: '/assets/team/leo-portrait.jpg' },
+  { name: 'Raya', role: 'Senior', label: 'Motion Design', image: '/assets/team/raya.jpg' },
 ]
 
 export function TeamCarousel() {
@@ -24,9 +24,6 @@ export function TeamCarousel() {
         <Reveal as="p" className="vabt-team-intro" delayMs={90}>
           Our projects are led by experienced designers, engineers, and strategists who stay close to the work from
           start to launch.
-        </Reveal>
-        <Reveal className="vabt-team-avatar" delayMs={130}>
-          <span aria-hidden="true">V</span>
         </Reveal>
         <div className="vabt-team-row" role="region" aria-label="Team carousel">
           {list.map((member) => (

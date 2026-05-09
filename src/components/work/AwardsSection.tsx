@@ -1,25 +1,28 @@
 import { Reveal } from '@/components/motion/Reveal'
+import { SectionHeader } from '@/components/patterns/SectionHeader'
+import { SectionShell } from '@/components/patterns/SectionShell'
 
 const rows = [
-  ['2026', 'Northstar Cloud', 'Site Experience of the Year', 'SaaS Website'],
-  ['2026', 'LumaPay', 'Product Design Excellence', 'Fintech App'],
-  ['2025', 'Asteria Labs', 'Developer Recognition', 'AI Website'],
-  ['2025', 'Vanta Commerce', 'UX Commerce Award', 'E-commerce'],
+  ['2026', 'Pallet Ross', 'Site Experience of the Year', 'SaaS Website'],
+  ['2026', 'Chatif', 'Product Design Excellence', 'Fintech App'],
+  ['2025', 'Nestery', 'UX Commerce Award', 'E-commerce'],
   ['2024', 'Orbit Studio', 'Visual Innovation Award', 'Immersive Web'],
-  ['2024', 'SignalDesk', 'Interface Design Award', 'Dashboard'],
+  ['2024', 'Pasar Marketing', 'Interface Design Award', 'Dashboard'],
 ]
 
 export function AwardsSection() {
   return (
-    <section className="vwk-section vwk-awards" id="awards">
-      <div className="container">
-        <p className="vwk-watermark">OUR AWARDS</p>
-        <Reveal as="h2" className="vwk-section-title" delayMs={70}>
-          OUR AWARDS
-        </Reveal>
-        <Reveal as="p" className="vwk-section-copy" delayMs={120}>
-          Recognition for craft, performance, and digital execution across product, brand, and engineering.
-        </Reveal>
+    <SectionShell id="awards" className="vwk-section vwk-awards">
+      <SectionHeader
+        watermark="OUR AWARDS"
+        watermarkClassName="vwk-watermark"
+        title="OUR AWARDS"
+        titleClassName="vwk-section-title"
+        titleDelayMs={70}
+        copy="Recognition for craft, performance, and digital execution across product, brand, and engineering."
+        copyClassName="vwk-section-copy"
+        copyDelayMs={120}
+      />
         <div className="vwk-award-cards">
           <Reveal className="vwk-award-card vwk-award-card-lime" delayMs={180}>
             <strong>Independent Studio Awards</strong>
@@ -53,7 +56,6 @@ export function AwardsSection() {
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
+    </SectionShell>
   )
 }

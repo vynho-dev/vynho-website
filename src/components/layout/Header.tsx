@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { navLinks } from '@/content/site'
-import { handleContactTrigger } from '@/lib/contactModal'
+import { ContactActionLink } from '@/components/patterns/ContactActionLink'
 
 type Theme = 'dark' | 'light'
 
@@ -16,10 +16,9 @@ export function Header() {
     const queryTheme = urlTheme === 'light' || urlTheme === 'dark' ? urlTheme : null
     const storedTheme = window.localStorage.getItem('vynho-theme')
     const storedValue = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : null
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    const nextTheme = (queryTheme ?? storedValue ?? systemTheme) as Theme
+    const nextTheme = (queryTheme ?? storedValue ?? 'dark') as Theme
     setTheme(nextTheme)
-    document.documentElement.dataset.theme = nextTheme
+    document.documentElement.dataset['theme'] = nextTheme
     window.localStorage.setItem('vynho-theme', nextTheme)
   }, [])
 
@@ -40,47 +39,94 @@ export function Header() {
     }
   }, [open])
 
-  const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark'
+  const setThemeMode = (nextTheme: Theme) => {
     setTheme(nextTheme)
-    document.documentElement.dataset.theme = nextTheme
+    document.documentElement.dataset['theme'] = nextTheme
     window.localStorage.setItem('vynho-theme', nextTheme)
   }
 
+  const renderThemeSwitch = (className: string) => (
+    <div
+      className={theme === 'dark' ? `${className} is-dark` : className}
+      role="group"
+      aria-label="Color mode switch"
+    >
+      <button
+        type="button"
+        data-mode="light"
+        className={theme === 'light' ? 'theme-toggle-btn active' : 'theme-toggle-btn'}
+        onClick={() => setThemeMode('light')}
+        aria-pressed={theme === 'light'}
+      >
+        Light
+      </button>
+      <button
+        type="button"
+        data-mode="dark"
+        className={theme === 'dark' ? 'theme-toggle-btn active' : 'theme-toggle-btn'}
+        onClick={() => setThemeMode('dark')}
+        aria-pressed={theme === 'dark'}
+      >
+        Dark
+      </button>
+      <div className="theme-toggle-thumb" aria-hidden="true" />
+    </div>
+  )
+
   return (
     <div className="nav-wrap">
-      <nav className="container nav" aria-label="Main">
-        <a href="/" aria-label="Vynho home">
-          <span className="nav-brand">
-            <img className="wordmark-image nav-wordmark nav-wordmark-dark" src="/assets/brand/wordmark-white-transparent.svg" alt="Vynho" />
-            <img className="wordmark-image nav-wordmark nav-wordmark-light" src="/assets/brand/wordmark-black-transparent.svg" alt="Vynho" />
-          </span>
+      <nav className={open ? 'container nav nav-shell opened' : 'container nav nav-shell'} aria-label="Main">
+        <a href="/" className="nav-brand-anchor" aria-label="Vynho home">
+          <img className="wordmark-image nav-wordmark nav-wordmark-dark" src="/assets/brand/wordmark-white-transparent.svg" alt="Vynho" />
+          <img className="wordmark-image nav-wordmark nav-wordmark-light" src="/assets/brand/wordmark-black-transparent.svg" alt="Vynho" />
         </a>
 
-        <button type="button" className="theme-toggle nav-theme-center" aria-label="Toggle color theme" onClick={toggleTheme}>
-          <span className={theme === 'light' ? 'active' : ''}>Light</span>
-          <span className={theme === 'dark' ? 'active' : ''}>Dark</span>
-        </button>
+        {renderThemeSwitch('theme-toggle nav-theme-center')}
 
-        <div className="nav-right-side">
-          <div className="nav-links" aria-label="Desktop navigation">
-            {desktopLinks.map((item) => (
+        <ul className="nav-links" aria-label="Main navigation">
+          {desktopLinks.map((item) => (
+            <li key={item.href} className="nav-item">
               <a
-                key={item.href}
                 href={item.href}
                 className={path === item.href ? 'nav-link active' : 'nav-link'}
                 aria-current={path === item.href ? 'page' : undefined}
+                onClick={handleNavClick}
               >
-                {item.label}
+                <span className="nav-link-track" aria-hidden="true">
+                  <span className="nav-link-label">{item.label}</span>
+                  <span className="nav-link-label nav-link-label-ghost">{item.label}</span>
+                </span>
+                <span className="nav-link-text">{item.label}</span>
               </a>
-            ))}
-          </div>
-          <a className="nav-cta" href="/contact" aria-label="Open contact modal" onClick={handleContactTrigger}>
-            Let&apos;s Talk <span aria-hidden="true">→</span>
-          </a>
-        </div>
+            </li>
+          ))}
+          <li className="nav-item nav-item-cta-desktop">
+            <ContactActionLink
+              className="nav-cta"
+              aria-label="Open contact modal"
+              source="header_desktop"
+            >
+              <span className="nav-link-track" aria-hidden="true">
+                <span className="nav-link-label">Let&apos;s Talk</span>
+                <span className="nav-link-label nav-link-label-ghost">Let&apos;s Talk</span>
+              </span>
+              <span className="nav-link-text">Let&apos;s Talk</span>
+            </ContactActionLink>
+          </li>
+        </ul>
 
         <div className="nav-actions">
+          <ContactActionLink
+            className="nav-cta nav-cta-mobile"
+            aria-label="Open contact modal"
+            source="header_mobile"
+          >
+            <span className="nav-link-track" aria-hidden="true">
+              <span className="nav-link-label">Let&apos;s Talk</span>
+              <span className="nav-link-label nav-link-label-ghost">Let&apos;s Talk</span>
+            </span>
+            <span className="nav-link-text">Let&apos;s Talk</span>
+          </ContactActionLink>
           <button
             type="button"
             className="mobile-nav-toggle"
@@ -88,39 +134,36 @@ export function Header() {
             aria-expanded={open}
             onClick={() => setOpen((prev) => !prev)}
           >
-            <span className={open ? 'mobile-nav-icon open' : 'mobile-nav-icon'} aria-hidden="true" />
+            <span className="mobile-nav-lines" aria-hidden="true">
+              <span />
+              <span />
+            </span>
           </button>
         </div>
       </nav>
 
-      <div className={open ? 'mobile-drawer open' : 'mobile-drawer'} aria-hidden={!open} hidden={!open}>
-        <div className="mobile-drawer-inner">
-          <button
-            type="button"
-            className="theme-toggle mobile-theme-toggle"
-            aria-label="Toggle color theme"
-            onClick={toggleTheme}
-          >
-            <span className={theme === 'light' ? 'active' : ''}>Light</span>
-            <span className={theme === 'dark' ? 'active' : ''}>Dark</span>
-          </button>
-          {desktopLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={handleNavClick}>
-              {link.label}
-            </a>
-          ))}
-          <a
-            className="mobile-drawer-cta"
-            href="/contact"
-            onClick={(event) => {
-              handleNavClick()
-              handleContactTrigger(event)
-            }}
-          >
-            Let&apos;s talk
-          </a>
+      {open ? (
+        <div className="mobile-drawer open" role="dialog" aria-modal="true" aria-label="Navigation menu">
+          <div className="mobile-drawer-inner">
+            {renderThemeSwitch('theme-toggle mobile-theme-toggle')}
+            {desktopLinks.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={path === item.href ? 'nav-link active' : 'nav-link'}
+                aria-current={path === item.href ? 'page' : undefined}
+                onClick={handleNavClick}
+              >
+                <span className="nav-link-track" aria-hidden="true">
+                  <span className="nav-link-label">{item.label}</span>
+                  <span className="nav-link-label nav-link-label-ghost">{item.label}</span>
+                </span>
+                <span className="nav-link-text">{item.label}</span>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   )
 }

@@ -1,0 +1,264 @@
+/* Vynho design system foundations
+ * Shared primitives and semantic tokens applied across pages/components.
+ */
+
+:root {
+  --ds-space-1: 0.25rem;
+  --ds-space-2: 0.5rem;
+  --ds-space-3: 0.75rem;
+  --ds-space-4: 1rem;
+  --ds-space-5: 1.25rem;
+  --ds-space-6: 1.5rem;
+  --ds-space-8: 2rem;
+
+  --ds-radius-sm: 0.625rem;
+  --ds-radius-md: 0.875rem;
+  --ds-radius-lg: 1.125rem;
+  --ds-radius-xl: 1.5rem;
+  --ds-radius-pill: 999px;
+
+  --ds-shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.28);
+  --ds-shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.38);
+  --ds-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  --ds-surface-1: rgba(255, 255, 255, 0.03);
+  --ds-surface-2: rgba(255, 255, 255, 0.06);
+  --ds-surface-3: rgba(255, 255, 255, 0.09);
+  --ds-border-1: rgba(255, 255, 255, 0.14);
+  --ds-border-2: rgba(255, 255, 255, 0.22);
+
+  --ds-text-strong: #fff;
+  --ds-text: var(--agency-text);
+  --ds-text-muted: var(--agency-text-muted);
+  --ds-text-soft: var(--agency-text-soft);
+
+  --ds-focus: color-mix(in srgb, var(--accent-lime) 86%, #fff 14%);
+  --ds-focus-offset: 3px;
+
+  --ds-motion-fast: 180ms;
+  --ds-motion-base: 260ms;
+  --ds-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --ds-btn-bg: color-mix(in srgb, var(--accent-lime) 92%, #fff 8%);
+  --ds-btn-bg-hover: color-mix(in srgb, var(--accent-lime) 80%, #fff 20%);
+  --ds-btn-text: #101409;
+  --ds-btn-outline-bg: rgba(255, 255, 255, 0.03);
+  --ds-btn-outline-border: rgba(255, 255, 255, 0.22);
+}
+
+:root[data-theme='light'] {
+  --ds-shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.12);
+  --ds-shadow-hover: 0 16px 36px rgba(15, 23, 42, 0.16);
+  --ds-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  --ds-surface-1: rgba(255, 255, 255, 0.74);
+  --ds-surface-2: rgba(255, 255, 255, 0.88);
+  --ds-surface-3: rgba(255, 255, 255, 0.96);
+  --ds-border-1: rgba(15, 23, 42, 0.14);
+  --ds-border-2: rgba(15, 23, 42, 0.22);
+
+  --ds-text-strong: #101520;
+  --ds-text: #192132;
+  --ds-text-muted: #334156;
+  --ds-text-soft: #52627e;
+
+  --ds-btn-bg: color-mix(in srgb, var(--accent-lime) 72%, #fff 28%);
+  --ds-btn-bg-hover: color-mix(in srgb, var(--accent-lime) 62%, #fff 38%);
+  --ds-btn-text: #101520;
+  --ds-btn-outline-bg: rgba(255, 255, 255, 0.66);
+  --ds-btn-outline-border: rgba(15, 23, 42, 0.18);
+}
+
+/* Universal accessibility and interaction quality */
+a,
+button,
+input,
+textarea,
+select,
+[role='button'] {
+  transition:
+    color var(--ds-motion-fast) var(--ds-ease),
+    background-color var(--ds-motion-fast) var(--ds-ease),
+    border-color var(--ds-motion-fast) var(--ds-ease),
+    transform var(--ds-motion-base) var(--ds-ease),
+    box-shadow var(--ds-motion-fast) var(--ds-ease);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role='button']:focus-visible {
+  outline: 2px solid var(--ds-focus);
+  outline-offset: var(--ds-focus-offset);
+}
+
+/* Shared panel/card language */
+:is(
+  .card,
+  .featured-card,
+  .value-card,
+  .vct-panel,
+  .vct-info-card,
+  .vsv-build-card,
+  .vsv-process-card,
+  .vsv-model-card,
+  .vsv-market-card,
+  .vwk-project-card,
+  .vwk-award-card,
+  .vwk-stat-card,
+  .vh-trust-card,
+  .vh-edge-card,
+  .vh-build-card
+) {
+  border-radius: var(--ds-radius-lg);
+  border: 1px solid var(--ds-border-1);
+  box-shadow: var(--ds-shadow-soft), var(--ds-shadow-inset);
+}
+
+.ds-shell {
+  border-radius: var(--ds-radius-xl);
+  border: 1px solid var(--ds-border-1);
+  box-shadow: var(--ds-shadow-soft), var(--ds-shadow-inset);
+}
+
+:is(
+  .card:hover,
+  .featured-card:hover,
+  .value-card:hover,
+  .vct-info-card:hover,
+  .vsv-build-card:hover,
+  .vwk-project-card:hover,
+  .vh-trust-card:hover,
+  .vh-edge-card:hover,
+  .vh-build-card:hover
+) {
+  box-shadow: var(--ds-shadow-hover), var(--ds-shadow-inset);
+}
+
+/* Shared button language */
+:is(
+  .vct-submit-btn,
+  .footer-top-btn,
+  .nav-cta-mobile
+) {
+  border-radius: var(--ds-radius-pill);
+}
+
+.vct-submit-btn {
+  background: var(--ds-btn-bg);
+  color: var(--ds-btn-text);
+  border: 1px solid color-mix(in srgb, var(--accent-lime) 74%, #000 26%);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent-lime) 26%, transparent);
+}
+
+.vct-submit-btn:hover {
+  background: var(--ds-btn-bg-hover);
+  transform: translateY(-1px);
+}
+
+:is(.vwk-project-meta a, .vsv-build-tags i, .vwk-pill, .vwk-project-tags i) {
+  border-radius: var(--ds-radius-pill);
+}
+
+/* Shared form language */
+:is(.vct-field input, .vct-textarea-field textarea) {
+  border-color: var(--ds-border-2);
+  color: var(--ds-text-strong);
+}
+
+:root[data-theme='light'] :is(.vct-field input, .vct-textarea-field textarea) {
+  color: #101520;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+:is(.vct-field input::placeholder, .vct-textarea-field textarea::placeholder) {
+  color: color-mix(in srgb, var(--ds-text-soft) 72%, transparent);
+}
+
+/* Shared accordion language */
+:is(.vsv-accordion-item, .vh-service-item, .vh-faq-item) {
+  border-radius: var(--ds-radius-md);
+  border: 1px solid var(--ds-border-1);
+  background: var(--ds-surface-1);
+}
+
+:is(.vsv-accordion-item button, .vh-service-toggle, .vh-faq-toggle) {
+  border-radius: var(--ds-radius-sm);
+}
+
+/* Shared content readability */
+:is(
+  .vsv-hero-copy,
+  .vsv-section-copy,
+  .vwk-hero-copy,
+  .vwk-section-copy,
+  .vct-page-hero p,
+  .vct-intro,
+  .footer p
+) {
+  color: var(--ds-text-muted);
+}
+
+/* Shared alignment helpers for cross-page section content. */
+.u-center {
+  text-align: center;
+}
+
+.u-center-copy {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 64ch;
+}
+
+/* Shared final CTA pattern (cross-page, non-home-specific). */
+.cta-shell {
+  text-align: center;
+  border-radius: 28px;
+  padding: clamp(36px, 6vw, 76px);
+  background:
+    radial-gradient(800px 320px at 50% -10%, rgba(193, 255, 53, 0.22), transparent 70%),
+    radial-gradient(600px 280px at 50% 120%, rgba(76, 142, 251, 0.12), transparent 60%),
+    rgba(6, 8, 12, 0.96);
+}
+
+.cta-title {
+  color: #fff;
+}
+
+.cta-copy {
+  color: var(--agency-text-muted);
+}
+
+.cta-actions {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+@media (max-width: 720px) {
+  .cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-actions > * {
+    width: 100%;
+  }
+}
+
+/* Keep reduced motion deterministic */
+@media (prefers-reduced-motion: reduce) {
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role='button'] {
+    transition-duration: 1ms !important;
+  }
+}

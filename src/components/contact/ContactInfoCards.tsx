@@ -11,7 +11,6 @@ export function ContactInfoCards() {
       <article className="vct-info-card">
         <strong>WANT TO ASK SOMETHING?</strong>
         <a href="mailto:info@vynho.com">info@vynho.com</a>
-        <a href="tel:+918179266373">+91 8179266373</a>
       </article>
       <article className="vct-info-card">
         <strong>STAY IN THE LOOP</strong>

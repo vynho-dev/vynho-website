@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Reveal } from '@/components/motion/Reveal'
-import { handleContactTrigger } from '@/lib/contactModal'
+import { ContactActionLink } from '@/components/patterns/ContactActionLink'
 
 const models = [
   {
@@ -57,8 +57,8 @@ export function EngagementModels() {
                   <li key={point}>{point}</li>
                 ))}
               </ul>
-              <Button asChild className={model.lime ? '' : 'vh-dark-btn'} variant={model.lime ? 'default' : 'outline'} size="sm">
-                <a href="/contact" onClick={handleContactTrigger}>{model.cta}</a>
+              <Button asChild variant={model.lime ? 'default' : 'outline'} size="sm">
+                <ContactActionLink source={`services_engagement_${model.id}`}>{model.cta}</ContactActionLink>
               </Button>
             </Reveal>
           ))}

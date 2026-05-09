@@ -1,13 +1,11 @@
-import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
+import { PageShell } from '@/components/layout/PageShell'
 import { HomePremium } from '@/components/sections/HomePremium'
+import '@/styles/home.css'
 
 export function HomePage() {
   return (
-    <>
-      <Header />
+    <PageShell wrapMain={false}>
       <HomePremium />
-      <Footer />
-    </>
+    </PageShell>
   )
 }

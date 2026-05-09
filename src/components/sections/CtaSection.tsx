@@ -12,15 +12,11 @@ export function CtaSection() {
             description="Vynho helps you move from idea to product with founder-led strategy, high-grade UX, and scalable engineering across web, mobile, AI, and platform systems."
             secondaryLabel="Explore Services"
             secondaryHref="/services"
-            ctaLabel="Let's work together"
+            ctaLabel="Let's Talk"
             ctaHref="mailto:kishore@vynho.com"
           />
         </Reveal>
         <Reveal className="contact-panel" delayMs={180}>
-          <a href={`tel:${founder.phone.replace(/\s+/g, '')}`}>
-            <strong>Call</strong>
-            <span>{founder.phone}</span>
-          </a>
           <a href={`mailto:${founder.email}`}>
             <strong>Email</strong>
             <span>{founder.email}</span>

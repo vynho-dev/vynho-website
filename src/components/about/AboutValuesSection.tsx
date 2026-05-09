@@ -1,5 +1,7 @@
 import { Reveal } from '@/components/motion/Reveal'
 import { ValueCard } from '@/components/about/ValueCard'
+import { SectionHeader } from '@/components/patterns/SectionHeader'
+import { SectionShell } from '@/components/patterns/SectionShell'
 
 const values = [
   {
@@ -36,28 +38,23 @@ const values = [
 
 export function AboutValuesSection() {
   return (
-    <section className="vabt-section vabt-values" id="values">
-      <div className="container">
-        <Reveal as="h2" className="vabt-section-title vabt-center-copy" delayMs={90}>
-          OUR VALUES
-        </Reveal>
-        <Reveal as="p" className="vabt-section-copy vabt-center-copy" delayMs={130}>
-          Principles that guide how we think, build, collaborate, and deliver.
-        </Reveal>
-        <div className="vabt-values-stage">
-          <p className="vabt-values-core">STUDIO LIFE</p>
-          {values.map((value, index) => (
-            <Reveal key={value.title} className={`vabt-value-slot vabt-value-slot-${index + 1}`} delayMs={index * 80}>
-              <ValueCard title={value.title.toUpperCase()} description={value.description} image={value.image} />
-            </Reveal>
-          ))}
-          <Reveal className="vabt-symbol-grid" delayMs={220}>
-            {Array.from({ length: 16 }).map((_, idx) => (
-              <span key={idx} />
-            ))}
+    <SectionShell id="values" className="vabt-section vabt-values">
+      <SectionHeader
+        title="OUR VALUES"
+        titleClassName="vabt-section-title vabt-center-copy"
+        titleDelayMs={90}
+        copy="Principles that guide how we think, build, collaborate, and deliver."
+        copyClassName="vabt-section-copy vabt-center-copy"
+        copyDelayMs={130}
+      />
+      <div className="vabt-values-stage vabt-values-grid">
+        <p className="vabt-values-core">STUDIO LIFE</p>
+        {values.map((value, index) => (
+          <Reveal key={value.title} className={`vabt-value-slot vabt-value-slot-${index + 1}`} delayMs={index * 80}>
+            <ValueCard title={value.title.toUpperCase()} description={value.description} image={value.image} />
           </Reveal>
-        </div>
+        ))}
       </div>
-    </section>
+    </SectionShell>
   )
 }

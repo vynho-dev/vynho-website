@@ -1,4 +1,6 @@
 import { Reveal } from '@/components/motion/Reveal'
+import { SectionHeader } from '@/components/patterns/SectionHeader'
+import { SectionShell } from '@/components/patterns/SectionShell'
 
 const steps = [
   {
@@ -29,22 +31,22 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section className="vsv-section" id="process">
-      <div className="container">
-        <h2 className="vsv-section-title vsv-center">OUR PROCESS</h2>
-        <p className="vsv-section-copy vsv-center-copy">
-          A senior-led workflow designed to move from ambiguity to launch with clarity, speed, and craft.
-        </p>
-        <div className="vsv-process-grid">
-          {steps.map((step, index) => (
-            <Reveal key={step.number} className="vsv-process-card" delayMs={index * 70}>
-              <strong>{step.number}</strong>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-            </Reveal>
-          ))}
-        </div>
+    <SectionShell id="process" className="vsv-section">
+      <SectionHeader
+        title="OUR PROCESS"
+        titleClassName="vsv-section-title vsv-center"
+        copy="A senior-led workflow designed to move from ambiguity to launch with clarity, speed, and craft."
+        copyClassName="vsv-section-copy vsv-center-copy"
+      />
+      <div className="vsv-process-grid">
+        {steps.map((step, index) => (
+          <Reveal key={step.number} className="vsv-process-card" delayMs={index * 70}>
+            <strong>{step.number}</strong>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </SectionShell>
   )
 }

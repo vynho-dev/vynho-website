@@ -1,0 +1,332 @@
+/* Contact page styles */
+
+.vct-page {
+  min-height: 100svh;
+}
+
+.vct-page-hero {
+  padding: clamp(80px, 12vw, 140px) 0;
+  text-align: center;
+}
+
+.vct-page-hero h1 {
+  color: #fff;
+  font-size: clamp(56px, 10vw, 144px);
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.vct-page-hero p {
+  margin: 14px auto 0;
+  max-width: 60ch;
+  color: var(--agency-text-muted);
+}
+
+.vct-panel {
+  position: relative;
+  margin: 0 auto;
+  width: min(60vw, 980px);
+  min-height: auto;
+  padding: clamp(20px, 4vw, 42px);
+  background: rgba(4, 6, 10, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.vct-panel-inline {
+  margin-top: 26px;
+}
+
+.vct-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  align-items: center;
+  justify-items: end;
+  padding: clamp(12px, 2vw, 24px);
+  background:
+    radial-gradient(860px 460px at 18% 42%, rgba(193, 255, 53, 0.1), transparent 64%),
+    rgba(2, 4, 8, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+.vct-modal-panel {
+  margin: 0;
+  width: min(62vw, 1020px);
+  max-height: min(94svh, 1100px);
+  overflow: auto;
+  animation: vctModalIn 280ms var(--ease);
+}
+
+.vct-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111318;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform var(--t-base) var(--ease);
+}
+
+.vct-modal-close:hover {
+  transform: scale(1.04);
+}
+
+.vct-panel h1,
+.vct-panel h2 {
+  color: #fff;
+  font-size: clamp(56px, 7vw, 104px);
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.vct-intro {
+  margin-top: 12px;
+  max-width: 56ch;
+  color: var(--agency-text-muted);
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.vct-form {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.vct-grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.vct-field label {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.vct-field label em {
+  color: var(--agency-text-soft);
+  font-style: normal;
+  font-size: 12px;
+}
+
+.vct-field input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  background: transparent;
+  color: #fff;
+  padding: 6px 0 9px;
+}
+
+.vct-field input::placeholder,
+.vct-textarea-field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.vct-textarea-field textarea {
+  width: 100%;
+  min-height: 260px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  color: #fff;
+  padding: 14px;
+  resize: vertical;
+}
+
+.vct-field input:focus-visible,
+.vct-textarea-field textarea:focus-visible {
+  outline: 2px solid var(--accent-lime);
+  outline-offset: 2px;
+}
+
+.vct-error {
+  margin-top: 6px;
+  color: #ff7f7f;
+  font-size: 12px;
+}
+
+.vct-privacy {
+  color: var(--agency-text-soft);
+  font-size: 13px;
+}
+
+.vct-privacy a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.vct-submit-row {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.vct-submit-message {
+  color: #b8d2ff;
+  font-size: 13px;
+}
+
+.vct-submit-message.is-error {
+  color: #ff8f8f;
+}
+
+.vct-submit-btn {
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent-lime);
+  color: #11140b;
+  min-width: 210px;
+  padding: 12px 14px;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.vct-submit-btn i {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.78);
+  font-style: normal;
+}
+
+.vct-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.vct-info-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.vct-info-card {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  display: grid;
+  gap: 8px;
+  transition: border-color var(--t-base) var(--ease);
+}
+
+.vct-info-card:hover {
+  border-color: rgba(193, 255, 53, 0.4);
+}
+
+.vct-info-card strong {
+  color: #fff;
+  font-size: 18px;
+}
+
+.vct-info-card p,
+.vct-info-card a {
+  color: var(--agency-text-muted);
+}
+
+.vct-info-card a:hover {
+  color: var(--accent-lime);
+}
+
+.vct-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+:root[data-theme='light'] .vct-page-hero h1,
+:root[data-theme='light'] .vct-panel h1,
+:root[data-theme='light'] .vct-panel h2,
+:root[data-theme='light'] .vct-field label,
+:root[data-theme='light'] .vct-info-card strong {
+  color: #101520;
+}
+
+:root[data-theme='light'] .vct-panel {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.16);
+}
+
+:root[data-theme='light'] .vct-intro,
+:root[data-theme='light'] .vct-privacy,
+:root[data-theme='light'] .vct-info-card p,
+:root[data-theme='light'] .vct-info-card a {
+  color: var(--ds-text-muted);
+}
+
+:root[data-theme='light'] .vct-modal-close {
+  background: #101520;
+  color: #f6f8fc;
+}
+
+@keyframes vctModalIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (max-width: 1200px) {
+  .vct-panel {
+    width: min(72vw, 900px);
+  }
+}
+
+
+@media (max-width: 900px) {
+  .vct-modal-backdrop {
+    justify-items: stretch;
+    align-items: end;
+    padding: 10px;
+  }
+
+  .vct-modal-panel {
+    width: 100%;
+    max-height: min(96svh, 980px);
+  }
+
+  .vct-panel {
+    width: 100%;
+  }
+
+  .vct-grid-two,
+  .vct-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vct-submit-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .vct-submit-btn {
+    width: 100%;
+  }
+}

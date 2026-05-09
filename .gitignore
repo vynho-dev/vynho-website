@@ -4,3 +4,5 @@ dist
 *.log
 coverage
 .vscode
+.playwright-mcp
+qa-artifacts

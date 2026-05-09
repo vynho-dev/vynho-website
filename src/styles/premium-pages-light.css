@@ -1,0 +1,162 @@
+/* Global light-theme readability lock for premium pages */
+:root[data-theme='light'] .vwk-hero-title,
+:root[data-theme='light'] .vwk-section-title,
+:root[data-theme='light'] .vwk-project-title,
+:root[data-theme='light'] .vwk-contact-title,
+:root[data-theme='light'] .vsv-hero-title,
+:root[data-theme='light'] .vsv-section-title,
+:root[data-theme='light'] .vsv-build-content h3,
+:root[data-theme='light'] .vsv-model-card h3,
+:root[data-theme='light'] .vsv-process-card h3,
+:root[data-theme='light'] .vsv-contact-title,
+:root[data-theme='light'] .vabt-hero-title,
+:root[data-theme='light'] .vabt-section-title,
+:root[data-theme='light'] .vabt-mission-copy,
+:root[data-theme='light'] .vabt-team-card strong,
+:root[data-theme='light'] .vabt-value-card h3,
+:root[data-theme='light'] .vabt-contact-title,
+:root[data-theme='light'] .vct-page-hero h1,
+:root[data-theme='light'] .vct-panel h1,
+:root[data-theme='light'] .vct-panel h2,
+:root[data-theme='light'] .vct-field label,
+:root[data-theme='light'] .vct-field input,
+:root[data-theme='light'] .vct-textarea-field textarea {
+  color: #0f1523;
+}
+
+:root[data-theme='light'] .vwk-section-copy,
+:root[data-theme='light'] .vwk-hero-copy,
+:root[data-theme='light'] .vwk-hero-count,
+:root[data-theme='light'] .vwk-project-meta span,
+:root[data-theme='light'] .vwk-project-tags i,
+:root[data-theme='light'] .vwk-awards-table td,
+:root[data-theme='light'] .vwk-client-row p,
+:root[data-theme='light'] .vwk-client-row span,
+:root[data-theme='light'] .vsv-section-copy,
+:root[data-theme='light'] .vsv-hero-copy,
+:root[data-theme='light'] .vsv-build-content p,
+:root[data-theme='light'] .vsv-build-tags i,
+:root[data-theme='light'] .vsv-accordion-item p,
+:root[data-theme='light'] .vsv-process-card p,
+:root[data-theme='light'] .vsv-model-card p,
+:root[data-theme='light'] .vsv-model-card ul,
+:root[data-theme='light'] .vsv-client-row p,
+:root[data-theme='light'] .vsv-client-row span,
+:root[data-theme='light'] .vabt-hero-copy,
+:root[data-theme='light'] .vabt-team-intro,
+:root[data-theme='light'] .vabt-team-card p,
+:root[data-theme='light'] .vabt-value-card p,
+:root[data-theme='light'] .vabt-muted-note,
+:root[data-theme='light'] .vct-intro,
+:root[data-theme='light'] .vct-privacy,
+:root[data-theme='light'] .vct-info-card p,
+:root[data-theme='light'] .vct-info-card a,
+:root[data-theme='light'] .vct-submit-message {
+  color: rgba(23, 32, 52, 0.82);
+}
+
+:root[data-theme='light'] .vwk-pill,
+:root[data-theme='light'] .vsv-accordion-item,
+:root[data-theme='light'] .vsv-process-card,
+:root[data-theme='light'] .vsv-model-card,
+:root[data-theme='light'] .vsv-market-card,
+:root[data-theme='light'] .vsv-client-row span,
+:root[data-theme='light'] .vwk-client-row span,
+:root[data-theme='light'] .vabt-team-card,
+:root[data-theme='light'] .vabt-value-card,
+:root[data-theme='light'] .vct-info-card {
+  background: rgba(255, 255, 255, 0.84);
+  border-color: rgba(12, 20, 36, 0.16);
+}
+
+:root[data-theme='light'] .vwk-project-overlay {
+  background: linear-gradient(180deg, transparent, rgba(10, 16, 28, 0.72) 62%);
+}
+
+:root[data-theme='light'] .vwk-awards-table th {
+  color: #131d30;
+}
+
+:root[data-theme='light'] .vsv-accordion-item button,
+:root[data-theme='light'] .vsv-process-card strong,
+:root[data-theme='light'] .vsv-market-card,
+:root[data-theme='light'] .vsv-client-row span,
+:root[data-theme='light'] .vabt-team-card i,
+:root[data-theme='light'] .vct-submit-btn {
+  color: #121a2b;
+}
+
+:root[data-theme='light'] .vct-submit-btn {
+  background: color-mix(in srgb, var(--accent-lime) 88%, #f4ffce);
+}
+
+:root[data-theme='light'] .vwk-project-meta a,
+:root[data-theme='light'] .vct-privacy a {
+  color: #1c2f54;
+}
+
+:root[data-theme='light'] .vwk-watermark,
+:root[data-theme='light'] .vsv-watermark,
+:root[data-theme='light'] .vabt-watermark {
+  color: rgba(10, 18, 38, 0.08);
+}
+
+:root[data-theme='light'] .vct-page-hero h1 {
+  color: #0b0d13;
+}
+
+:root[data-theme='light'] .vct-panel {
+  background: rgba(245, 246, 249, 0.98);
+  border-color: rgba(11, 13, 19, 0.16);
+}
+
+:root[data-theme='light'] .vct-modal-backdrop {
+  background:
+    radial-gradient(860px 460px at 18% 42%, rgba(193, 255, 53, 0.14), transparent 64%),
+    rgba(25, 31, 42, 0.42);
+}
+
+:root[data-theme='light'] .vct-modal-close {
+  background: rgba(16, 19, 26, 0.88);
+  color: #fff;
+}
+
+:root[data-theme='light'] .vct-panel h1,
+:root[data-theme='light'] .vct-panel h2,
+:root[data-theme='light'] .vct-intro,
+:root[data-theme='light'] .vct-field label span {
+  color: #10131a;
+}
+
+:root[data-theme='light'] .vct-intro,
+:root[data-theme='light'] .vct-field label em,
+:root[data-theme='light'] .vct-privacy,
+:root[data-theme='light'] .vct-info-card p,
+:root[data-theme='light'] .vct-info-card a {
+  color: rgba(16, 19, 26, 0.64);
+}
+
+:root[data-theme='light'] .vct-field input {
+  color: #10131a;
+  border-bottom-color: rgba(16, 19, 26, 0.24);
+}
+
+:root[data-theme='light'] .vct-textarea-field textarea {
+  color: #10131a;
+  border-color: rgba(16, 19, 26, 0.2);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+:root[data-theme='light'] .vct-field input::placeholder,
+:root[data-theme='light'] .vct-textarea-field textarea::placeholder {
+  color: rgba(16, 19, 26, 0.42);
+}
+
+:root[data-theme='light'] .vct-info-card {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(16, 19, 26, 0.14);
+}
+
+:root[data-theme='light'] .vct-info-card strong {
+  color: #10131a;
+}

@@ -149,43 +149,7 @@ export const capabilities = [
   'Post-launch optimization and roadmap support',
 ]
 
-export const testimonials = [
-  {
-    quote:
-      'Vynho helped us turn a messy technical concept into a product experience our customers could understand immediately.',
-    name: 'Anaya Rao',
-    role: 'Founder, B2B SaaS',
-  },
-  {
-    quote:
-      'The team moved fast, but the work never felt rushed. Strategy, design, and engineering stayed tightly connected.',
-    name: 'Marcus Lee',
-    role: 'Head of Product, Automation Platform',
-  },
-]
 
-export const homeFaq = [
-  {
-    q: 'What kinds of projects are the best fit for Vynho?',
-    a: 'Teams building premium websites, digital products, SaaS platforms, and AI-enabled workflows where design quality and technical depth both matter.',
-  },
-  {
-    q: 'Can Vynho work with our internal product or engineering team?',
-    a: 'Yes. Our embedded model is built for this. We define shared ownership early and integrate into your tools, rituals, and roadmap.',
-  },
-  {
-    q: 'Do you help shape product direction or only execute?',
-    a: 'We do both. We can start at discovery and strategy, then move into design and engineering delivery with measurable milestones.',
-  },
-  {
-    q: 'How quickly can projects start?',
-    a: 'Discovery can usually begin quickly. Exact timelines depend on scope, but we optimize for fast momentum with senior-led execution from week one.',
-  },
-  {
-    q: 'What happens after launch?',
-    a: 'We stay close post-launch with performance tuning, iteration support, roadmap advisory, and long-term system improvements.',
-  },
-]
 
 export const valueCards = [
   {
@@ -228,7 +192,6 @@ export const founder = {
   name: 'Kishore',
   role: 'CEO, Vynho',
   image: '/assets/images/about/founder-kishore.png',
-  phone: '+91 8179266373',
   email: 'info@vynho.com',
   location: 'Hyderabad, India',
   story:

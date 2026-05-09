@@ -1,3 +1,5 @@
+import { MediaCard } from '@/components/patterns/MediaCard'
+
 interface BuildCardProps {
   number: string
   title: string
@@ -8,18 +10,9 @@ interface BuildCardProps {
 }
 
 export function BuildCard({ number, title, description, tags, image, variant = 'dark' }: BuildCardProps) {
-  const isVideo = Boolean(image && /\.(mp4|webm|mov)$/i.test(image))
-
   return (
-    <article className={`vsv-build-card vsv-build-${variant}`}>
-      {image ? (
-        isVideo ? (
-          <video className="vsv-build-media" src={image} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
-        ) : (
-          <img className="vsv-build-media" src={image} alt="" loading="lazy" aria-hidden="true" />
-        )
-      ) : null}
-      <span className="vsv-build-overlay" aria-hidden="true" />
+    <MediaCard className={`vsv-build-card vsv-build-${variant}`} image={image} mediaClassName="vsv-build-media">
+      {image ? <span className="vsv-build-overlay" aria-hidden="true" /> : null}
       <span className="vsv-build-number">{number}</span>
       <div className="vsv-build-content">
         <h3>{title}</h3>
@@ -30,6 +23,6 @@ export function BuildCard({ number, title, description, tags, image, variant = '
           <i key={tag}>{tag}</i>
         ))}
       </div>
-    </article>
+    </MediaCard>
   )
 }

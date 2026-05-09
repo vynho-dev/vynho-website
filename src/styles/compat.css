@@ -1,0 +1,40 @@
+/* Compatibility Layer
+ * Scope: temporary cross-page light-theme fallbacks for legacy page-specific classes.
+ * Rules owned by a page should live in that page stylesheet (`home/work/services/about/contact`).
+ */
+
+:root[data-theme='light'] .vwk-hero-title,
+:root[data-theme='light'] .vwk-section-title,
+:root[data-theme='light'] .vsv-hero-title,
+:root[data-theme='light'] .vsv-section-title,
+:root[data-theme='light'] .vabt-hero-title,
+:root[data-theme='light'] .vabt-section-title,
+:root[data-theme='light'] .vabt-contact-title,
+:root[data-theme='light'] .vsv-contact-title {
+  color: #0b0d13;
+}
+
+:root[data-theme='light'] .vwk-section-copy,
+:root[data-theme='light'] .vsv-section-copy,
+:root[data-theme='light'] .vabt-section-copy,
+:root[data-theme='light'] .vwk-hero-copy,
+:root[data-theme='light'] .vsv-hero-copy,
+:root[data-theme='light'] .vabt-hero-copy {
+  color: rgba(11, 13, 19, 0.68);
+}
+
+:root[data-theme='light'] .vwk-project-card,
+:root[data-theme='light'] .vwk-award-card,
+:root[data-theme='light'] .vwk-client-row span,
+:root[data-theme='light'] .vwk-specialty-shell,
+:root[data-theme='light'] .vsv-build-card,
+:root[data-theme='light'] .vsv-accordion-item,
+:root[data-theme='light'] .vsv-process-card,
+:root[data-theme='light'] .vsv-model-card,
+:root[data-theme='light'] .vsv-client-row span,
+:root[data-theme='light'] .vsv-market-card,
+:root[data-theme='light'] .vabt-team-card,
+:root[data-theme='light'] .vabt-value-card {
+  border-color: rgba(10, 18, 38, 0.14);
+  box-shadow: 0 8px 26px rgba(7, 10, 22, 0.08);
+}

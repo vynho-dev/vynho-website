@@ -1,46 +1,40 @@
 import { useMemo, useState } from 'react'
-import { Header } from '@/components/layout/Header'
+import { PageShell } from '@/components/layout/PageShell'
 import { WorkHero } from '@/components/work/WorkHero'
 import { FeaturedWorkGrid } from '@/components/work/FeaturedWorkGrid'
 import type { WorkProject } from '@/components/work/ProjectCard'
 import { AwardsSection } from '@/components/work/AwardsSection'
-import { ClientsSection } from '@/components/work/ClientsSection'
+import { ClientsSection } from '@/components/sections/ClientsSection'
 import { SpecialtyCTA } from '@/components/work/SpecialtyCTA'
-import { ContactCTA } from '@/components/work/ContactCTA'
-import { WorkFooter } from '@/components/work/WorkFooter'
+import { SectionCTA } from '@/components/patterns/SectionCTA'
+import { workContactCtaContent, workClientsConfig } from '@/content/sections'
+import '@/styles/work.css'
 
 const projects: WorkProject[] = [
   {
-    title: 'Northstar Cloud',
+    title: 'Pallet Ross',
     category: 'Platforms',
-    tag: 'Enterprise SaaS Platform',
+    tag: 'New Age Art Platform',
     image: '/assets/services/build-websites.mp4',
     tags: ['SaaS', 'UX/UI', 'Frontend', 'Backend'],
     featured: true,
   },
   {
-    title: 'LumaPay',
+    title: 'Chatif',
     category: 'Apps',
-    tag: 'Fintech Web App',
+    tag: 'AI Chat Mobile App',
     image: '/assets/projects/lumapay-mobile.mp4',
     tags: ['Web App', 'Payments', 'Design System'],
   },
   {
-    title: 'Asteria Labs',
-    category: 'Websites',
-    tag: 'AI Product Website',
-    image: '/assets/services/build-websites.mp4',
-    tags: ['Website', 'Brand', 'Motion'],
-  },
-  {
-    title: 'SignalDesk',
+    title: 'Pasar Marketing',
     category: 'Products',
     tag: 'Real-Time Analytics Dashboard',
     image: '/assets/projects/signaldash-saas.webp',
     tags: ['Dashboard', 'Data', 'SaaS'],
   },
   {
-    title: 'Vanta Commerce',
+    title: 'Nestery',
     category: 'Commerce',
     tag: 'Premium E-commerce Experience',
     image: '/assets/services/build-commerce.mp4',
@@ -70,17 +64,13 @@ export function WorkPage() {
   )
 
   return (
-    <>
-      <Header />
-      <main className="vwk-page">
-        <WorkHero onFilter={setFilter} />
-        <FeaturedWorkGrid projects={filtered} />
-        <AwardsSection />
-        <ClientsSection />
-        <SpecialtyCTA />
-        <ContactCTA />
-      </main>
-      <WorkFooter />
-    </>
+    <PageShell mainClassName="vwk-page">
+      <WorkHero onFilter={setFilter} />
+      <FeaturedWorkGrid projects={filtered} />
+      <AwardsSection />
+      <ClientsSection config={workClientsConfig} />
+      <SpecialtyCTA />
+      <SectionCTA {...workContactCtaContent} />
+    </PageShell>
   )
 }

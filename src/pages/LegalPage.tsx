@@ -13,8 +13,8 @@ export function LegalPage({ title, body }: LegalPageProps) {
       <main className="vlegal-page">
         <section className="container vlegal-shell">
           <h1>{title}</h1>
-          {body.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+          {body.map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
           ))}
         </section>
       </main>

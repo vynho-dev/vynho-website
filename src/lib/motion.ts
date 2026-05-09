@@ -17,7 +17,11 @@ export function useReducedMotionPreference() {
 export function useInView(options?: { once?: boolean; rootMargin?: string; threshold?: number }) {
   const { once = true, rootMargin = '0px 0px -10% 0px', threshold = 0.15 } = options ?? {}
   const ref = useRef<HTMLElement | null>(null)
-  const [visible, setVisible] = useState(true)
+  // Start invisible so elements animate in on scroll; start visible only if
+  // the user prefers reduced motion (avoids a flash of hidden content for them).
+  const [visible, setVisible] = useState<boolean>(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
   const reducedMotion = useReducedMotionPreference()
 
   useEffect(() => {

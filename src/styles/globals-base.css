@@ -1,0 +1,61 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 92px;
+}
+
+#root {
+  position: relative;
+  isolation: isolate;
+}
+
+#root > :not(.site-bg-scene) {
+  position: relative;
+  z-index: 1;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--page-bg);
+  color: var(--agency-text);
+  font-family: var(--font-ui);
+  font-size: var(--fs-p2);
+  line-height: 1.5;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Semantic cross-section tokens to reduce one-off styling drift. */
+:root {
+  --surface-0: transparent;
+  --surface-1: rgba(255, 255, 255, 0.03);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --border-soft: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.24);
+  --shadow-strong: 0 24px 64px rgba(0, 0, 0, 0.42);
+  --motion-fast: 200ms;
+  --motion-base: 320ms;
+}
+
+:root[data-theme='light'] {
+  --surface-1: rgba(255, 255, 255, 0.72);
+  --surface-2: rgba(255, 255, 255, 0.9);
+  --border-soft: rgba(15, 23, 42, 0.14);
+  --border-strong: rgba(15, 23, 42, 0.24);
+  --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.12);
+  --shadow-strong: 0 20px 48px rgba(15, 23, 42, 0.18);
+}
+
+:root:not([data-theme='light']) body,
+:root[data-theme='dark'] body {
+  background: #000 !important;
+}

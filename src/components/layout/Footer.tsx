@@ -1,15 +1,8 @@
 import { Wordmark } from '@/components/ui/wordmark'
-import { founder, socialLinks } from '@/content/site'
-import { handleContactTrigger } from '@/lib/contactModal'
+import { founder, navLinks, socialLinks } from '@/content/site'
+import { ContactActionLink } from '@/components/patterns/ContactActionLink'
 
 export function Footer() {
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/work', label: 'Work' },
-    { href: '/services', label: 'Services' },
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
-  ]
   const legalLinks = [
     { href: '/privacy', label: 'Privacy policy' },
     { href: '/terms', label: 'Terms' },
@@ -27,7 +20,6 @@ export function Footer() {
             Premium AI, product design, and engineering systems for teams building their next serious digital product.
           </p>
           <p className="footer-contact">
-            <a href={`tel:${founder.phone.replace(/\s+/g, '')}`}>{founder.phone}</a>
             <span>{founder.location}</span>
             <a href={`mailto:${founder.email}`}>{founder.email}</a>
           </p>
@@ -62,33 +54,10 @@ export function Footer() {
           <button type="button" className="footer-top-btn" onClick={handleBackToTop}>
             Back to top
           </button>
-          <a href="/contact" onClick={handleContactTrigger}>Book intro call</a>
+          <ContactActionLink source="footer_lets_talk">
+            Let&apos;s Talk
+          </ContactActionLink>
         </div>
-      </div>
-      <div className="container footer-attribution">
-        <p>
-          Black Hole 3D model by{' '}
-          <a
-            href="https://sketchfab.com/Nestaeric"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Nestaeric
-          </a>{' '}
-          from{' '}
-          <a
-            href="https://sketchfab.com/3d-models/black-hole-e410da98b1e5445eae2acafaaa53587d"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Sketchfab
-          </a>{' '}
-          (licensed under{' '}
-          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer noopener">
-            CC BY 4.0
-          </a>
-          ).
-        </p>
       </div>
     </footer>
   )

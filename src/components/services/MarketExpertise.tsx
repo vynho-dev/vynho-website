@@ -1,4 +1,6 @@
 import { Reveal } from '@/components/motion/Reveal'
+import { SectionHeader } from '@/components/patterns/SectionHeader'
+import { SectionShell } from '@/components/patterns/SectionShell'
 
 const markets = [
   'SaaS & B2B Platforms',
@@ -11,21 +13,20 @@ const markets = [
 
 export function MarketExpertise() {
   return (
-    <section className="vsv-section" id="expertise">
-      <div className="container">
-        <h2 className="vsv-section-title">MARKET EXPERTISE</h2>
-        <p className="vsv-section-copy">
-          We work across industries where design, performance, and technical reliability directly affect customer
-          trust and growth.
-        </p>
-        <div className="vsv-market-grid">
-          {markets.map((market, index) => (
-            <Reveal key={market} className="vsv-market-card" delayMs={index * 70}>
-              {market}
-            </Reveal>
-          ))}
-        </div>
+    <SectionShell id="expertise" className="vsv-section">
+      <SectionHeader
+        title="MARKET EXPERTISE"
+        titleClassName="vsv-section-title"
+        copy="We work across industries where design, performance, and technical reliability directly affect customer trust and growth."
+        copyClassName="vsv-section-copy"
+      />
+      <div className="vsv-market-grid">
+        {markets.map((market, index) => (
+          <Reveal key={market} className="vsv-market-card" delayMs={index * 70}>
+            {market}
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </SectionShell>
   )
 }

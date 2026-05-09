@@ -1,22 +1,15 @@
-import { Reveal } from '@/components/motion/Reveal'
-
-const metrics = [
-  { value: '11+', label: 'years in digital design & development' },
-  { value: '20+', label: 'inhouse experts' },
-  { value: '150+', label: 'projects delivered' },
-  { value: '3', label: 'continents covered' },
-]
+import { MetricStrip } from '@/components/patterns/MetricStrip'
+import { aboutMetricsContent } from '@/content/sections'
 
 export function MetricsStrip() {
   return (
     <section className="vabt-section" id="metrics">
-      <div className="container vabt-metrics-grid">
-        {metrics.map((item, index) => (
-          <Reveal key={item.value} className={`vabt-metric-card vabt-metric-${index + 1}`} delayMs={index * 80}>
-            <strong>{item.value}</strong>
-            <p>{item.label}</p>
-          </Reveal>
-        ))}
+      <div className="container">
+        <MetricStrip
+          items={aboutMetricsContent}
+          gridClassName="vabt-metrics-grid"
+          itemClassName={(index) => `vabt-metric-card vabt-metric-${index + 1}`}
+        />
       </div>
     </section>
   )

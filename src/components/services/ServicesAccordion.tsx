@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import { Reveal } from '@/components/motion/Reveal'
+import { AccordionItem } from '@/components/patterns/AccordionItem'
+import { SectionHeader } from '@/components/patterns/SectionHeader'
+import { SectionShell } from '@/components/patterns/SectionShell'
 
 const items = [
   {
@@ -44,29 +47,33 @@ export function ServicesAccordion() {
   const [active, setActive] = useState(0)
 
   return (
-    <section className="vsv-section" id="services">
-      <div className="container">
-        <h2 className="vsv-section-title vsv-center">OUR SERVICES</h2>
-        <p className="vsv-section-copy vsv-center-copy">
-          From strategy to launch, we provide full-scope delivery or targeted senior expertise across design,
-          engineering, and product systems.
-        </p>
-        <div className="vsv-accordion">
-          {items.map((item, index) => {
-            const open = active === index
-            return (
-              <Reveal key={item.title} className={open ? 'vsv-accordion-item is-open' : 'vsv-accordion-item'} delayMs={index * 50}>
-                <button type="button" onClick={() => setActive(index)} aria-expanded={open}>
-                  <span className="vsv-acc-no">{item.number}</span>
-                  <span>{item.title}</span>
-                  <i>{open ? '−' : '+'}</i>
-                </button>
-                <p>{item.description}</p>
-              </Reveal>
-            )
-          })}
-        </div>
+    <SectionShell id="services" className="vsv-section">
+      <SectionHeader
+        title="OUR SERVICES"
+        titleClassName="vsv-section-title vsv-center"
+        copy="From strategy to launch, we provide full-scope delivery or targeted senior expertise across design, engineering, and product systems."
+        copyClassName="vsv-section-copy vsv-center-copy"
+      />
+      <div className="vsv-accordion">
+        {items.map((item, index) => {
+          const open = active === index
+          return (
+            <Reveal key={item.title} delayMs={index * 50}>
+              <AccordionItem
+                idPrefix="vsv-service"
+                index={index}
+                open={open}
+                onToggle={() => setActive(index)}
+                className={open ? 'vsv-accordion-item is-open' : 'vsv-accordion-item'}
+                leading={<span className="vsv-acc-no">{item.number}</span>}
+                title={item.title}
+                trailing={<i>{open ? '−' : '+'}</i>}
+                body={<p>{item.description}</p>}
+              />
+            </Reveal>
+          )
+        })}
       </div>
-    </section>
+    </SectionShell>
   )
 }

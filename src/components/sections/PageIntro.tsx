@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/motion/Reveal'
+import { SectionShell } from '@/components/patterns/SectionShell'
 
 type PageIntroProps = {
   eyebrow: string
@@ -8,20 +9,18 @@ type PageIntroProps = {
 
 export function PageIntro({ eyebrow, title, description }: PageIntroProps) {
   return (
-    <section className="page-intro">
-      <div className="container page-intro-grid">
-        <div>
-          <Reveal delayMs={40}>
-            <span className="label">{eyebrow}</span>
-          </Reveal>
-          <Reveal as="h1" className="page-intro-title" delayMs={140}>
-            {title}
-          </Reveal>
-        </div>
-        <Reveal as="p" className="page-intro-copy" delayMs={220}>
-          {description}
+    <SectionShell className="page-intro" containerClassName="container page-intro-grid">
+      <div>
+        <Reveal delayMs={40}>
+          <span className="label">{eyebrow}</span>
+        </Reveal>
+        <Reveal as="h1" className="page-intro-title" delayMs={140}>
+          {title}
         </Reveal>
       </div>
-    </section>
+      <Reveal as="p" className="page-intro-copy" delayMs={220}>
+        {description}
+      </Reveal>
+    </SectionShell>
   )
 }

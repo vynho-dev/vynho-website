@@ -1,0 +1,220 @@
+
+.site-bg-scene {
+  --bg-scroll-progress: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--bg-scene-backdrop);
+  transition: background 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-bg-depth,
+.site-bg-orbit,
+.site-bg-blackhole,
+.site-bg-core,
+.site-bg-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.site-bg-depth-1 {
+  background:
+    linear-gradient(132deg, rgba(255, 255, 255, 0.035), transparent 38%),
+    linear-gradient(312deg, rgba(255, 255, 255, 0.02), transparent 48%);
+  transform: translate3d(0, calc(var(--bg-scroll-progress) * -3.5vh * var(--bg-motion-intensity, 1)), 0);
+}
+
+.site-bg-depth-2 {
+  background:
+    radial-gradient(120% 75% at 50% 100%, rgba(255, 255, 255, 0.025), transparent 65%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+  transform: translate3d(0, calc(var(--bg-scroll-progress) * -7vh * var(--bg-motion-intensity, 1)), 0);
+}
+
+.site-bg-orbit {
+  inset: 12% auto auto 50%;
+  width: min(56vw, 760px);
+  height: min(56vw, 760px);
+  border-radius: 50%;
+  transform:
+    translate3d(-50%, calc(var(--bg-scroll-progress) * -9vh * var(--bg-motion-intensity, 1)), 0)
+    rotate(calc(var(--bg-scroll-progress) * 36deg * var(--bg-motion-intensity, 1)));
+  border: 1px solid rgba(199, 255, 47, 0.16);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 120px rgba(199, 255, 47, 0.08);
+  opacity: 0.5;
+}
+
+.site-bg-core {
+  display: grid;
+  place-items: center;
+  transform: translate3d(0, calc(var(--bg-scroll-progress) * -4.8vh * var(--bg-motion-intensity, 1)), 0);
+}
+
+.site-bg-core-ring {
+  width: min(42vw, 520px);
+  aspect-ratio: 1;
+  border-radius: 38% 62% 58% 42% / 46% 42% 58% 54%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(44% 44% at 50% 50%, rgba(199, 255, 47, 0.16), rgba(199, 255, 47, 0.02) 48%, transparent 72%),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+  box-shadow:
+    0 0 160px rgba(0, 0, 0, 0.55),
+    0 0 80px rgba(199, 255, 47, 0.07);
+  opacity: 0.44;
+}
+
+.site-bg-blackhole {
+  display: grid;
+  place-items: center;
+  transform: translate3d(0, calc(var(--bg-scroll-progress) * -6vh * var(--bg-motion-intensity, 1)), 0);
+}
+
+.site-bg-blackhole-horizon {
+  position: absolute;
+  width: min(24vw, 260px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #000 0 42%, rgba(0, 0, 0, 0.95) 58%, rgba(0, 0, 0, 0.72) 72%, transparent 100%);
+  box-shadow:
+    0 0 80px rgba(0, 0, 0, 0.9),
+    0 0 120px rgba(0, 0, 0, 0.65);
+  opacity: 0.96;
+}
+
+.site-bg-blackhole-disk {
+  position: absolute;
+  width: min(40vw, 520px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: rotateX(72deg) rotateZ(calc(8deg + var(--bg-scroll-progress) * 26deg * var(--bg-motion-intensity, 1)));
+  background:
+    radial-gradient(circle, rgba(199, 255, 47, 0.24) 0 22%, rgba(199, 255, 47, 0.08) 34%, rgba(199, 255, 47, 0) 66%),
+    conic-gradient(from 0deg, rgba(255, 255, 255, 0.08), rgba(199, 255, 47, 0.28), rgba(255, 255, 255, 0.08));
+  filter: blur(0.3px);
+  opacity: 0.36;
+  animation: bgDiskSpin calc(28s / max(var(--bg-motion-intensity, 1), 0.4)) linear infinite;
+}
+
+.site-bg-particle {
+  position: absolute;
+  left: var(--p-left);
+  top: var(--p-top);
+  width: var(--p-size);
+  height: var(--p-size);
+  border-radius: 999px;
+  background: rgba(224, 234, 255, 0.85);
+  opacity: var(--p-opacity);
+  filter: blur(0.2px);
+  animation: bgParticleDrift var(--p-duration) ease-in-out var(--p-delay) infinite alternate;
+}
+
+@keyframes bgParticleDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(var(--p-drift-x), var(--p-drift-y), 0);
+  }
+}
+
+@keyframes bgDiskSpin {
+  from {
+    transform: rotateX(72deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(72deg) rotateZ(360deg);
+  }
+}
+
+:root[data-theme='light'] .site-bg-scene {
+  background:
+    radial-gradient(540px 340px at 50% 50%, rgba(17, 21, 32, 0.14), rgba(17, 21, 32, 0.04) 55%, transparent 78%),
+    #eef0f4;
+}
+
+:root[data-theme='light'] .site-bg-depth-1 {
+  background:
+    linear-gradient(135deg, rgba(17, 21, 32, 0.045), transparent 42%),
+    linear-gradient(310deg, rgba(17, 21, 32, 0.028), transparent 56%);
+}
+
+:root[data-theme='light'] .site-bg-depth-2 {
+  background:
+    radial-gradient(120% 75% at 50% 100%, rgba(17, 21, 32, 0.06), transparent 66%),
+    linear-gradient(180deg, rgba(17, 21, 32, 0.022), rgba(17, 21, 32, 0));
+}
+
+:root[data-theme='light'] .site-bg-orbit {
+  border-color: rgba(163, 225, 32, 0.25);
+  box-shadow:
+    0 0 0 1px rgba(17, 21, 32, 0.08) inset,
+    0 0 90px rgba(163, 225, 32, 0.09);
+  opacity: 0.55;
+}
+
+:root[data-theme='light'] .site-bg-core-ring {
+  border-color: rgba(17, 21, 32, 0.1);
+  background:
+    radial-gradient(44% 44% at 50% 50%, rgba(163, 225, 32, 0.17), rgba(163, 225, 32, 0.03) 48%, transparent 72%),
+    linear-gradient(155deg, rgba(17, 21, 32, 0.06), rgba(17, 21, 32, 0));
+  box-shadow:
+    0 0 100px rgba(17, 21, 32, 0.12),
+    0 0 64px rgba(163, 225, 32, 0.08);
+  opacity: 0.42;
+}
+
+:root[data-theme='light'] .site-bg-blackhole-horizon {
+  width: min(28vw, 320px);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(12, 16, 24, 0.88) 0 36%, rgba(12, 16, 24, 0.62) 52%, rgba(12, 16, 24, 0.34) 72%, transparent 100%);
+  box-shadow:
+    0 0 86px rgba(17, 21, 32, 0.38),
+    0 0 130px rgba(17, 21, 32, 0.24);
+  opacity: 0.82;
+  mix-blend-mode: multiply;
+}
+
+:root[data-theme='light'] .site-bg-blackhole-disk {
+  width: min(46vw, 580px);
+  background:
+    radial-gradient(circle, rgba(163, 225, 32, 0.24) 0 24%, rgba(163, 225, 32, 0.1) 40%, rgba(163, 225, 32, 0) 72%),
+    conic-gradient(from 0deg, rgba(17, 21, 32, 0.15), rgba(163, 225, 32, 0.3), rgba(17, 21, 32, 0.15));
+  opacity: 0.48;
+  mix-blend-mode: multiply;
+}
+
+:root[data-theme='light'] .site-bg-particle {
+  background: rgba(17, 21, 32, 0.72);
+  opacity: 0.16;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-bg-depth-1,
+  .site-bg-depth-2,
+  .site-bg-orbit,
+  .site-bg-blackhole,
+  .site-bg-core {
+    transform: none !important;
+  }
+
+  .site-bg-orbit {
+    opacity: 0.24;
+  }
+
+  .site-bg-particle {
+    animation: none;
+    opacity: 0.08;
+  }
+
+  .site-bg-blackhole-disk {
+    animation: none;
+  }
+}
+
+
