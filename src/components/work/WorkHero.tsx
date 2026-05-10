@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Reveal } from '@/components/motion/Reveal'
+import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 import { CategoryPills } from '@/components/work/CategoryPills'
 
 const categories = ['All', 'Websites', 'Products', 'Apps', 'Platforms', 'Commerce', 'Immersive']
@@ -10,6 +11,11 @@ interface WorkHeroProps {
 
 export function WorkHero({ onFilter }: WorkHeroProps) {
   const [active, setActive] = useState('All')
+  const titleLines = ['GLOBAL WORK.', 'ENGINEERED.'] as const
+  const copyLines = [
+    'We partner with ambitious teams to design, build, and launch digital products',
+    'where refined aesthetics meet reliable engineering.',
+  ] as const
 
   const handleSelect = (value: string) => {
     setActive(value)
@@ -19,15 +25,12 @@ export function WorkHero({ onFilter }: WorkHeroProps) {
   return (
     <section className="vwk-hero" id="top">
       <div className="container vwk-hero-inner">
-        <Reveal as="h1" className="vwk-hero-title" delayMs={80}>
-          GLOBAL WORK.
-          <br />
-          ENGINEERED.
-        </Reveal>
-        <Reveal as="p" className="vwk-hero-copy" delayMs={140}>
-          We partner with ambitious teams to design, build, and launch digital products where refined aesthetics meet
-          reliable engineering.
-        </Reveal>
+        <HeroTextAnimation
+          titleLines={titleLines}
+          copyLines={copyLines}
+          titleClassName="vwk-hero-title"
+          copyClassName="vwk-hero-copy"
+        />
         <Reveal as="p" className="vwk-hero-count" delayMs={170}>
           Experienced in
         </Reveal>

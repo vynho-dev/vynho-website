@@ -1,6 +1,14 @@
 import { type MouseEvent } from 'react'
+import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 import { Button } from '@/components/ui/button'
 import { useReducedMotionPreference } from '@/lib/motion'
+
+const HERO_TITLE_LINES = ['HIGH-END DESIGN.', 'CRAFTED CODE.'] as const
+const HERO_COPY_LINES = [
+  'We are a digital product studio for teams who see design and engineering as their',
+  'competitive advantage. From flagship websites to scalable applications, we build',
+  'products where world-class aesthetics meet robust infrastructure.',
+] as const
 
 export function HomeHeroSection({ onExploreClick }: { onExploreClick: () => void }) {
   const reduceMotion = useReducedMotionPreference()
@@ -19,16 +27,13 @@ export function HomeHeroSection({ onExploreClick }: { onExploreClick: () => void
   return (
     <section className="vh-hero">
       <div className="container vh-hero-inner">
-        <h1 className="vh-hero-title">
-          <span className="vh-visually-hidden">HIGH-END DESIGN. CRAFTED CODE.</span>
-          <span className="vh-hero-title-line" aria-hidden="true">HIGH-END DESIGN.</span>
-          <span className="vh-hero-title-line" aria-hidden="true">CRAFTED CODE.</span>
-        </h1>
-        <p className="vh-hero-copy" style={{ transform: 'translateY(calc(var(--vh-scroll-progress, 0) * 60px))' }}>
-          We are a digital product studio for teams who see design and engineering as their competitive advantage. From
-          flagship websites to scalable applications, we build products where world-class aesthetics meet robust
-          infrastructure.
-        </p>
+        <HeroTextAnimation
+          titleLines={HERO_TITLE_LINES}
+          copyLines={HERO_COPY_LINES}
+          titleClassName="vh-hero-title"
+          copyClassName="vh-hero-copy"
+          copyStyle={{ transform: 'translateY(calc(var(--vh-scroll-progress, 0) * 60px))' }}
+        />
         <div className="vh-hero-actions" style={{ transform: 'translateY(calc(var(--vh-scroll-progress, 0) * 100px))' }}>
           <div style={{ display: 'inline-block' }}>
             <Button asChild className="vh-lime-btn">

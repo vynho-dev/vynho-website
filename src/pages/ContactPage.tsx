@@ -1,20 +1,25 @@
 import { PageShell } from '@/components/layout/PageShell'
 import { ContactForm } from '@/components/contact/ContactForm'
 import { ContactInfoCards } from '@/components/contact/ContactInfoCards'
-import { Reveal } from '@/components/motion/Reveal'
+import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 import '@/styles/contact.css'
 
 export function ContactPage() {
+  const titleLines = ['START A', 'PROJECT'] as const
+  const copyLines = [
+    "Tell us what you're building. We'll help shape the right strategy, scope, and delivery model.",
+  ] as const
+
   return (
     <PageShell mainClassName="vct-page" mainId="top">
       <section className="vct-page-hero u-center-copy">
         <div className="container">
-          <Reveal as="h1" delayMs={70}>
-            START A PROJECT
-          </Reveal>
-          <Reveal as="p" className="u-center-copy" delayMs={120}>
-            Tell us what you&apos;re building. We&apos;ll help shape the right strategy, scope, and delivery model.
-          </Reveal>
+          <HeroTextAnimation
+            titleLines={titleLines}
+            copyLines={copyLines}
+            titleClassName="vct-page-hero-title"
+            copyClassName="vct-page-hero-copy u-center-copy"
+          />
           <section className="vct-panel vct-panel-inline" aria-labelledby="contact-page-title">
             <h2 id="contact-page-title">LET&apos;S TALK</h2>
             <p className="vct-intro">
