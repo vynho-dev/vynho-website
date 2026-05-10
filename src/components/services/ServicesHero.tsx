@@ -1,4 +1,3 @@
-import { Reveal } from '@/components/motion/Reveal'
 import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 
 export function ServicesHero() {

@@ -5,7 +5,7 @@
 }
 
 .vwk-hero {
-  padding: clamp(72px, 9vw, 124px) 0 clamp(42px, 6vw, 68px);
+  padding: clamp(76px, 10vw, 136px) 0 clamp(56px, 7vw, 84px);
 }
 
 .vwk-hero-inner {
@@ -22,7 +22,7 @@
 }
 
 .vwk-hero-copy {
-  margin-top: 16px;
+  margin-top: 14px;
   max-width: 74ch;
   color: var(--agency-text-muted);
 }

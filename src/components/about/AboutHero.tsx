@@ -1,4 +1,3 @@
-import { Reveal } from '@/components/motion/Reveal'
 import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 
 export function AboutHero() {
@@ -17,11 +16,6 @@ export function AboutHero() {
           titleClassName="vabt-hero-title"
           copyClassName="vabt-hero-copy"
         />
-        <Reveal delayMs={200}>
-          <a className="vabt-down-btn" href="#metrics" aria-label="Scroll to metrics">
-            ↓
-          </a>
-        </Reveal>
       </div>
     </section>
   )

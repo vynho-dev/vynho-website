@@ -9,7 +9,7 @@
 }
 
 .vsv-hero {
-  padding: clamp(70px, 9vw, 122px) 0 clamp(56px, 7vw, 84px);
+  padding: clamp(76px, 10vw, 136px) 0 clamp(56px, 7vw, 84px);
 }
 
 .vsv-hero-inner {
@@ -27,7 +27,7 @@
 
 .vsv-hero-copy {
   margin-top: 14px;
-  max-width: 76ch;
+  max-width: 74ch;
   color: var(--agency-text-muted);
 }
 

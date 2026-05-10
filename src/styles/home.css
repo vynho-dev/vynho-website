@@ -1290,7 +1290,6 @@
   }
 }
 
-.vh-hero-copy,
 #work .vh-section-copy,
 .vh-services-editorial .vh-section-copy,
 #models .vh-section-copy,
@@ -1395,8 +1394,8 @@
   align-items: stretch !important;
   justify-content: flex-start !important;
   min-height: 100dvh !important;
-  padding-top: clamp(20px, 3vh, 32px) !important;
-  padding-bottom: clamp(44px, 6vh, 72px) !important;
+  padding-top: clamp(76px, 10vw, 136px) !important;
+  padding-bottom: clamp(56px, 7vw, 84px) !important;
   background: #000;
   overflow: clip;
 }
@@ -1410,7 +1409,7 @@
   gap: clamp(10px, 1.4vw, 18px) !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-  min-height: calc(100dvh - clamp(20px, 3vh, 32px) - clamp(44px, 6vh, 72px));
+  min-height: calc(100dvh - clamp(76px, 10vw, 136px) - clamp(56px, 7vw, 84px));
 }
 
 .vh-hero-title {
@@ -1428,7 +1427,7 @@
   position: relative;
   z-index: 5;
   margin-top: clamp(14px, 2.4vh, 26px);
-  max-width: 64ch !important;
+  max-width: 74ch !important;
   font-size: clamp(15px, 1.3vw, 19px) !important;
   text-align: center !important;
   line-height: 1.6 !important;
@@ -1526,15 +1525,15 @@
 }
 
 :root[data-theme='light'] .vh-hero {
-  background: #000;
+  background: transparent;
 }
 
 :root[data-theme='light'] .vh-hero-title {
-  color: #fff;
+  color: #0f172a;
 }
 
 :root[data-theme='light'] .vh-hero-copy {
-  color: #fff;
+  color: #334155;
 }
 
 @media (max-width: 880px) {
@@ -1544,7 +1543,7 @@
   }
 
   .vh-hero-copy {
-    max-width: 60ch !important;
+    max-width: 74ch !important;
     margin-top: clamp(12px, 2.2vh, 22px);
   }
 }
