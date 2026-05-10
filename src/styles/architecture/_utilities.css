@@ -1,0 +1,12 @@
+/* Utilities for incremental migration. */
+.arch-text-uppercase {
+  text-transform: uppercase;
+}
+
+.arch-balance {
+  text-wrap: balance;
+}
+
+.arch-max-copy {
+  max-width: var(--arch-copy-max);
+}

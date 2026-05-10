@@ -1,0 +1,65 @@
+/* Shared layout primitives; safe to introduce before migration. */
+.arch-section {
+  padding-block: var(--arch-section-pad-y);
+}
+
+.arch-hero {
+  padding-top: var(--arch-hero-pad-top);
+  padding-bottom: var(--arch-hero-pad-bottom);
+}
+
+.arch-section-title {
+  line-height: var(--arch-title-line-base);
+  text-wrap: balance;
+}
+
+.arch-section-copy {
+  max-width: var(--arch-copy-max-narrow);
+  margin-inline: auto;
+}
+
+.arch-center-copy {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Shared page hero/section rhythm (incremental migration aliases). */
+.vh-hero,
+.vwk-hero,
+.vsv-hero,
+.vabt-hero,
+.vct-page-hero {
+  padding-top: var(--arch-hero-pad-top);
+  padding-bottom: var(--arch-hero-pad-bottom);
+}
+
+.vh-section,
+.vwk-section,
+.vsv-section,
+.vabt-section {
+  padding-block: var(--arch-section-pad-y);
+}
+
+.vwk-section-title,
+.vsv-section-title,
+.vabt-section-title {
+  line-height: var(--arch-title-line-base);
+  text-wrap: balance;
+}
+
+.vwk-section-copy,
+.vsv-section-copy,
+.vabt-section-copy {
+  max-width: var(--arch-copy-max-narrow);
+  margin-inline: auto;
+}
+
+.vwk-center-copy,
+.vsv-center-copy,
+.vabt-center-copy,
+.u-center-copy {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}

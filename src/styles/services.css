@@ -8,10 +8,6 @@
   padding: clamp(70px, 9vw, 136px) 0;
 }
 
-.vsv-hero {
-  padding: clamp(76px, 10vw, 136px) 0 clamp(56px, 7vw, 84px);
-}
-
 .vsv-hero-inner {
   display: grid;
   justify-items: center;
@@ -166,7 +162,6 @@
 
 .vsv-build-tags i {
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 999px;
   padding: 6px 10px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 11px;
@@ -177,7 +172,6 @@
 .vsv-section-title {
   color: #fff;
   font-size: clamp(42px, 5.4vw, 92px);
-  line-height: 0.9;
   text-transform: uppercase;
 }
 
@@ -192,9 +186,7 @@
 }
 
 .vsv-center-copy {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 68ch;
 }
 
 .vsv-accordion {
@@ -275,7 +267,6 @@
 }
 
 .vsv-process-card {
-  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 12px;
   min-height: 230px;
   padding: 14px;
@@ -391,11 +382,9 @@
 }
 
 .vsv-client-row span {
-  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 12px;
   padding: 9px 13px;
   color: var(--agency-text-muted);
-  background: rgba(255, 255, 255, 0.03);
   transition:
     color var(--t-base) var(--ease),
     border-color var(--t-base) var(--ease),
@@ -416,7 +405,6 @@
 }
 
 .vsv-market-card {
-  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 12px;
   padding: 14px;
   color: #fff;
@@ -424,18 +412,6 @@
 }
 
 .vsv-contact {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.vsv-center-shell {
-  text-align: center;
-}
-
-.vsv-contact-eyebrow {
-  color: var(--agency-text-soft);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  text-transform: uppercase;
 }
 
 .vsv-contact-title {
@@ -453,23 +429,12 @@
   gap: 10px;
 }
 
-:root[data-theme='light'] .vsv-hero-title,
-:root[data-theme='light'] .vsv-section-title,
 :root[data-theme='light'] .vsv-contact-title {
   color: #0f1626;
 }
 
 :root[data-theme='light'] .vsv-watermark {
   color: rgba(15, 22, 38, 0.06);
-}
-
-:root[data-theme='light'] .vsv-hero-copy,
-:root[data-theme='light'] .vsv-section-copy {
-  color: rgba(15, 22, 38, 0.7);
-}
-
-:root[data-theme='light'] .vsv-contact-eyebrow {
-  color: rgba(15, 22, 38, 0.5);
 }
 
 :root[data-theme='light'] .vsv-accordion-item {
@@ -545,17 +510,13 @@
     grid-template-columns: 1fr;
   }
 
-  .vsv-footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 
 @media (max-width: 760px) {
   .vsv-client-row,
   .vsv-process-grid,
-  .vsv-market-grid,
-  .vsv-footer-grid {
+  .vsv-market-grid {
     grid-template-columns: 1fr;
   }
 }

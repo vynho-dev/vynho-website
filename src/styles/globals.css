@@ -1,11 +1,12 @@
-@import './tokens.css';
-@import './design-system.css';
-@import './globals-base.css';
-@import './globals-bg.css';
-@import './premium-pages-light.css';
-@import './compat.css';
-@import './globals-components.css';
-@import './globals-responsive.css';
+@layer tokens, design-system, architecture, foundation;
+
+@import './tokens.css' layer(tokens);
+@import './design-system.css' layer(design-system);
+@import './architecture/index.css' layer(architecture);
+@import './foundation/globals-base.css' layer(foundation);
+@import './foundation/globals-bg.css' layer(foundation);
+@import './foundation/globals-components.css' layer(foundation);
+@import './foundation/globals-responsive.css' layer(foundation);
 
 @tailwind base;
 @tailwind components;

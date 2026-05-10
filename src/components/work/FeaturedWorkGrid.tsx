@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/motion/Reveal'
+import { SectionShell } from '@/components/patterns/SectionShell'
 import { ProjectCard, type WorkProject } from '@/components/work/ProjectCard'
 
 interface FeaturedWorkGridProps {
@@ -7,16 +8,14 @@ interface FeaturedWorkGridProps {
 
 export function FeaturedWorkGrid({ projects }: FeaturedWorkGridProps) {
   return (
-    <section className="vwk-section" id="work-grid">
-      <div className="container">
-        <div className="vwk-grid">
-          {projects.map((project, index) => (
-            <Reveal key={project.title} delayMs={index * 60}>
-              <ProjectCard project={project} />
-            </Reveal>
-          ))}
-        </div>
+    <SectionShell id="work-grid" className="vwk-section">
+      <div className="vwk-grid">
+        {projects.map((project, index) => (
+          <Reveal key={project.title} delayMs={index * 60}>
+            <ProjectCard project={project} />
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </SectionShell>
   )
 }

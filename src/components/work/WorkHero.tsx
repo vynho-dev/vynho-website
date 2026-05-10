@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Reveal } from '@/components/motion/Reveal'
 import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
+import { SectionShell } from '@/components/patterns/SectionShell'
 import { CategoryPills } from '@/components/work/CategoryPills'
 
 const categories = ['All', 'Websites', 'Products', 'Apps', 'Platforms', 'Commerce', 'Immersive']
@@ -23,8 +24,7 @@ export function WorkHero({ onFilter }: WorkHeroProps) {
   }
 
   return (
-    <section className="vwk-hero" id="top">
-      <div className="container vwk-hero-inner">
+    <SectionShell id="top" className="vwk-hero" containerClassName="container vwk-hero-inner">
         <HeroTextAnimation
           titleLines={titleLines}
           copyLines={copyLines}
@@ -37,7 +37,6 @@ export function WorkHero({ onFilter }: WorkHeroProps) {
         <Reveal delayMs={210}>
           <CategoryPills items={categories} active={active} onSelect={handleSelect} />
         </Reveal>
-      </div>
-    </section>
+    </SectionShell>
   )
 }

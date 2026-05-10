@@ -1,0 +1,72 @@
+/* Shared motion contract for future page migration. */
+:root {
+  --arch-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --arch-motion-ease-soft: cubic-bezier(0.26, 1, 0.3, 1);
+  --arch-motion-fast: 220ms;
+  --arch-motion-base: 320ms;
+  --arch-motion-slow: 420ms;
+  --arch-motion-transform: transform var(--arch-motion-base) var(--arch-motion-ease);
+  --arch-motion-border: border-color var(--arch-motion-fast) var(--arch-motion-ease);
+  --arch-motion-bg: background var(--arch-motion-fast) var(--arch-motion-ease);
+  --arch-motion-color: color var(--arch-motion-fast) var(--arch-motion-ease);
+  --arch-motion-shadow: box-shadow var(--arch-motion-base) var(--arch-motion-ease);
+}
+
+/* Shared motion application for migrated component primitives. */
+.vwk-project-card,
+.vsv-build-card,
+.vsv-process-card,
+.vsv-model-card,
+.vsv-market-card,
+.vabt-metric-card,
+.vabt-team-card,
+.vabt-value-card {
+  transition:
+    var(--arch-motion-transform),
+    var(--arch-motion-border),
+    var(--arch-motion-shadow),
+    var(--arch-motion-bg);
+}
+
+.vwk-pill,
+.vwk-project-tags i,
+.vwk-project-badge,
+.vwk-client-row span,
+.vsv-build-tags i,
+.vsv-client-row span,
+.vabt-value-card a,
+.vabt-team-card i,
+.vct-submit-btn {
+  transition:
+    var(--arch-motion-color),
+    var(--arch-motion-border),
+    var(--arch-motion-bg),
+    var(--arch-motion-transform);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vwk-project-card,
+  .vsv-build-card,
+  .vsv-process-card,
+  .vsv-model-card,
+  .vsv-market-card,
+  .vabt-metric-card,
+  .vabt-team-card,
+  .vabt-value-card,
+  .vwk-pill,
+  .vwk-project-tags i,
+  .vwk-project-badge,
+  .vwk-client-row span,
+  .vsv-build-tags i,
+  .vsv-client-row span,
+  .vabt-value-card a,
+  .vabt-team-card i,
+  .vct-submit-btn,
+  .arch-motion,
+  .arch-motion::before,
+  .arch-motion::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

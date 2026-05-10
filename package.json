@@ -12,7 +12,8 @@
     "test": "vitest",
     "test:run": "vitest run --coverage",
     "perf:check": "node scripts/perf-budget.mjs",
-    "smoke:check": "node scripts/smoke-check.mjs"
+    "smoke:check": "node scripts/smoke-check.mjs",
+    "styles:health": "node scripts/styles-health.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

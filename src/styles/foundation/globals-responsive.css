@@ -197,8 +197,6 @@
   .hero-grid,
   .page-intro-grid,
   .founder-shell,
-  .services-grid,
-  .featured-grid,
   .process,
   .metrics,
   .capabilities-shell,
@@ -300,10 +298,6 @@
     width: 118px;
   }
 
-  .nav-btn {
-    display: none !important;
-  }
-
   .hero {
     padding-top: 44px;
   }
@@ -363,7 +357,6 @@
     margin-top: 14px;
   }
 
-  .featured-meta-row,
   .careers-note {
     align-items: stretch;
     grid-template-columns: 1fr;
@@ -392,9 +385,6 @@
     grid-template-columns: 1fr;
   }
 
-  .featured-meta-row .inline-flex {
-    width: 100%;
-  }
 }
 
 
@@ -402,13 +392,6 @@
   margin-left: auto;
   margin-right: auto;
   justify-self: center;
-}
-
-.nav-right-side {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-self: end;
 }
 
 

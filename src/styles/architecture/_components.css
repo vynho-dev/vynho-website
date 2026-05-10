@@ -1,0 +1,62 @@
+/* Shared component primitives; currently opt-in only. */
+.arch-card {
+  border-radius: var(--arch-card-radius);
+  border: 1px solid var(--arch-border-dark);
+}
+
+.arch-pill {
+  border-radius: var(--arch-pill-radius);
+  border: 1px solid var(--arch-border-soft-dark);
+  background: var(--arch-bg-soft-dark);
+}
+
+:root[data-theme='light'] .arch-card {
+  border-color: var(--arch-border-light);
+}
+
+:root[data-theme='light'] .arch-pill {
+  border-color: var(--arch-border-light);
+  background: var(--arch-bg-soft-light);
+}
+
+/* Shared component shell primitives used across premium pages. */
+.vwk-project-card,
+.vsv-build-card,
+.vsv-process-card,
+.vsv-market-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.vwk-pill,
+.vwk-project-tags i,
+.vwk-project-badge,
+.vsv-build-tags i,
+.vabt-value-card a {
+  border-radius: 999px;
+}
+
+.vwk-client-row span,
+.vsv-client-row span {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.vwk-contact-shell,
+.vsv-center-shell,
+.vabt-center-shell {
+  text-align: center;
+}
+
+.vsv-contact,
+.vabt-contact {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.vwk-contact-eyebrow,
+.vsv-contact-eyebrow,
+.vabt-contact-eyebrow {
+  color: var(--agency-text-soft);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+}

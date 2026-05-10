@@ -336,14 +336,6 @@ h4 {
   display: none;
 }
 
-.nav-btn {
-  min-width: 96px;
-  border-color: rgba(255, 255, 255, 0.96) !important;
-  background: #fff !important;
-  color: var(--agency-night) !important;
-  box-shadow: 0 16px 36px rgba(22, 88, 250, 0.24);
-}
-
 .mobile-nav-toggle {
   display: none;
   width: clamp(2.5rem, 2.356rem + 0.616vw, 2.75rem);
@@ -1426,7 +1418,6 @@ h4 {
 :root[data-theme='light'] .footer-column a:hover {
   color: var(--agency-blue);
 }
-
 
 
 

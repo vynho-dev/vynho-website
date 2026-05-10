@@ -1,0 +1,30 @@
+:root {
+  --arch-section-pad-y: clamp(70px, 10vw, 146px);
+  --arch-hero-pad-top: clamp(76px, 10vw, 136px);
+  --arch-hero-pad-bottom: clamp(56px, 7vw, 84px);
+
+  --arch-title-line-tight: 0.88;
+  --arch-title-line-base: 0.9;
+  --arch-copy-max: 74ch;
+  --arch-copy-max-narrow: 64ch;
+
+  --arch-card-radius: 14px;
+  --arch-panel-radius: 22px;
+  --arch-pill-radius: 999px;
+
+  --arch-border-dark: rgba(255, 255, 255, 0.14);
+  --arch-border-soft-dark: rgba(255, 255, 255, 0.1);
+  --arch-bg-soft-dark: rgba(255, 255, 255, 0.04);
+
+  --arch-text-strong-dark: #fff;
+  --arch-text-muted-dark: var(--agency-text-muted);
+  --arch-text-soft-dark: var(--agency-text-soft);
+}
+
+:root[data-theme='light'] {
+  --arch-border-light: rgba(15, 22, 38, 0.14);
+  --arch-bg-soft-light: rgba(15, 22, 38, 0.04);
+  --arch-text-strong-light: #0f1626;
+  --arch-text-muted-light: rgba(15, 22, 38, 0.72);
+  --arch-text-soft-light: rgba(15, 22, 38, 0.52);
+}

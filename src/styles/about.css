@@ -8,10 +8,6 @@
   padding: clamp(70px, 9vw, 138px) 0;
 }
 
-.vabt-hero {
-  padding: clamp(76px, 10vw, 136px) 0 clamp(56px, 7vw, 84px);
-}
-
 .vabt-hero-inner {
   display: grid;
   justify-items: center;
@@ -233,9 +229,6 @@
 }
 
 .vabt-center-copy {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
   max-width: 64ch;
 }
 
@@ -305,15 +298,10 @@
   margin-top: 10px;
   display: inline-flex;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
   padding: 5px 8px;
   color: var(--agency-text-soft);
   font-size: 11px;
   font-family: var(--font-mono);
-}
-
-.vabt-center-shell {
-  text-align: center;
 }
 
 .vabt-muted-note {
@@ -323,14 +311,6 @@
 }
 
 .vabt-contact {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.vabt-contact-eyebrow {
-  color: var(--agency-text-soft);
-  font-size: 12px;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
 }
 
 .vabt-contact-title {
@@ -346,18 +326,12 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .vabt-footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .vabt-values-stage {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 
-:root[data-theme='light'] .vabt-hero-title,
-:root[data-theme='light'] .vabt-section-title,
 :root[data-theme='light'] .vabt-mission-copy,
 :root[data-theme='light'] .vabt-contact-title {
   color: #0f1626;
@@ -371,9 +345,7 @@
   color: rgba(15, 22, 38, 0.05);
 }
 
-:root[data-theme='light'] .vabt-hero-copy,
-:root[data-theme='light'] .vabt-team-intro,
-:root[data-theme='light'] .vabt-section-copy {
+:root[data-theme='light'] .vabt-team-intro {
   color: rgba(15, 22, 38, 0.7);
 }
 
@@ -395,10 +367,6 @@
   color: rgba(15, 22, 38, 0.6);
 }
 
-:root[data-theme='light'] .vabt-contact-eyebrow {
-  color: rgba(15, 22, 38, 0.5);
-}
-
 :root[data-theme='light'] .vabt-team-card {
   border-color: rgba(15, 22, 38, 0.12);
   background: rgba(15, 22, 38, 0.03);
@@ -411,8 +379,7 @@
 @media (max-width: 680px) {
   .vabt-metrics-grid,
   .vabt-team-row,
-  .vabt-values-stage,
-  .vabt-footer-grid {
+  .vabt-values-stage {
     grid-template-columns: 1fr;
   }
 

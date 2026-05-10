@@ -5,12 +5,6 @@
  * Appended for spec alignment
  * ============================================================ */
 
-.vh-work-cta {
-  margin-top: 28px;
-  display: flex;
-  justify-content: center;
-}
-
 .vh-edge-grid {
   margin-top: 38px;
   display: grid;
@@ -265,11 +259,6 @@
   border-radius: 16px;
 }
 
-.vh-services-list .vh-accordion-item button:focus-visible {
-  outline: 2px solid rgba(193, 255, 53, 0.9);
-  outline-offset: 3px;
-  border-radius: 8px;
-}
 
 /* ── Light theme overrides ── */
 :root[data-theme='light'] .vh-faq-item {
@@ -307,9 +296,6 @@
   background: #1a7a14;
 }
 
-:root[data-theme='light'] .vh-services-list .vh-accordion-item button i {
-  color: #1a7a14;
-}
 
 .vh-final-eyebrow {
   text-transform: uppercase;

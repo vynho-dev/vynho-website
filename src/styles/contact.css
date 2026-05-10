@@ -4,10 +4,7 @@
   min-height: 100svh;
 }
 
-.vct-page-hero {
-  padding: clamp(76px, 10vw, 136px) 0 clamp(56px, 7vw, 84px);
-  text-align: center;
-}
+.vct-page-hero { text-align: center; }
 
 .vct-page-hero h1 {
   color: #fff;
