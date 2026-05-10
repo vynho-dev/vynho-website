@@ -23,9 +23,9 @@ import {
   HomeStudioSection,
   HomeTrustSection,
   HomeWorkSection,
-} from '@/components/sections/home-premium/HomePremiumSections'
+} from '@/components/sections/home/HomeSections'
 
-export function HomePremium() {
+export function Home() {
   const [openService, setOpenService] = useState(0)
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   const [activeBuildCard, setActiveBuildCard] = useState(homeBuildCardsContent[0]?.id ?? '01')
