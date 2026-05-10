@@ -49,6 +49,23 @@ h4 {
   transform: translate3d(0, 0, 0);
 }
 
+.motion-wave {
+  opacity: 0;
+  transform:
+    translate3d(0, var(--wave-distance, 24px), 0)
+    scale(calc(1 - min(var(--wave-depth, 0px), 36px) / 260));
+  transition:
+    opacity 680ms cubic-bezier(0.22, 1, 0.36, 1) var(--wave-delay, 0ms),
+    transform 680ms cubic-bezier(0.22, 1, 0.36, 1) var(--wave-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.motion-wave.is-visible,
+.motion-wave.is-reduced {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
 .parallax-media {
   --parallax-y: 0;
 }
@@ -167,20 +184,22 @@ h4 {
 }
 
 .nav-brand-anchor {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0;
   justify-self: start;
+  width: clamp(108px, 13vw, 148px);
+  height: clamp(24px, 2.4vw, 32px);
   color: var(--nav-link-hover-text);
 }
 
 .nav-wordmark {
-  width: clamp(108px, 13vw, 148px);
-  height: auto;
-}
-
-.nav-wordmark-light {
-  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -308,12 +327,12 @@ h4 {
   transition: color 500ms var(--ease);
 }
 
-.theme-toggle-btn.active {
+.theme-toggle .theme-toggle-btn.active {
   color: #0f1420;
 }
 
 .theme-toggle.is-dark .theme-toggle-btn:not(.active) {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .theme-toggle-thumb {
@@ -453,14 +472,6 @@ h4 {
   color: #111520;
 }
 
-:root[data-theme='light'] .nav-wordmark-dark {
-  display: none;
-}
-
-:root[data-theme='light'] .nav-wordmark-light {
-  display: block;
-}
-
 :root[data-theme='light'] .mobile-nav-toggle {
   background: #111520;
   color: #fff;
@@ -486,10 +497,10 @@ h4 {
 }
 
 :root[data-theme='light'] .theme-toggle-btn {
-  color: rgba(17, 21, 32, 0.7);
+  color: rgba(17, 21, 32, 0.82);
 }
 
-:root[data-theme='light'] .theme-toggle-btn.active {
+:root[data-theme='light'] .theme-toggle .theme-toggle-btn.active {
   color: #fff;
 }
 
@@ -1418,16 +1429,6 @@ h4 {
 :root[data-theme='light'] .footer-column a:hover {
   color: var(--agency-blue);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

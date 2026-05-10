@@ -1,37 +1,62 @@
 import { Reveal } from '@/components/motion/Reveal'
+import { WaveRevealGroup, WaveRevealItem } from '@/components/motion/WaveReveal'
 import { MediaCard } from '@/components/patterns/MediaCard'
 import { SectionHeader } from '@/components/patterns/SectionHeader'
+import { AwardBadge } from '@/components/ui/award-badge'
 import { type HomeWorkCardContent } from '@/content/sections'
 
-function TrustIcon({ type }: { type: 'rating' | 'award' | 'global' }) {
-  if (type === 'award') {
-    return <span className="vh-trust-mark vh-trust-mark-award">awwwards.</span>
-  }
+const trustAwards = [
+  {
+    logoSrc: '/assets/awards/clutch-logo.jpeg',
+    brandLabel: 'CLUTCH',
+    headline: 'Rated 5.0 on Clutch',
+    badgeType: 'product-of-the-day' as const,
+  },
+  {
+    logoSrc: '/assets/awards/awwwards-logo.svg',
+    brandLabel: 'Awwwards.',
+    headline: '10x awarded by Awwwards',
+    badgeType: 'golden-kitty' as const,
+  },
+  {
+    logoSrc: '/assets/awards/webaward-logo.svg',
+    brandLabel: 'WEBAWARD',
+    headline: 'Awarded by Webaward',
+    badgeType: 'product-of-the-week' as const,
+  },
+] as const
 
-  if (type === 'global') {
-    return <span className="vh-trust-mark vh-trust-mark-web">W</span>
-  }
-
-  return <span className="vh-trust-mark vh-trust-mark-clutch">C</span>
-}
-
-export function HomeTrustSection({
-  trustCards,
-}: {
-  trustCards: ReadonlyArray<{ label: string; icon: 'rating' | 'award' | 'global' }>
-}) {
+export function HomeTrustSection() {
   return (
     <section className="vh-trust">
-      <div className="container vh-trust-grid">
-        {trustCards.map((card, index) => (
-          <Reveal key={card.label} className="vh-trust-card" delayMs={index * 70}>
-            <div id={`about-card-${index + 1}`} className="vh-trust-card-shell">
-              <span><TrustIcon type={card.icon} /></span>
-              <p>{card.label}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
+      <WaveRevealGroup
+        as="div"
+        className="container vh-trust-lines"
+        staggerMs={220}
+        distance={120}
+        depthStep={26}
+        direction="up"
+        rootMargin="0px 0px -18% 0px"
+        amount={0.25}
+        once={false}
+      >
+        {trustAwards.map((award, index) => {
+          return (
+            <WaveRevealItem key={award.headline} className="vh-trust-line" index={index}>
+              <div className="vh-trust-line-badge">
+                <AwardBadge
+                  type={award.badgeType}
+                  logoSrc={award.logoSrc}
+                  brandLabel={award.brandLabel}
+                  headline={award.headline}
+                  hidePlace
+                  link="https://www.producthunt.com/golden-kitty-awards/hall-of-fame?year=2024#bootstrapped-small-teams-2"
+                />
+              </div>
+            </WaveRevealItem>
+          )
+        })}
+      </WaveRevealGroup>
     </section>
   )
 }

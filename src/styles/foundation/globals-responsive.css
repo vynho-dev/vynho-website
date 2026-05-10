@@ -294,8 +294,9 @@
     min-height: calc(100dvh - 64px);
   }
 
-  .nav a[aria-label='Vynho home'] .wordmark-image {
+  .nav a[aria-label='Vynho home'] {
     width: 118px;
+    height: 26px;
   }
 
   .hero {

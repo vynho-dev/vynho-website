@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { navLinks } from '@/content/site'
 import { ContactActionLink } from '@/components/patterns/ContactActionLink'
+import { Button } from '@/components/ui/button'
 
 type Theme = 'dark' | 'light'
 
@@ -45,30 +46,44 @@ export function Header() {
     window.localStorage.setItem('vynho-theme', nextTheme)
   }
 
+  const getToggleLabelColor = (mode: Theme) => {
+    const isActive = theme === mode
+    if (isActive) {
+      return theme === 'dark' ? '#000000' : '#ffffff'
+    }
+    return theme === 'dark' ? '#ffffff' : '#111520'
+  }
+
   const renderThemeSwitch = (className: string) => (
     <div
       className={theme === 'dark' ? `${className} is-dark` : className}
       role="group"
       aria-label="Color mode switch"
     >
-      <button
+      <Button
         type="button"
+        variant="theme-toggle"
+        size="sm"
         data-mode="light"
         className={theme === 'light' ? 'theme-toggle-btn active' : 'theme-toggle-btn'}
+        style={{ color: getToggleLabelColor('light') }}
         onClick={() => setThemeMode('light')}
         aria-pressed={theme === 'light'}
       >
         Light
-      </button>
-      <button
+      </Button>
+      <Button
         type="button"
+        variant="theme-toggle"
+        size="sm"
         data-mode="dark"
         className={theme === 'dark' ? 'theme-toggle-btn active' : 'theme-toggle-btn'}
+        style={{ color: getToggleLabelColor('dark') }}
         onClick={() => setThemeMode('dark')}
         aria-pressed={theme === 'dark'}
       >
         Dark
-      </button>
+      </Button>
       <div className="theme-toggle-thumb" aria-hidden="true" />
     </div>
   )
@@ -77,8 +92,18 @@ export function Header() {
     <div className="nav-wrap">
       <nav className={open ? 'container nav nav-shell opened' : 'container nav nav-shell'} aria-label="Main">
         <a href="/" className="nav-brand-anchor" aria-label="Vynho home">
-          <img className="wordmark-image nav-wordmark nav-wordmark-dark" src="/assets/brand/wordmark-white-transparent.svg" alt="Vynho" />
-          <img className="wordmark-image nav-wordmark nav-wordmark-light" src="/assets/brand/wordmark-black-transparent.svg" alt="Vynho" />
+          <img
+            className="wordmark-image nav-wordmark nav-wordmark-dark"
+            src="/assets/brand/wordmark-white-transparent.svg"
+            alt="Vynho"
+            style={{ display: theme === 'light' ? 'none' : 'block' }}
+          />
+          <img
+            className="wordmark-image nav-wordmark nav-wordmark-light"
+            src="/assets/brand/wordmark-black-transparent.svg"
+            alt="Vynho"
+            style={{ display: theme === 'light' ? 'block' : 'none' }}
+          />
         </a>
 
         {renderThemeSwitch('theme-toggle nav-theme-center')}

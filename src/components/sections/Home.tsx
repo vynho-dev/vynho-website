@@ -10,7 +10,6 @@ import {
   homeFinalCtaContent,
   homeServiceItemsContent,
   homeStudioMetricsContent,
-  homeTrustCardsContent,
   homeWorkCardsContent,
 } from '@/content/sections'
 import {
@@ -84,7 +83,7 @@ export function Home() {
   return (
     <main className="vh-home" id="top">
       <HomeHeroSection onExploreClick={() => trackEvent('cta_click', { cta: 'hero_explore_capabilities' })} />
-      <HomeTrustSection trustCards={homeTrustCardsContent} />
+      <HomeTrustSection />
       <HomeWorkSection
         workCards={homeWorkCardsContent}
         mediaTier={mediaTier}
