@@ -3,11 +3,9 @@ import { PageShell } from '@/components/layout/PageShell'
 import { WorkHero } from '@/components/work/WorkHero'
 import { FeaturedWorkGrid } from '@/components/work/FeaturedWorkGrid'
 import type { WorkProject } from '@/components/work/ProjectCard'
-import { AwardsSection } from '@/components/work/AwardsSection'
-import { ClientsSection } from '@/components/sections/ClientsSection'
 import { SpecialtyCTA } from '@/components/work/SpecialtyCTA'
 import { SectionCTA } from '@/components/patterns/SectionCTA'
-import { workContactCtaContent, workClientsConfig } from '@/content/sections'
+import { workContactCtaContent } from '@/content/sections'
 import '@/styles/work.css'
 
 const projects: WorkProject[] = [
@@ -67,8 +65,6 @@ export function WorkPage() {
     <PageShell mainClassName="vwk-page">
       <WorkHero onFilter={setFilter} />
       <FeaturedWorkGrid projects={filtered} />
-      <AwardsSection />
-      <ClientsSection config={workClientsConfig} />
       <SpecialtyCTA />
       <SectionCTA {...workContactCtaContent} />
     </PageShell>

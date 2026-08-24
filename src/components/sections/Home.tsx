@@ -30,7 +30,6 @@ export function Home() {
   const [activeBuildCard, setActiveBuildCard] = useState(homeBuildCardsContent[0]?.id ?? '01')
   const buildSectionRef = useRef<HTMLDivElement | null>(null)
   const mediaTier = useMemo(() => getMediaTier(), [])
-  const canAutoplayMedia = mediaTier === 'high'
 
   useEffect(() => {
     const onScroll = () => {
@@ -87,7 +86,6 @@ export function Home() {
       <HomeWorkSection
         workCards={homeWorkCardsContent}
         mediaTier={mediaTier}
-        canAutoplayMedia={canAutoplayMedia}
         onWorkCardClick={(cardId) => trackEvent('work_card_click', { card_id: cardId })}
         onWorkCardView={(cardId, media) => trackEvent('work_card_view', { card_id: cardId, media })}
       />

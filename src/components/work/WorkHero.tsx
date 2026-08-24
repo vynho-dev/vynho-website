@@ -4,7 +4,7 @@ import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 import { SectionShell } from '@/components/patterns/SectionShell'
 import { CategoryPills } from '@/components/work/CategoryPills'
 
-const categories = ['All', 'Websites', 'Products', 'Apps', 'Platforms', 'Commerce', 'Immersive']
+const categories = ['All', 'Platforms', 'Apps', 'Products', 'Commerce', 'Immersive']
 
 interface WorkHeroProps {
   onFilter: (category: string) => void
@@ -32,7 +32,7 @@ export function WorkHero({ onFilter }: WorkHeroProps) {
           copyClassName="vwk-hero-copy"
         />
         <Reveal as="p" className="vwk-hero-count" delayMs={170}>
-          Experienced in
+          Explore by discipline
         </Reveal>
         <Reveal delayMs={210}>
           <CategoryPills items={categories} active={active} onSelect={handleSelect} />

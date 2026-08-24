@@ -433,6 +433,18 @@
   color: #0f1626;
 }
 
+:root[data-theme='light'] .vsv-hero-title {
+  color: #101520;
+}
+
+:root[data-theme='light'] .vsv-contact .vsv-contact-title {
+  color: #fff;
+}
+
+:root[data-theme='light'] .vsv-contact .vsv-section-copy {
+  color: rgba(247, 250, 255, 0.72);
+}
+
 :root[data-theme='light'] .vsv-watermark {
   color: rgba(15, 22, 38, 0.06);
 }

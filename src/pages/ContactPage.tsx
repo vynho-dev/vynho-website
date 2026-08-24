@@ -23,8 +23,8 @@ export function ContactPage() {
           <section className="vct-panel vct-panel-inline" aria-labelledby="contact-page-title">
             <h2 id="contact-page-title">LET&apos;S TALK</h2>
             <p className="vct-intro">
-              Leave your contact info and expect to hear from us within 24 hours. We&apos;ll help clarify your needs,
-              shape the requirements, and identify the best solution for you.
+              Share a little about your project and we&apos;ll reply as soon as possible. We can help clarify your needs,
+              shape the requirements, and identify the right next step.
             </p>
             <ContactForm />
             <ContactInfoCards />

@@ -1,16 +1,11 @@
 import { useState, type FormEvent } from 'react'
 import { FormField } from '@/components/contact/FormField'
 import { TextAreaField } from '@/components/contact/TextAreaField'
+import { buildContactMailto, type ContactMailtoValues } from '@/lib/contactMailto'
 
-type SubmitState = 'idle' | 'loading' | 'success' | 'error'
+type SubmitState = 'idle' | 'ready'
 
-interface FormValues {
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  message: string
-}
+type FormValues = ContactMailtoValues
 
 type FormErrors = Partial<Record<keyof FormValues, string>>
 
@@ -24,11 +19,7 @@ const initialValues: FormValues = {
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-interface ContactFormProps {
-  onSubmitSuccess?: () => void
-}
-
-export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
+export function ContactForm() {
   const [values, setValues] = useState<FormValues>(initialValues)
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
@@ -51,23 +42,13 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
     return Object.keys(nextErrors).length === 0
   }
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!validate()) return
 
-    setSubmitState('loading')
-    setSubmitMessage('')
-
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 900))
-      setSubmitState('success')
-      setSubmitMessage('Request sent. Our team will get back to you shortly.')
-      setValues(initialValues)
-      onSubmitSuccess?.()
-    } catch {
-      setSubmitState('error')
-      setSubmitMessage('Request failed. Please try again in a moment.')
-    }
+    setSubmitState('ready')
+    setSubmitMessage('Opening a pre-filled email draft. Please send it from your email app to complete your inquiry.')
+    window.location.href = buildContactMailto(values)
   }
 
   return (
@@ -131,12 +112,12 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
 
       <div className="vct-submit-row">
         {submitMessage ? (
-          <p className={submitState === 'error' ? 'vct-submit-message is-error' : 'vct-submit-message'}>{submitMessage}</p>
+          <p className="vct-submit-message" role="status">{submitMessage}</p>
         ) : (
           <span />
         )}
-        <button type="submit" className="vct-submit-btn" disabled={submitState === 'loading'}>
-          {submitState === 'loading' ? 'Sending...' : submitState === 'success' ? 'Request sent' : 'Send request'}
+        <button type="submit" className="vct-submit-btn">
+          {submitState === 'ready' ? 'Open email again' : 'Continue in email'}
           <i>→</i>
         </button>
       </div>

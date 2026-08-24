@@ -17,27 +17,6 @@ export type PageContactCTAConfig = SectionCTAContent & {
   actionsClassName: string
 }
 
-export type ClientGroup = {
-  label: string
-  clients: string[]
-}
-
-export type ClientsSectionConfig = {
-  groups: ClientGroup[]
-  sectionClassName: string
-  watermark?: string
-  watermarkClassName?: string
-  headerTitle: string
-  headerTitleClassName: string
-  headerTitleDelayMs?: number
-  headerCopy: string
-  headerCopyClassName: string
-  headerCopyDelayMs?: number
-  groupsClassName: string
-  rowClassName: string
-  rowDelayMs: number
-}
-
 export type MetricItemContent = {
   value: string
   label: string
@@ -96,22 +75,16 @@ export const workSpecialtyContent = {
 } as const
 
 export const aboutMetricsContent: MetricItemContent[] = [
-  { value: '11+', label: 'years in digital design & development' },
-  { value: '20+', label: 'inhouse experts' },
-  { value: '150+', label: 'projects delivered' },
-  { value: '3', label: 'continents covered' },
+  { value: '2+', label: 'years building focused digital products' },
+  { value: '10+', label: 'products across web, mobile, and platforms' },
+  { value: '20+', label: 'specialists in our extended network' },
+  { value: '2', label: 'active markets in India and abroad' },
 ]
 
 export const homeStudioMetricsContent: MetricItemContent[] = [
-  { value: '10+', label: 'years experience' },
-  { value: '25+', label: 'specialists' },
-  { value: '180+', label: 'projects delivered' },
-]
-
-export const homeTrustCardsContent = [
-  { label: 'Rated 5.0 by clients', icon: 'rating' as const },
-  { label: 'Award-level craft', icon: 'award' as const },
-  { label: 'Built for global teams', icon: 'global' as const },
+  { value: '10+', label: 'products delivered' },
+  { value: '20+', label: 'specialists in our network' },
+  { value: '2', label: 'markets served' },
 ]
 
 export const homeWorkCardsContent: HomeWorkCardContent[] = [
@@ -286,16 +259,16 @@ export const homeFaqContent: HomeFaqItemContent[] = [
     q: 'Will we actually work with the senior team we meet at the start?',
     blocks: [
       { type: 'p', text: 'Yes. Vynho is a senior-led studio, which means the team you meet during the first conversation is the team that works on your project.' },
-      { type: 'p', text: "Our 20+ in-house specialists cover the full stack – from strategy and UX to 3D, frontend, backend, and Web3 engineering. Each engagement has a dedicated project lead responsible for quality and communication throughout the collaboration." },
+      { type: 'p', text: 'Each engagement is led by senior contributors and supported by the right specialists from our extended network across strategy, design, frontend, backend, AI, and emerging technology.' },
       { type: 'p', text: "We don't pitch with seniors and deliver with juniors." },
     ],
   },
   {
     q: 'How is your team structured, and how do you handle international collaboration?',
     blocks: [
-      { type: 'p', text: 'We are a Prague-based studio of 20+ in-house specialists, working with clients globally.' },
+      { type: 'p', text: 'We are a Hyderabad-based, remote-first studio working with clients in India and internationally.' },
       { type: 'p', text: 'Remote collaboration is a natural part of how we operate. We typically use tools such as Slack or Teams for communication, Figma for design, and platforms like Asana or Linear for project management.' },
-      { type: 'p', text: 'Our CET timezone allows us to overlap effectively across regions, so timezone differences are rarely a blocker in practice.' },
+      { type: 'p', text: 'We agree working hours and decision windows at the start of each engagement so international collaboration stays predictable.' },
     ],
   },
   {
@@ -396,47 +369,6 @@ export const homeFinalCtaContent: SectionCTAContent = {
   description: "Tell us what you're building. We'll help shape strategy, scope, and the right delivery model.",
   source: 'home_final_cta',
   primaryLabel: "Let's Talk",
-}
-
-export const servicesClientsConfig: ClientsSectionConfig = {
-  groups: [
-    { label: 'Digital Products', clients: ['NOVA', 'FLUX', 'ATLAS', 'ORBIT', 'SIGNAL'] },
-    { label: 'Commerce', clients: ['VANTA', 'MODA', 'LUNAR', 'KIVO'] },
-    { label: 'Technology', clients: ['AXON', 'NEXA', 'CIRCUIT', 'LEDGERY', 'MONO'] },
-    { label: 'Media', clients: ['FRAME', 'CASTR', 'STAGE', 'AURA'] },
-    { label: 'Startups', clients: ['SEEDX', 'PAYLINE', 'VITAL', 'CAREOS'] },
-  ],
-  sectionClassName: 'vsv-section',
-  watermark: 'CLIENTS',
-  watermarkClassName: 'vsv-watermark',
-  headerTitle: 'CLIENTS',
-  headerTitleClassName: 'vsv-section-title vsv-center',
-  headerCopy: 'Trusted by founders, product teams, and enterprise leaders building ambitious digital systems.',
-  headerCopyClassName: 'vsv-section-copy vsv-center-copy',
-  groupsClassName: 'vsv-client-groups',
-  rowClassName: 'vsv-client-row',
-  rowDelayMs: 60,
-}
-
-export const workClientsConfig: ClientsSectionConfig = {
-  groups: [
-    { label: 'Technology', clients: ['NOVA', 'FLUX', 'AXON', 'CIRCUIT', 'NEXA'] },
-    { label: 'Finance', clients: ['LEDGERY', 'MONO', 'PAYLINE', 'VAULTIQ'] },
-    { label: 'Consumer', clients: ['AURA', 'KIVO', 'LUNAR', 'MODA'] },
-    { label: 'Healthcare', clients: ['VITAL', 'CAREOS', 'MEDIQ'] },
-    { label: 'Media', clients: ['FRAME', 'CASTR', 'STAGE'] },
-    { label: 'Startups', clients: ['SEEDX', 'ATLAS', 'ORBIT'] },
-  ],
-  sectionClassName: 'vwk-section vwk-clients',
-  headerTitle: 'CLIENTS',
-  headerTitleClassName: 'vwk-section-title vwk-center',
-  headerTitleDelayMs: 70,
-  headerCopy: 'Trusted by startups, growth companies, and enterprise teams building digital products with ambition.',
-  headerCopyClassName: 'vwk-section-copy vwk-center-copy',
-  headerCopyDelayMs: 120,
-  groupsClassName: 'vwk-client-groups',
-  rowClassName: 'vwk-client-row',
-  rowDelayMs: 70,
 }
 
 export const openRolesContent = {

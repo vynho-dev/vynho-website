@@ -3,6 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050609" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      (() => {
+        try {
+          const queryTheme = new URLSearchParams(window.location.search).get('theme')
+          const storedTheme = window.localStorage.getItem('vynho-theme')
+          const theme = queryTheme === 'light' || queryTheme === 'dark'
+            ? queryTheme
+            : storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'dark'
+          document.documentElement.dataset.theme = theme
+          document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#050609' : '#f4f6fa'
+        } catch {
+          document.documentElement.dataset.theme = 'dark'
+        }
+      })()
+    </script>
     <title>Vynho | Premium SaaS, AI & Product Engineering</title>
     <meta
       name="description"
@@ -15,6 +32,7 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://vynho.com" />
+    <link rel="canonical" href="https://vynho.com" />
     <link rel="icon" type="image/svg+xml" href="/assets/icons/vmark-monochrome-white.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

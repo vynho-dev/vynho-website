@@ -1,0 +1,54 @@
+.vlegal-page {
+  min-height: 72vh;
+  padding-top: 92px;
+}
+
+.vlegal-shell {
+  min-height: min(520px, 64vh);
+  display: grid;
+  align-content: center;
+  border: 1px solid var(--agency-border);
+  border-radius: var(--r-panel);
+  margin-top: clamp(24px, 4vw, 52px);
+  margin-bottom: clamp(36px, 6vw, 72px);
+  padding: clamp(28px, 5vw, 64px);
+  background:
+    radial-gradient(620px 260px at 88% 0%, color-mix(in srgb, var(--accent-lime) 10%, transparent), transparent 70%),
+    var(--panel-bg);
+}
+
+.vlegal-shell h1 {
+  max-width: 16ch;
+  margin-bottom: 22px;
+  color: var(--heading-color);
+  font-size: clamp(40px, 6vw, 78px);
+  font-weight: 650;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.vlegal-shell p {
+  max-width: 78ch;
+  margin: 10px 0;
+  color: var(--body-color);
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.65;
+}
+
+.vlegal-shell.u-center-copy h1,
+.vlegal-shell.u-center-copy p {
+  margin-inline: auto;
+}
+
+@media (max-width: 680px) {
+  .vlegal-page {
+    padding-top: 96px;
+  }
+
+  .vlegal-shell {
+    min-height: 520px;
+    border-radius: 18px;
+  }
+}

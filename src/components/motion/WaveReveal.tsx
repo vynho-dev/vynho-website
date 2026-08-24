@@ -2,16 +2,16 @@ import {
   createContext,
   useContext,
   useMemo,
+  type CSSProperties,
   type ReactNode,
   type ElementType,
 } from 'react'
-import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { useInView } from '@/lib/motion'
 
 type WaveDirection = 'up' | 'down'
 
 type WaveContextValue = {
-  reducedMotion: boolean
   staggerMs: number
   distance: number
   depthStep: number
@@ -48,11 +48,9 @@ export function WaveRevealGroup({
   amount = 0.15,
   once = false,
 }: WaveRevealGroupProps) {
-  const reducedMotion = useReducedMotion() ?? false
-
   const ctxValue = useMemo(
-    () => ({ reducedMotion, staggerMs, distance, depthStep, direction, once, rootMargin, amount }),
-    [reducedMotion, staggerMs, distance, depthStep, direction, once, rootMargin, amount],
+    () => ({ staggerMs, distance, depthStep, direction, once, rootMargin, amount }),
+    [staggerMs, distance, depthStep, direction, once, rootMargin, amount],
   )
 
   return (
@@ -73,46 +71,31 @@ interface WaveRevealItemProps {
 
 export function WaveRevealItem({ as: Tag = 'div', children, className, index }: WaveRevealItemProps) {
   const ctx = useContext(WaveContext)
+  const { ref, visible, reducedMotion } = useInView({
+    once: ctx?.once ?? true,
+    rootMargin: ctx?.rootMargin,
+    threshold: ctx?.amount,
+  })
 
   if (!ctx) {
     return <Tag className={className}>{children}</Tag>
   }
 
-  const delay = (index * ctx.staggerMs) / 1000
   const depth = Math.min(index * ctx.depthStep, 36)
   const directionDistance = ctx.direction === 'up' ? ctx.distance : -ctx.distance
-
-  const variants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: directionDistance,
-      scale: Math.max(0.86, 1 - depth / 220),
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.82,
-        ease: [0.22, 1, 0.36, 1],
-        delay,
-      },
-    },
-  }
-
-  if (ctx.reducedMotion) {
-    return <Tag className={className}>{children}</Tag>
-  }
+  const style = {
+    '--wave-delay': `${index * ctx.staggerMs}ms`,
+    '--wave-distance': `${directionDistance}px`,
+    '--wave-depth': `${depth}px`,
+  } as CSSProperties
 
   return (
-    <motion.div
-      className={cn(className)}
-      variants={variants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: ctx.once, amount: ctx.amount, margin: ctx.rootMargin as never }}
+    <Tag
+      ref={ref}
+      style={style}
+      className={cn('motion-wave', (visible || reducedMotion) && 'is-visible', className)}
     >
       {children}
-    </motion.div>
+    </Tag>
   )
 }

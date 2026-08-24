@@ -6,7 +6,7 @@ const assetsDir = path.resolve('dist/assets')
 const budgets = [
   { label: 'app js', match: /^index-.*\.js$/, maxBytes: 235 * 1024 },
   { label: 'home route js', match: /^HomePage-.*\.js$/, maxBytes: 20 * 1024 },
-  { label: 'reveal js', match: /^Reveal-.*\.js$/, maxBytes: 35 * 1024 },
+  { label: 'shared section js', match: /^SectionHeader-.*\.js$/, maxBytes: 35 * 1024 },
   { label: 'global css', match: /^index-.*\.css$/, maxBytes: 130 * 1024 },
 ]
 

@@ -94,6 +94,23 @@ select:focus-visible,
   outline-offset: var(--ds-focus-offset);
 }
 
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 10px;
+  z-index: 10000;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: var(--accent-lime);
+  color: #11140b;
+  font-weight: 600;
+  transition: top var(--t-fast) var(--ease);
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
 /* Shared panel/card language */
 :is(
   .card,
@@ -304,6 +321,25 @@ select:focus-visible,
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+}
+
+.vlegal-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  border-radius: var(--r-pill);
+  padding: 13px 18px;
+  background: #b7ff28;
+  color: #10130c;
+  font-weight: 700;
+  transition: transform var(--motion-fast) var(--ease), box-shadow var(--motion-fast) var(--ease);
+}
+
+.vlegal-home-link:hover,
+.vlegal-home-link:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(183, 255, 40, 0.18);
 }
 
 @media (max-width: 720px) {

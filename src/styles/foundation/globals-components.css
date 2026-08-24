@@ -102,34 +102,6 @@ h4 {
   color: var(--agency-text-soft);
 }
 
-.vlegal-page {
-  padding-top: 92px;
-  min-height: 72vh;
-}
-
-.vlegal-shell {
-  border: 1px solid var(--agency-border);
-  border-radius: var(--r-panel);
-  background: var(--panel-bg);
-  padding: clamp(24px, 4vw, 46px);
-  margin-top: clamp(24px, 4vw, 52px);
-  margin-bottom: clamp(36px, 6vw, 72px);
-}
-
-.vlegal-shell h1 {
-  font-size: clamp(34px, 6vw, 64px);
-  line-height: 0.95;
-  text-transform: uppercase;
-  color: var(--heading-color);
-  margin-bottom: 18px;
-}
-
-.vlegal-shell p {
-  color: var(--body-color);
-  max-width: 78ch;
-  margin: 10px 0;
-}
-
 .wordmark-image {
   display: block;
   width: 150px;
@@ -174,6 +146,8 @@ h4 {
 }
 
 .nav {
+  position: relative;
+  z-index: 2;
   width: 100%;
   min-height: 72px;
   padding: 0 16px;
@@ -1429,8 +1403,6 @@ h4 {
 :root[data-theme='light'] .footer-column a:hover {
   color: var(--agency-blue);
 }
-
-
 
 
 

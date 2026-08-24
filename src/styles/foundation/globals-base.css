@@ -15,7 +15,7 @@ html {
   isolation: isolate;
 }
 
-#root > :not(.site-bg-scene) {
+#root > :not(.site-bg-scene):not(.nav-wrap):not(.mobile-drawer) {
   position: relative;
   z-index: 1;
 }

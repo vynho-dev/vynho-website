@@ -128,11 +128,7 @@ async function run() {
     await page.waitForTimeout(200)
     const mobileServicesLink = page.locator('.mobile-drawer a[href="/services"]').first()
     await mobileServicesLink.waitFor({ state: 'visible' })
-    await page.evaluate(() => {
-      const link = document.querySelector('.mobile-drawer a[href="/services"]')
-      if (!link) throw new Error('Missing /services link in mobile drawer')
-      window.location.assign('/services')
-    })
+    await mobileServicesLink.click()
     await page.waitForTimeout(400)
     if (!page.url().includes('/services')) {
       throw new Error(`Mobile nav routing failed: expected /services, got ${page.url()}`)

@@ -6,8 +6,8 @@ interface LegalPageContent {
 export const privacyContent: LegalPageContent = {
   title: 'Privacy policy',
   body: [
-    'We only collect information needed to respond to inquiries, deliver services, and improve product quality.',
-    'Personal data shared through contact forms is handled with operational safeguards and never sold to third parties.',
+    'This website does not send contact-form data to a Vynho server. The form opens a draft in your email application, and nothing is shared until you choose to send it.',
+    'Information you send by email is used only to respond to your inquiry, discuss potential work, or support an active engagement. It is not sold to third parties.',
     'For data requests, updates, or removal, contact info@vynho.com.',
   ],
 }
@@ -24,8 +24,8 @@ export const termsContent: LegalPageContent = {
 export const cookiesContent: LegalPageContent = {
   title: 'Cookies',
   body: [
-    'We use essential cookies for core site behavior and optional analytics to improve usability and performance.',
-    'You can manage cookie preferences through your browser settings at any time.',
-    'No advertising profiles are created from this website traffic.',
+    'This website does not currently set advertising or analytics cookies.',
+    'Your light or dark theme preference is stored locally in your browser so the site can remember your choice. It is not sent to Vynho.',
+    'If measurement tools that use cookies are introduced later, this notice will be updated before they are enabled.',
   ],
 }

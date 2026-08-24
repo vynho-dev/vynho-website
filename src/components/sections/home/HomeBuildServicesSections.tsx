@@ -1,6 +1,7 @@
-import { Reveal } from '@/components/motion/Reveal'
 import { AccordionItem } from '@/components/patterns/AccordionItem'
-import { SectionHeader } from '@/components/patterns/SectionHeader'
+import { Button } from '@/components/ui/button'
+import { CharReveal } from '@/components/motion/CharReveal'
+import { Reveal } from '@/components/motion/Reveal'
 import { type HomeBuildCardContent, type HomeServiceItemContent } from '@/content/sections'
 
 export function HomeBuildSection({
@@ -16,46 +17,46 @@ export function HomeBuildSection({
     <section className="vh-section vh-build-editorial" id="build">
       <div className="container vh-build-layout">
         <div className="vh-build-intro-sticky">
-          <SectionHeader
-            title="WHAT WE BUILD"
-            titleClassName="vh-section-title"
-            copy="We focus on the intersection of high-end design and technical complexity, where our approach creates the highest product and business impact."
-            copyClassName="vh-section-copy"
-            copyDelayMs={140}
-          />
+          <CharReveal as="h2" className="vh-section-title vh-build-section-title" staggerMs={38} delayMs={60}>
+            WHAT WE BUILD
+          </CharReveal>
+          <Reveal as="p" className="vh-section-copy vh-build-section-copy" delayMs={160}>
+            We focus on the intersection of high-end design and technical complexity — where our approach creates the highest product and business impact.
+          </Reveal>
         </div>
-        <div className="vh-build-stack vh-build-stack-interactive">
+
+        <div className="vh-build-stack">
           {buildCards.map((item, index) => {
             const isActive = activeBuildCard === item.id
             return (
-              <Reveal key={item.title} delayMs={index * 70}>
-                <article
-                  className={
-                    item.lime
-                      ? `vh-build-card vh-build-card-lime vh-build-card-${index + 1} ${isActive ? 'is-active' : ''}`
-                      : `vh-build-card vh-build-card-${index + 1} ${isActive ? 'is-active' : ''}`
-                  }
-                >
-                  <button
-                    type="button"
-                    className="vh-build-card-hit"
-                    onClick={() => setActiveBuildCard(item.id)}
-                    aria-label={`Activate ${item.title} visual mode`}
-                  />
-                  <div className="vh-build-preview" aria-hidden="true">
-                    <img src={item.image} alt="" loading="lazy" />
-                  </div>
-                  <div className="vh-build-content">
-                    <h3>{item.title}</h3>
-                    <strong>{item.id}</strong>
-                  </div>
-                  <p className="vh-build-body">{item.copy}</p>
-                  <div className="vh-build-pills">
-                    {item.pills.map((pill) => (
-                      <span key={pill}>{pill}</span>
-                    ))}
-                  </div>
-                </article>
+              <Reveal
+                as="article"
+                key={item.id}
+                className={`vh-build-card vh-build-card-${index + 1}${isActive ? ' is-active' : ''}`}
+                distance={32}
+                delayMs={index * 80}
+              >
+                <button
+                  type="button"
+                  className="vh-build-card-hit"
+                  onClick={() => setActiveBuildCard(item.id)}
+                  aria-label={`Select ${item.title}`}
+                />
+                <div className="vh-build-preview" aria-hidden="true">
+                  <img src={item.image} alt="" loading="lazy" />
+                </div>
+                <div className="vh-build-content">
+                  <h3>{item.title}</h3>
+                  <strong aria-hidden="true">{item.id}</strong>
+                </div>
+                <p className="vh-build-body">{item.copy}</p>
+                <div className="vh-build-pills">
+                  {item.pills.map((pill) => (
+                    <span key={pill} className="vh-build-pill">
+                      {pill}
+                    </span>
+                  ))}
+                </div>
               </Reveal>
             )
           })}
@@ -79,26 +80,36 @@ export function HomeServicesSection({
   return (
     <section className="vh-section vh-services-editorial" id="services">
       <div className="container vh-services-layout">
-        <div className="vh-services-intro">
-          <Reveal as="h2" className="vh-services-display-title" delayMs={60}>
+
+        {/* ── Left: sticky intro ── */}
+        <div className="vh-services-intro-col">
+          <CharReveal as="h2" className="vh-services-display-title" staggerMs={34} delayMs={50}>
             OUR SERVICES
+          </CharReveal>
+          <Reveal as="p" className="vh-services-copy" delayMs={120}>
+            From strategy to deployment — full-scope delivery or targeted expertise to solve your specific design and technical challenges.
           </Reveal>
-          <Reveal as="p" className="vh-section-copy" delayMs={110}>
-            From strategy to deployment. We provide full-scope delivery or targeted expertise to solve your specific
-            design and technical challenges.
-          </Reveal>
-          <Reveal delayMs={160}>
-            <a href="/services" className="vh-model-contact-pill" onClick={onExploreServices}>
-              <span>Explore Services</span>
-              <span className="vh-model-contact-arrow" aria-hidden="true">›</span>
-            </a>
+          <Reveal delayMs={200}>
+            <Button variant="outline" size="lg" asChild className="vh-services-cta-btn">
+              <a href="/services" onClick={onExploreServices}>
+                Explore Services
+                <span aria-hidden="true">→</span>
+              </a>
+            </Button>
           </Reveal>
         </div>
+
+        {/* ── Right: accordion rows ── */}
         <div className="vh-services-rows">
           {serviceItems.map((service, index) => {
             const open = openService === index
             return (
-              <Reveal key={service.title} className={open ? 'vh-service-row open' : 'vh-service-row'} delayMs={index * 55}>
+              <Reveal
+                key={service.title}
+                className={open ? 'vh-service-row open' : 'vh-service-row'}
+                distance={18}
+                delayMs={index * 70}
+              >
                 <AccordionItem
                   idPrefix="vh-service"
                   index={index}
@@ -111,8 +122,9 @@ export function HomeServicesSection({
                   title={<span className="vh-service-name">{service.title}</span>}
                   trailing={
                     <span className="vh-service-toggle" aria-hidden="true">
-                      <span className="vh-service-toggle-bar vh-service-toggle-bar-h" />
-                      <span className="vh-service-toggle-bar vh-service-toggle-bar-v" />
+                      <span className={open ? 'vh-service-toggle-icon is-open' : 'vh-service-toggle-icon'}>
+                        +
+                      </span>
                     </span>
                   }
                   body={<p className="vh-service-body">{service.body}</p>}
@@ -121,6 +133,7 @@ export function HomeServicesSection({
             )
           })}
         </div>
+
       </div>
     </section>
   )

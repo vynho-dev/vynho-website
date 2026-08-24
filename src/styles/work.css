@@ -112,6 +112,15 @@
   min-height: 460px;
 }
 
+.vwk-empty {
+  grid-column: 1 / -1;
+  padding: 32px;
+  border: 1px solid var(--ds-border-1);
+  border-radius: 14px;
+  color: var(--agency-text-muted);
+  text-align: center;
+}
+
 .vwk-project-overlay {
   position: absolute;
   inset: auto 0 0;
@@ -340,6 +349,10 @@
   background: rgba(15, 22, 38, 0.07);
 }
 
+:root[data-theme='light'] .vwk-hero-title {
+  color: #101520;
+}
+
 :root[data-theme='light'] .vwk-pill.is-active {
   border-color: #4a8f12;
   background: rgba(74, 143, 18, 0.12);
@@ -401,6 +414,14 @@
   color: #fff;
   font-size: clamp(54px, 8vw, 120px);
   line-height: 0.9;
+}
+
+:root[data-theme='light'] .vwk-contact .vwk-contact-title {
+  color: #fff;
+}
+
+:root[data-theme='light'] .vwk-contact .vwk-section-copy {
+  color: rgba(247, 250, 255, 0.72);
 }
 
 @media (max-width: 860px) {

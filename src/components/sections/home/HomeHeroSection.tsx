@@ -18,6 +18,7 @@ export function HomeHeroSection({ onExploreClick }: { onExploreClick: () => void
     const workSection = document.getElementById('work')
     if (!workSection) return
     onExploreClick()
+    window.history.pushState(null, '', '#work')
     workSection.scrollIntoView({
       behavior: reduceMotion ? 'auto' : 'smooth',
       block: 'start',

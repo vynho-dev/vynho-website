@@ -44,10 +44,9 @@ export function AccordionItem({
         <span>{title}</span>
         {trailing}
       </button>
-      <div id={panelId} role="region" aria-labelledby={buttonId} className={panelClassName}>
+      <div id={panelId} role="region" aria-labelledby={buttonId} aria-hidden={!open} className={panelClassName}>
         {body}
       </div>
     </div>
   )
 }
-

@@ -137,25 +137,13 @@
 }
 
 .vabt-team-card {
+  min-height: 220px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
-  padding: 14px;
+  padding: 20px;
   background: rgba(255, 255, 255, 0.03);
-}
-
-.vabt-team-card img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.vabt-team-card-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
+  display: grid;
+  align-content: space-between;
 }
 
 .vabt-team-card strong {
@@ -163,53 +151,16 @@
   font-size: 18px;
 }
 
-.vabt-team-card i {
-  border-radius: 999px;
-  padding: 5px 8px;
-  background: rgba(193, 255, 53, 0.2);
-  border: 1px solid rgba(193, 255, 53, 0.36);
+.vabt-team-number {
   color: var(--accent-lime-soft);
-  font-size: 10px;
   font-family: var(--font-mono);
-  font-style: normal;
-  text-transform: uppercase;
+  font-size: 11px;
 }
 
 .vabt-team-card p {
   margin-top: 8px;
   color: var(--agency-text-muted);
   font-size: 12px;
-}
-
-.vabt-carousel-controls {
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: 36px minmax(0, 1fr) 36px;
-  gap: 8px;
-  align-items: center;
-}
-
-.vabt-carousel-controls button {
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  color: #fff;
-  cursor: pointer;
-}
-
-.vabt-carousel-track {
-  height: 4px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  overflow: hidden;
-}
-
-.vabt-carousel-track span {
-  display: block;
-  height: 100%;
-  background: var(--accent-lime);
 }
 
 .vabt-section-title {
@@ -335,6 +286,18 @@
 :root[data-theme='light'] .vabt-mission-copy,
 :root[data-theme='light'] .vabt-contact-title {
   color: #0f1626;
+}
+
+:root[data-theme='light'] .vabt-hero-title {
+  color: #101520;
+}
+
+:root[data-theme='light'] .vabt-contact .vabt-contact-title {
+  color: #fff;
+}
+
+:root[data-theme='light'] .vabt-contact .vabt-section-copy {
+  color: rgba(247, 250, 255, 0.72);
 }
 
 :root[data-theme='light'] .vabt-watermark {

@@ -26,7 +26,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="vwk-project-title">{project.title}</p>
         <div className="vwk-project-meta">
           <span>{project.category}</span>
-          <ContactActionLink source={`work_project_${project.title.toLowerCase().replace(/\s+/g, '-')}`}>View case</ContactActionLink>
+          <ContactActionLink source={`work_project_${project.title.toLowerCase().replace(/\s+/g, '-')}`}>Discuss a project</ContactActionLink>
         </div>
         <div className="vwk-project-tags">
           {project.tags.map((tag) => (

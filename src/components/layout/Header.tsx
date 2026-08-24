@@ -10,7 +10,6 @@ export function Header() {
   const [theme, setTheme] = useState<Theme>('dark')
   const path = window.location.pathname.replace(/\/+$/, '') || '/'
   const desktopLinks = navLinks
-  const handleNavClick = () => setOpen(false)
 
   useEffect(() => {
     const urlTheme = new URLSearchParams(window.location.search).get('theme')
@@ -21,6 +20,7 @@ export function Header() {
     setTheme(nextTheme)
     document.documentElement.dataset['theme'] = nextTheme
     window.localStorage.setItem('vynho-theme', nextTheme)
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', nextTheme === 'dark' ? '#050609' : '#f4f6fa')
   }, [])
 
   useEffect(() => {
@@ -44,14 +44,12 @@ export function Header() {
     setTheme(nextTheme)
     document.documentElement.dataset['theme'] = nextTheme
     window.localStorage.setItem('vynho-theme', nextTheme)
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', nextTheme === 'dark' ? '#050609' : '#f4f6fa')
   }
 
   const getToggleLabelColor = (mode: Theme) => {
-    const isActive = theme === mode
-    if (isActive) {
-      return theme === 'dark' ? '#000000' : '#ffffff'
-    }
-    return theme === 'dark' ? '#ffffff' : '#111520'
+    if (theme === mode) return theme === 'light' ? '#ffffff' : '#111520'
+    return theme === 'light' ? '#111520' : '#ffffff'
   }
 
   const renderThemeSwitch = (className: string) => (
@@ -89,8 +87,9 @@ export function Header() {
   )
 
   return (
-    <div className="nav-wrap">
-      <nav className={open ? 'container nav nav-shell opened' : 'container nav nav-shell'} aria-label="Main">
+    <>
+      <div className="nav-wrap">
+        <nav className={open ? 'container nav nav-shell opened' : 'container nav nav-shell'} aria-label="Main">
         <a href="/" className="nav-brand-anchor" aria-label="Vynho home">
           <img
             className="wordmark-image nav-wordmark nav-wordmark-dark"
@@ -115,7 +114,6 @@ export function Header() {
                 href={item.href}
                 className={path === item.href ? 'nav-link active' : 'nav-link'}
                 aria-current={path === item.href ? 'page' : undefined}
-                onClick={handleNavClick}
               >
                 <span className="nav-link-track" aria-hidden="true">
                   <span className="nav-link-label">{item.label}</span>
@@ -155,7 +153,7 @@ export function Header() {
           <button
             type="button"
             className="mobile-nav-toggle"
-            aria-label="Toggle navigation"
+            aria-label={open ? 'Close navigation' : 'Open navigation'}
             aria-expanded={open}
             onClick={() => setOpen((prev) => !prev)}
           >
@@ -165,7 +163,8 @@ export function Header() {
             </span>
           </button>
         </div>
-      </nav>
+        </nav>
+      </div>
 
       {open ? (
         <div className="mobile-drawer open" role="dialog" aria-modal="true" aria-label="Navigation menu">
@@ -177,7 +176,6 @@ export function Header() {
                 href={item.href}
                 className={path === item.href ? 'nav-link active' : 'nav-link'}
                 aria-current={path === item.href ? 'page' : undefined}
-                onClick={handleNavClick}
               >
                 <span className="nav-link-track" aria-hidden="true">
                   <span className="nav-link-label">{item.label}</span>
@@ -189,6 +187,6 @@ export function Header() {
           </div>
         </div>
       ) : null}
-    </div>
+    </>
   )
 }
