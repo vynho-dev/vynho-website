@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { CharReveal } from '@/components/motion/CharReveal'
 import { Reveal } from '@/components/motion/Reveal'
 import { WaveRevealGroup, WaveRevealItem } from '@/components/motion/WaveReveal'
@@ -23,7 +23,7 @@ export function HomeTrustSection() {
         direction="up"
         rootMargin="0px 0px -18% 0px"
         amount={0.25}
-        once={false}
+        once
       >
         {trustSignals.map((signal, index) => (
           <WaveRevealItem key={signal.title} className="vh-trust-line" index={index}>
@@ -51,20 +51,27 @@ type WorkCardProps = {
 
 function WorkCard({ card, index, mediaTier, onCardClick, onCardView }: WorkCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const { ref: cardRef, visible, reducedMotion } = useInView({ once: false, threshold: 0.18 })
+  const { ref: cardRef, visible, reducedMotion } = useInView({ once: true, threshold: 0.12 })
   const isVideo = /\.(mp4|webm|mov)$/i.test(card.image)
 
-  useEffect(() => {
-    if (!isVideo || !videoRef.current) return
-    if (visible && !reducedMotion) videoRef.current.play().catch(() => {})
-    else videoRef.current.pause()
-  }, [isVideo, reducedMotion, visible])
+  const handleEnter = () => {
+    if (isVideo && videoRef.current) videoRef.current.play().catch(() => {})
+  }
+  const handleLeave = () => {
+    if (isVideo && videoRef.current) {
+      videoRef.current.pause()
+      videoRef.current.currentTime = 0
+    }
+  }
 
   return (
     <div
       ref={(node) => { cardRef.current = node }}
       className={visible || reducedMotion ? 'vh-work-card is-visible' : 'vh-work-card'}
-      data-project={card.id}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      onFocus={handleEnter}
+      onBlur={handleLeave}
     >
       <a
         className="vh-work-card-hit"
@@ -80,6 +87,7 @@ function WorkCard({ card, index, mediaTier, onCardClick, onCardView }: WorkCardP
               ref={videoRef}
               className="vh-work-card-video"
               src={card.image}
+              autoPlay
               muted
               playsInline
               loop
@@ -101,20 +109,13 @@ function WorkCard({ card, index, mediaTier, onCardClick, onCardView }: WorkCardP
         )}
       </div>
 
-      <div className="vh-work-effects" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <span />
-      </div>
-
       <div className="vh-work-overlay">
-        <span className="vh-work-index">0{index + 1}</span>
-        <div>
-          <p className="vh-work-overlay-title">{card.title}</p>
-          <span className="vh-work-overlay-tag">{card.tag}</span>
-        </div>
-        <span className="vh-work-arrow" aria-hidden="true">↗</span>
+        <p className="vh-work-overlay-title">
+          {card.title}
+        </p>
+        <span className="vh-work-overlay-tag">
+          {card.tag}
+        </span>
       </div>
     </div>
   )
@@ -153,7 +154,7 @@ export function HomeWorkSection({
         </Reveal>
       </div>
 
-      <div className="container vh-work-stack">
+      <div className="vh-work-stack">
         {workCards.map((card, i) => (
           <WorkCard
             key={card.id}

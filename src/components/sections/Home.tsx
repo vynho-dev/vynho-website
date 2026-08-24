@@ -32,49 +32,27 @@ export function Home() {
   const mediaTier = useMemo(() => getMediaTier(), [])
 
   useEffect(() => {
-    let frame = 0
-    let previousY = window.scrollY
-
     const onScroll = () => {
-      if (frame) return
-      frame = window.requestAnimationFrame(() => {
-        frame = 0
-        const currentY = window.scrollY
-        const heroProgress = Math.min(1, Math.max(0, currentY / Math.max(1, window.innerHeight)))
-        document.documentElement.style.setProperty('--vh-hero-progress', heroProgress.toFixed(4))
-        document.documentElement.dataset['homeScrolled'] = currentY > 80 ? 'true' : 'false'
-        if (Math.abs(currentY - previousY) > 4) {
-          document.documentElement.dataset['homeScrollDirection'] = currentY > previousY ? 'down' : 'up'
-          previousY = currentY
-        }
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
+      const progress = Math.min(1, Math.max(0, window.scrollY / max))
+      document.documentElement.style.setProperty('--vh-scroll-progress', progress.toFixed(4))
 
-        const node = buildSectionRef.current
-        if (!node) return
-        const rect = node.getBoundingClientRect()
-        const progress = Math.min(0.999, Math.max(0, (window.innerHeight * 0.7 - rect.top) / Math.max(1, rect.height)))
-        const nextId = homeBuildCardsContent[Math.floor(progress * homeBuildCardsContent.length)]?.id
-        if (nextId) setActiveBuildCard((current) => (current === nextId ? current : nextId))
-      })
+      const node = buildSectionRef.current
+      if (!node) return
+      const rect = node.getBoundingClientRect()
+      const start = window.innerHeight * 0.75
+      const end = window.innerHeight * 0.35
+      const denominator = Math.max(1, rect.height + (start - end))
+      const localProgress = Math.min(1, Math.max(0, (start - rect.top) / denominator))
+      const raw = Math.floor(localProgress * homeBuildCardsContent.length)
+      const index = Math.min(homeBuildCardsContent.length - 1, Math.max(0, raw))
+      const nextId = homeBuildCardsContent[index]?.id
+      if (!nextId) return
+      setActiveBuildCard((current) => (current === nextId ? current : nextId))
     }
-
-    const onPointerMove = (event: PointerEvent) => {
-      document.documentElement.style.setProperty('--vh-pointer-x', `${(event.clientX / window.innerWidth) * 100}%`)
-      document.documentElement.style.setProperty('--vh-pointer-y', `${(event.clientY / window.innerHeight) * 100}%`)
-    }
-
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('pointermove', onPointerMove, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('pointermove', onPointerMove)
-      if (frame) window.cancelAnimationFrame(frame)
-      document.documentElement.style.removeProperty('--vh-hero-progress')
-      document.documentElement.style.removeProperty('--vh-pointer-x')
-      document.documentElement.style.removeProperty('--vh-pointer-y')
-      delete document.documentElement.dataset['homeScrolled']
-      delete document.documentElement.dataset['homeScrollDirection']
-    }
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
@@ -130,7 +108,7 @@ export function Home() {
         metrics={homeStudioMetricsContent}
         onMeetStudio={() => trackEvent('cta_click', { cta: 'studio_meet_team' })}
       />
-      <HomeFaqSection faqs={homeFaqContent.slice(0, 8)} openFaq={openFaq} setOpenFaq={setOpenFaq} />
+      <HomeFaqSection faqs={homeFaqContent} openFaq={openFaq} setOpenFaq={setOpenFaq} />
       <SectionCTA
         sectionClassName="vh-final-cta"
         containerClassName="container vh-final-shell cta-shell"

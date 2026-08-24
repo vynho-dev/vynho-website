@@ -27,26 +27,19 @@ export function HomeHeroSection({ onExploreClick }: { onExploreClick: () => void
 
   return (
     <section className="vh-hero">
-      <div className="vh-hero-atmosphere" aria-hidden="true">
-        <span className="vh-hero-orbit vh-hero-orbit-one" />
-        <span className="vh-hero-orbit vh-hero-orbit-two" />
-        <span className="vh-hero-signal" />
-      </div>
       <div className="container vh-hero-inner">
-        <p className="vh-hero-eyebrow">Independent digital product studio</p>
         <HeroTextAnimation
           titleLines={HERO_TITLE_LINES}
           copyLines={HERO_COPY_LINES}
           titleClassName="vh-hero-title"
           copyClassName="vh-hero-copy"
-          copyStyle={{ transform: 'translateY(calc(var(--vh-hero-progress, 0) * 28px))' }}
+          copyStyle={{ transform: 'translateY(calc(var(--vh-scroll-progress, 0) * 60px))' }}
         />
-        <div className="vh-hero-actions" style={{ transform: 'translateY(calc(var(--vh-hero-progress, 0) * 44px))' }}>
+        <div className="vh-hero-actions" style={{ transform: 'translateY(calc(var(--vh-scroll-progress, 0) * 100px))' }}>
           <div style={{ display: 'inline-block' }}>
             <Button asChild className="vh-lime-btn">
               <a href="#work" aria-label="Scroll to work section" onClick={handleScrollToWork}>
-                <span>Scroll to explore</span>
-                <i aria-hidden="true">↓</i>
+                ↓
               </a>
             </Button>
           </div>

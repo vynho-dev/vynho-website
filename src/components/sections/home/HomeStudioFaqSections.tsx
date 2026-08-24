@@ -96,15 +96,13 @@ export function HomeFaqSection({
 }) {
   return (
     <section className="vh-section" id="faq">
-      <div className="container vh-faq-layout">
-        <div className="vh-faq-intro">
-          <SectionHeader
-            title="FAQ"
-            titleClassName="vh-section-title"
-            copy="Common questions from teams considering working with Vynho."
-            copyClassName="vh-section-copy"
-          />
-        </div>
+      <div className="container">
+        <SectionHeader
+          title="FAQ"
+          titleClassName="vh-section-title vh-center"
+          copy="Common questions from teams considering working with Vynho."
+          copyClassName="vh-section-copy vh-center-copy"
+        />
         <div className="vh-faq-list">
           {faqs.map((faq, index) => {
             const open = openFaq === index
