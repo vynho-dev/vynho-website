@@ -12,7 +12,11 @@ export function FeaturedWorkGrid({ projects }: FeaturedWorkGridProps) {
       <div className="vwk-grid" aria-live="polite">
         {projects.length ? (
           projects.map((project, index) => (
-            <Reveal key={project.title} delayMs={index * 60}>
+            <Reveal
+              key={project.title}
+              className={project.featured ? 'vwk-project-slot is-featured' : 'vwk-project-slot'}
+              delayMs={index * 60}
+            >
               <ProjectCard project={project} />
             </Reveal>
           ))

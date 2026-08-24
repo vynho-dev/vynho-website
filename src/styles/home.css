@@ -50,100 +50,6 @@
     radial-gradient(circle at 43% 79%, rgba(91, 118, 0, 0.34) 0 0.7px, transparent 1px);
 }
 
-/* Home navigation keeps main's calm, non-sticky composition. */
-
-.nav-wrap-home {
-  position: relative;
-  inset: auto;
-  width: 100%;
-  border-bottom: 1px solid var(--nav-border);
-  background: rgba(2, 4, 8, 0.92);
-  box-shadow: none;
-  backdrop-filter: blur(18px) saturate(1.1);
-  -webkit-backdrop-filter: blur(18px) saturate(1.1);
-}
-
-:root[data-theme='light'] .nav-wrap-home {
-  background: rgba(244, 246, 250, 0.94);
-}
-
-.nav-wrap-home .nav {
-  width: min(calc(100% - 40px), 1024px);
-  min-height: 65px;
-  padding-inline: 16px 8px;
-}
-
-.nav-wrap-home .nav-brand-anchor {
-  width: 108px;
-  height: 28px;
-}
-
-.nav-wrap-home .nav-wordmark {
-  width: 108px;
-}
-
-.nav-wrap-home .theme-toggle {
-  --theme-switch-height: 34px;
-  --theme-switch-segment: 58px;
-  font-size: 10px;
-}
-
-.nav-wrap-home .nav-links {
-  gap: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-
-.nav-wrap-home .nav-item:not(.nav-item-cta-desktop) .nav-link {
-  min-height: 38px;
-  padding-inline: 13px;
-  border-top: 1px solid var(--nav-border);
-  border-bottom: 1px solid var(--nav-border);
-  border-radius: 0;
-  background: rgba(255, 255, 255, 0.02);
-  font-size: 11px;
-}
-
-.nav-wrap-home .nav-item:first-child .nav-link {
-  border-left: 1px solid var(--nav-border);
-  border-radius: 999px 0 0 999px;
-}
-
-.nav-wrap-home .nav-item:nth-last-child(2) .nav-link {
-  border-right: 1px solid var(--nav-border);
-  border-radius: 0 999px 999px 0;
-}
-
-.nav-wrap-home .nav-link.active {
-  background: var(--nav-link-active-bg);
-}
-
-.nav-wrap-home .nav-link-label-ghost {
-  transform: translateY(220%);
-}
-
-.nav-wrap-home .nav-link:hover .nav-link-track,
-.nav-wrap-home .nav-link:focus-visible .nav-link-track,
-.nav-wrap-home .nav-cta:hover .nav-link-track,
-.nav-wrap-home .nav-cta:focus-visible .nav-link-track {
-  transform: translateY(-220%);
-}
-
-.nav-wrap-home .nav-item-cta-desktop {
-  margin-left: 10px;
-}
-
-.nav-wrap-home .nav-cta {
-  min-width: 78px;
-  min-height: 48px;
-  padding-inline: 14px;
-  border: 1px solid var(--nav-border);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.025);
-  font-size: 10px;
-}
-
 /* Shared Home typography and rhythm. */
 
 .vh-section {
@@ -1068,19 +974,34 @@
 }
 
 .vh-faq-list {
-  max-width: 920px;
+  max-width: 960px;
   margin: 44px auto 0;
-  border-top: 1px solid var(--vh-line);
+  display: grid;
+  gap: 10px;
 }
 
 .vh-faq-item {
-  border-bottom: 1px solid var(--vh-line);
+  overflow: hidden;
+  border: 1px solid var(--vh-line);
+  border-radius: 18px;
+  background: var(--vh-panel);
+  transition: border-color 260ms ease, background 260ms ease, box-shadow 260ms ease;
+}
+
+.vh-faq-item:hover {
+  border-color: color-mix(in srgb, var(--vh-line-strong) 58%, var(--vh-line));
+}
+
+.vh-faq-item.open {
+  border-color: var(--vh-line-strong);
+  background: var(--vh-panel-strong);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.14);
 }
 
 .vh-faq-trigger {
   width: 100%;
-  min-height: 76px;
-  padding: 18px 12px;
+  min-height: 82px;
+  padding: 20px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1092,8 +1013,22 @@
   cursor: pointer;
 }
 
+.vh-faq-title {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+
+.vh-faq-index {
+  color: var(--vh-accent-ink);
+  font: 500 9px/1 var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
 .vh-faq-q {
-  font-size: clamp(16px, 1.45vw, 19px);
+  font-size: clamp(17px, 1.5vw, 20px);
   font-weight: 500;
   line-height: 1.35;
 }
@@ -1140,6 +1075,7 @@
 
 .vh-faq-item.open .vh-faq-panel {
   grid-template-rows: 1fr;
+  border-top: 1px solid var(--vh-line);
 }
 
 .vh-faq-body {
@@ -1148,14 +1084,15 @@
 }
 
 .vh-faq-inner {
-  max-width: 75ch;
-  padding: 0 52px 22px 12px;
+  max-width: 76ch;
+  margin-left: 50px;
+  padding: 24px 74px 30px 22px;
   color: var(--vh-muted);
 }
 
 .vh-faq-inner p,
 .vh-faq-inner ul {
-  margin: 0 0 11px;
+  margin: 0 0 13px;
   color: inherit;
   font-size: 14px;
   line-height: 1.6;
@@ -1233,10 +1170,6 @@
 /* Responsive */
 
 @media (max-width: 1024px) {
-  .nav-wrap-home .nav {
-    width: min(calc(100% - 28px), 960px);
-  }
-
   .vh-build-editorial .vh-build-layout,
   .vh-services-layout {
     gap: 46px;
@@ -1416,12 +1349,17 @@
 
   .vh-faq-trigger {
     min-height: 72px;
-    padding-inline: 4px;
+    padding: 18px 16px;
+  }
+
+  .vh-faq-title {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 10px;
   }
 
   .vh-faq-inner {
-    padding-right: 8px;
-    padding-left: 4px;
+    margin-left: 38px;
+    padding: 20px 18px 24px 16px;
   }
 
   .vh-final-shell {

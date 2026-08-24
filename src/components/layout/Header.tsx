@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { navLinks } from '@/content/site'
-import { ContactActionLink } from '@/components/patterns/ContactActionLink'
 import { Button } from '@/components/ui/button'
 
 type Theme = 'dark' | 'light'
@@ -88,7 +87,7 @@ export function Header() {
 
   return (
     <>
-      <div className={path === '/' ? 'nav-wrap nav-wrap-home' : 'nav-wrap'}>
+      <div className="nav-wrap">
         <nav className={open ? 'container nav nav-shell opened' : 'container nav nav-shell'} aria-label="Main">
         <a href="/" className="nav-brand-anchor" aria-label="Vynho home">
           <img
@@ -105,56 +104,28 @@ export function Header() {
           />
         </a>
 
-        {renderThemeSwitch('theme-toggle nav-theme-center')}
-
         <ul className="nav-links" aria-label="Main navigation">
           {desktopLinks.map((item) => (
             <li key={item.href} className="nav-item">
               <a
                 href={item.href}
-                className={path === item.href ? 'nav-link active' : 'nav-link'}
-                aria-current={path === item.href ? 'page' : undefined}
-              >
-                <span className="nav-link-track" aria-hidden="true">
-                  <span className="nav-link-label">{item.label}</span>
-                  <span className="nav-link-label nav-link-label-ghost">{item.label}</span>
-                </span>
-                <span className="nav-link-text">{item.label}</span>
+              className={path === item.href ? 'nav-link active' : 'nav-link'}
+              aria-current={path === item.href ? 'page' : undefined}
+            >
+                <span className="nav-link-label">{item.label}</span>
               </a>
             </li>
           ))}
-          <li className="nav-item nav-item-cta-desktop">
-            <ContactActionLink
-              className="nav-cta"
-              aria-label="Open contact modal"
-              source="header_desktop"
-            >
-              <span className="nav-link-track" aria-hidden="true">
-                <span className="nav-link-label">Let&apos;s Talk</span>
-                <span className="nav-link-label nav-link-label-ghost">Let&apos;s Talk</span>
-              </span>
-              <span className="nav-link-text">Let&apos;s Talk</span>
-            </ContactActionLink>
-          </li>
         </ul>
 
         <div className="nav-actions">
-          <ContactActionLink
-            className="nav-cta nav-cta-mobile"
-            aria-label="Open contact modal"
-            source="header_mobile"
-          >
-            <span className="nav-link-track" aria-hidden="true">
-              <span className="nav-link-label">Let&apos;s Talk</span>
-              <span className="nav-link-label nav-link-label-ghost">Let&apos;s Talk</span>
-            </span>
-            <span className="nav-link-text">Let&apos;s Talk</span>
-          </ContactActionLink>
+          {renderThemeSwitch('theme-toggle nav-theme-center')}
           <button
             type="button"
             className="mobile-nav-toggle"
             aria-label={open ? 'Close navigation' : 'Open navigation'}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
             onClick={() => setOpen((prev) => !prev)}
           >
             <span className="mobile-nav-lines" aria-hidden="true">
@@ -167,7 +138,7 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="mobile-drawer open" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <div id="mobile-navigation" className="mobile-drawer open" aria-label="Mobile navigation">
           <div className="mobile-drawer-inner">
             {renderThemeSwitch('theme-toggle mobile-theme-toggle')}
             {desktopLinks.map((item) => (
@@ -177,11 +148,7 @@ export function Header() {
                 className={path === item.href ? 'nav-link active' : 'nav-link'}
                 aria-current={path === item.href ? 'page' : undefined}
               >
-                <span className="nav-link-track" aria-hidden="true">
-                  <span className="nav-link-label">{item.label}</span>
-                  <span className="nav-link-label nav-link-label-ghost">{item.label}</span>
-                </span>
-                <span className="nav-link-text">{item.label}</span>
+                <span className="nav-link-label">{item.label}</span>
               </a>
             ))}
           </div>

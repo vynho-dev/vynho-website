@@ -27,7 +27,10 @@ export function FormField({
       </label>
       <input
         id={id}
+        name={id}
         type={type}
+        required={required}
+        autoComplete={type === 'email' ? 'email' : type === 'tel' ? 'tel' : id.includes('first') ? 'given-name' : id.includes('last') ? 'family-name' : undefined}
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}

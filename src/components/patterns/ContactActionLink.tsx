@@ -1,5 +1,4 @@
 import type { AnchorHTMLAttributes, MouseEventHandler, ReactNode } from 'react'
-import { handleContactTrigger } from '@/lib/contactModal'
 import { trackEvent } from '@/lib/analytics'
 
 type ContactActionLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'onClick'> & {
@@ -23,11 +22,9 @@ export function ContactActionLink({
       onClick={(event) => {
         trackEvent('contact_intent', { source })
         onClick?.(event)
-        handleContactTrigger(event)
       }}
     >
       {children}
     </a>
   )
 }
-

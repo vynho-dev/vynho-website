@@ -318,14 +318,10 @@ async function run() {
       qa.checks.push(`All work filters clickable (${deviceCfg.key}): ok`)
 
       await gotoSettled(page, `${BASE_URL}/about?theme=dark`)
-      await page.evaluate(() => {
-        window.dispatchEvent(new CustomEvent('vynho:open-contact-modal'))
-      })
+      await page.locator('.cta-shell a[href="/contact"]').click()
       await page.waitForTimeout(300)
-      const modalVisible = await page.locator('.vct-modal-backdrop').isVisible()
-      qa.checks.push(`Let's Talk flow modal visible (${deviceCfg.key}): ${modalVisible}`)
-      await page.keyboard.press('Escape')
-      if (await page.locator('.vct-modal-backdrop').count()) qa.errors.push(`[${deviceCfg.key}] Contact modal did not close with Escape`)
+      if (!page.url().includes('/contact')) qa.errors.push(`[${deviceCfg.key}] Contact CTA did not reach the Contact page`)
+      qa.checks.push(`Contact CTA route (${deviceCfg.key}): ${page.url()}`)
 
       await gotoSettled(page, `${BASE_URL}/contact?theme=dark`)
       await page.locator('.vct-form button[type="submit"]').click()

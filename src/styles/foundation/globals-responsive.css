@@ -56,34 +56,13 @@
     display: none;
   }
 
-  .nav-item-cta-desktop {
-    display: none;
-  }
-
-  .nav-cta {
-    display: none;
-  }
-
-  .nav-cta-mobile {
-    display: inline-flex;
-  }
-
-  .nav-cta-mobile .nav-link-label-ghost {
-    display: none;
-  }
-
-  .nav-cta-mobile:hover .nav-link-track,
-  .nav-cta-mobile:focus-visible .nav-link-track {
-    transform: none;
-  }
-
   .mobile-nav-toggle {
     display: inline-flex;
   }
 
   .mobile-drawer {
     position: fixed;
-    top: 72px;
+    top: 76px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -155,15 +134,6 @@
       transform var(--nav-dur-base) var(--nav-ease),
       border-color var(--nav-dur-fast) var(--nav-ease),
       background var(--nav-dur-fast) var(--nav-ease);
-  }
-
-  .mobile-drawer .nav-link-label-ghost {
-    display: none;
-  }
-
-  .mobile-drawer .nav-link:hover .nav-link-track,
-  .mobile-drawer .nav-link:focus-visible .nav-link-track {
-    transform: none;
   }
 
   .mobile-drawer.open .mobile-drawer-inner a {

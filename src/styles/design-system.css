@@ -157,8 +157,7 @@ select:focus-visible,
 /* Shared button language */
 :is(
   .vct-submit-btn,
-  .footer-top-btn,
-  .nav-cta-mobile
+  .footer-top-btn
 ) {
   border-radius: var(--ds-radius-pill);
 }

@@ -44,15 +44,20 @@ export function ContactForm() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (!validate()) return
+    if (!validate()) {
+      window.requestAnimationFrame(() => {
+        document.querySelector<HTMLElement>('.vct-form [aria-invalid="true"]')?.focus()
+      })
+      return
+    }
 
     setSubmitState('ready')
-    setSubmitMessage('Opening a pre-filled email draft. Please send it from your email app to complete your inquiry.')
+    setSubmitMessage('Your email draft is ready. Send it from your email app to complete the inquiry.')
     window.location.href = buildContactMailto(values)
   }
 
   return (
-    <form className="vct-form" noValidate onSubmit={handleSubmit}>
+    <form className="vct-form" aria-label="Project inquiry" noValidate onSubmit={handleSubmit}>
       <div className="vct-grid-two">
         <FormField
           id="contact-first-name"
@@ -106,7 +111,8 @@ export function ContactForm() {
       />
 
       <p className="vct-privacy">
-        By submitting this form, you agree that Vynho may process your details to respond to your inquiry. Read our{' '}
+        This form creates a pre-filled email draft. By continuing, you agree that Vynho may process your details to
+        respond to your inquiry. Read our{' '}
         <a href="/privacy">Privacy Policy</a> for more information.
       </p>
 
@@ -117,7 +123,7 @@ export function ContactForm() {
           <span />
         )}
         <button type="submit" className="vct-submit-btn">
-          {submitState === 'ready' ? 'Open email again' : 'Continue in email'}
+          {submitState === 'ready' ? 'Open draft again' : 'Create email draft'}
           <i>→</i>
         </button>
       </div>

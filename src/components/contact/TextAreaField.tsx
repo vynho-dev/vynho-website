@@ -17,6 +17,8 @@ export function TextAreaField({ id, label, required = false, value, onChange, pl
       </label>
       <textarea
         id={id}
+        name={id}
+        required={required}
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}

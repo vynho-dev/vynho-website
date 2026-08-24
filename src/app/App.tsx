@@ -1,5 +1,4 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
-import { ContactModalManager } from '@/components/contact/ContactModalManager'
 import { privacyContent, termsContent, cookiesContent } from '@/content/legal'
 
 const HomePage = lazy(() => import('@/pages/HomePage').then((m) => ({ default: m.HomePage })))
@@ -76,9 +75,6 @@ export default function App() {
   }
 
   return (
-    <>
-      <Suspense fallback={null}>{renderPage()}</Suspense>
-      <ContactModalManager />
-    </>
+    <Suspense fallback={null}>{renderPage()}</Suspense>
   )
 }

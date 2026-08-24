@@ -42,6 +42,10 @@
   gap: 12px;
 }
 
+.vsv-build-parallax > .parallax-media-inner {
+  min-height: 250px;
+}
+
 .vsv-build-card {
   position: relative;
   overflow: hidden;

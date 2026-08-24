@@ -31,9 +31,9 @@
 .vct-panel {
   position: relative;
   margin: 0 auto;
-  width: min(60vw, 980px);
+  width: min(100%, 1120px);
   min-height: auto;
-  padding: clamp(20px, 4vw, 42px);
+  padding: clamp(24px, 4vw, 48px);
   background: rgba(4, 6, 10, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 24px;
@@ -41,71 +41,66 @@
 }
 
 .vct-panel-inline {
-  margin-top: 26px;
+  margin-top: clamp(38px, 6vw, 72px);
 }
 
-.vct-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 120;
+.vct-project-panel {
   display: grid;
-  align-items: center;
-  justify-items: end;
-  padding: clamp(12px, 2vw, 24px);
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(36px, 6vw, 84px);
+  align-items: start;
   background:
-    radial-gradient(860px 460px at 18% 42%, rgba(193, 255, 53, 0.1), transparent 64%),
-    rgba(2, 4, 8, 0.72);
-  backdrop-filter: blur(14px);
+    radial-gradient(34rem 24rem at 0% 0%, rgba(199, 255, 47, 0.09), transparent 72%),
+    rgba(4, 6, 10, 0.97);
 }
 
-.vct-modal-panel {
-  margin: 0;
-  width: min(62vw, 1020px);
-  max-height: min(94svh, 1100px);
-  overflow: auto;
-  animation: vctModalIn 280ms var(--ease);
-}
-
-.vct-modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 40px;
-  height: 40px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #111318;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-  transition: transform var(--t-base) var(--ease);
-}
-
-.vct-modal-close:hover {
-  transform: scale(1.04);
-}
-
-.vct-panel h1,
-.vct-panel h2 {
+.vct-project-intro h2 {
   color: #fff;
-  font-size: clamp(56px, 7vw, 104px);
-  line-height: 0.88;
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.vct-project-eyebrow {
+  margin-bottom: 22px;
+  color: var(--accent-lime) !important;
+  font: 500 10px/1 var(--font-mono);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .vct-intro {
-  margin-top: 12px;
-  max-width: 56ch;
+  margin-top: 22px;
+  max-width: 40ch;
   color: var(--agency-text-muted);
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  line-height: 1.6;
+}
+
+.vct-email-note {
+  margin-top: 30px;
+  color: var(--agency-text-soft);
+  font-size: 13px;
+}
+
+.vct-email-note a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.vct-form-shell {
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .vct-form {
-  margin-top: 18px;
+  margin-top: 0;
   display: grid;
-  gap: 14px;
+  gap: 18px;
 }
 
 .vct-grid-two {
@@ -223,7 +218,8 @@
 }
 
 .vct-info-grid {
-  margin-top: 20px;
+  width: min(100%, 1120px);
+  margin: 14px auto 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
@@ -264,8 +260,7 @@
 }
 
 :root[data-theme='light'] .vct-page-hero h1,
-:root[data-theme='light'] .vct-panel h1,
-:root[data-theme='light'] .vct-panel h2,
+:root[data-theme='light'] .vct-project-intro h2,
 :root[data-theme='light'] .vct-field label,
 :root[data-theme='light'] .vct-info-card strong {
   color: #101520;
@@ -276,8 +271,24 @@
   border-color: rgba(15, 23, 42, 0.16);
 }
 
+:root[data-theme='light'] .vct-project-panel {
+  background:
+    radial-gradient(34rem 24rem at 0% 0%, rgba(139, 184, 0, 0.1), transparent 72%),
+    rgba(255, 255, 255, 0.9);
+}
+
+:root[data-theme='light'] .vct-project-eyebrow {
+  color: #526b00 !important;
+}
+
+:root[data-theme='light'] .vct-form-shell {
+  border-color: rgba(15, 23, 42, 0.13);
+  background: rgba(248, 250, 253, 0.84);
+}
+
 :root[data-theme='light'] .vct-intro,
 :root[data-theme='light'] .vct-privacy,
+:root[data-theme='light'] .vct-email-note,
 :root[data-theme='light'] .vct-info-card p,
 :root[data-theme='light'] .vct-info-card a {
   color: var(--ds-text-muted);
@@ -305,48 +316,30 @@
   color: #162033;
 }
 
-:root[data-theme='light'] .vct-modal-close {
-  background: #101520;
-  color: #f6f8fc;
-}
-
-@keyframes vctModalIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 18px, 0) scale(0.99);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+:root[data-theme='light'] .vct-email-note a {
+  color: #162033;
 }
 
 @media (max-width: 1200px) {
   .vct-panel {
-    width: min(72vw, 900px);
+    width: min(100%, 1040px);
   }
 }
 
 
 @media (max-width: 900px) {
-  .vct-modal-backdrop {
-    justify-items: stretch;
-    align-items: end;
-    padding: 10px;
-  }
-
-  .vct-modal-panel {
-    width: 100%;
-    max-height: min(96svh, 980px);
-  }
-
   .vct-panel {
     width: 100%;
   }
 
+  .vct-project-panel,
   .vct-grid-two,
   .vct-info-grid {
     grid-template-columns: 1fr;
+  }
+
+  .vct-project-panel {
+    gap: 34px;
   }
 
   .vct-submit-row {

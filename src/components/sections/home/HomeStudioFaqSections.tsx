@@ -114,7 +114,12 @@ export function HomeFaqSection({
                   open={open}
                   onToggle={() => setOpenFaq(open ? null : index)}
                   triggerClassName="vh-faq-trigger"
-                  title={<span className="vh-faq-q">{faq.q}</span>}
+                  title={(
+                    <span className="vh-faq-title">
+                      <span className="vh-faq-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                      <span className="vh-faq-q">{faq.q}</span>
+                    </span>
+                  )}
                   trailing={
                     <span className="vh-faq-toggle" aria-hidden="true">
                       <span className="vh-faq-toggle-bar vh-faq-toggle-bar-v" />

@@ -44,6 +44,22 @@
     var(--arch-motion-transform);
 }
 
+/* Large editorial labels move with the viewport in either scroll direction. */
+@supports (animation-timeline: view()) {
+  .vsv-watermark,
+  .vabt-watermark {
+    animation: arch-watermark-drift both linear;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+@keyframes arch-watermark-drift {
+  0% { transform: translate3d(0, -12px, 0); }
+  50% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(0, 12px, 0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .vwk-project-card,
   .vsv-build-card,
@@ -68,5 +84,11 @@
     transition-duration: 1ms !important;
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .vsv-watermark,
+  .vabt-watermark {
+    transform: none !important;
+    animation: none !important;
   }
 }
