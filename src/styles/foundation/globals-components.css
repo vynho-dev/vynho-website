@@ -129,49 +129,31 @@ h4 {
   --nav-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --nav-dur-fast: 280ms;
   --nav-dur-base: 320ms;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 80;
   width: 100%;
-  padding: 12px 0 0;
-  background: transparent;
-  transition:
-    transform 420ms var(--nav-ease),
-    padding 320ms var(--nav-ease),
-    background-color var(--motion-base) var(--ease),
-    border-color var(--motion-base) var(--ease),
-    box-shadow var(--motion-base) var(--ease);
-  pointer-events: none;
-}
-
-.nav-wrap.is-compact {
-  padding-top: 8px;
-}
-
-.nav-wrap.is-hidden:not(.has-open-menu) {
-  transform: translate3d(0, calc(-100% - 18px), 0);
-}
-
-.nav-wrap:focus-within {
-  transform: translate3d(0, 0, 0);
+  border-bottom: 1px solid var(--nav-border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  pointer-events: auto;
 }
 
 .nav {
   position: relative;
   z-index: 2;
-  width: min(calc(100% - 24px), 1120px);
-  min-height: 58px;
-  padding: 0 10px 0 18px;
+  width: min(calc(100% - 40px), var(--max-content));
+  min-height: 64px;
+  padding: 0;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 14px;
-  border: 1px solid var(--nav-border);
-  border-radius: 18px;
-  background: var(--nav-bg);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(18px) saturate(1.12);
-  -webkit-backdrop-filter: blur(18px) saturate(1.12);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   pointer-events: auto;
 }
 
@@ -181,7 +163,7 @@ h4 {
   align-items: center;
   gap: 0;
   justify-self: start;
-  width: 108px;
+  width: 124px;
   height: 27px;
   color: var(--nav-link-hover-text);
 }
@@ -202,7 +184,7 @@ h4 {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  justify-self: center;
+  justify-self: end;
   padding: 4px;
   border: 1px solid var(--nav-border);
   border-radius: 999px;
@@ -222,7 +204,7 @@ h4 {
   gap: 7px;
   min-height: 36px;
   border-radius: 999px;
-  padding: 0 13px;
+  padding: 0 12px;
   color: var(--nav-link-text);
   font-family: var(--font-ui);
   font-size: 12px;
@@ -231,6 +213,7 @@ h4 {
   line-height: 1;
   font-weight: 400;
   transition:
+    background-color var(--nav-dur-fast) var(--nav-ease),
     color var(--nav-dur-fast) var(--nav-ease),
     opacity var(--nav-dur-fast) var(--nav-ease),
     transform var(--nav-dur-base) var(--nav-ease);
@@ -239,6 +222,7 @@ h4 {
 .nav-link-label {
   display: block;
   white-space: nowrap;
+  transition: transform var(--nav-dur-base) var(--nav-ease);
 }
 
 .nav-link:hover,
@@ -248,9 +232,14 @@ h4 {
   background: var(--nav-link-hover-bg);
 }
 
+.nav-link:hover .nav-link-label,
+.nav-link:focus-visible .nav-link-label {
+  transform: translateY(-1px);
+}
+
 .nav-link.active {
-  color: #0c1207;
-  background: var(--accent-lime);
+  color: var(--nav-link-hover-text);
+  background: var(--nav-link-active-bg);
 }
 
 .nav-link.active::before {
@@ -264,6 +253,13 @@ h4 {
   justify-self: end;
 }
 
+.nav-right-side {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 10px;
+}
+
 .nav-contact-cta,
 .mobile-contact-cta {
   display: inline-flex;
@@ -273,21 +269,23 @@ h4 {
   min-height: 36px;
   border-radius: 999px;
   padding: 0 14px;
-  background: var(--accent-lime);
-  color: #101409;
+  border: 1px solid var(--nav-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--nav-link-hover-text);
   font-size: 12px;
   font-weight: 560;
   white-space: nowrap;
-  box-shadow: 0 8px 22px rgba(199, 255, 47, 0.16);
+  box-shadow: none;
 }
 
 .nav-contact-cta:hover,
 .nav-contact-cta:focus-visible,
 .mobile-contact-cta:hover,
 .mobile-contact-cta:focus-visible {
-  color: #101409;
+  border-color: rgba(199, 255, 47, 0.58);
+  background: rgba(199, 255, 47, 0.1);
+  color: var(--nav-link-hover-text);
   transform: translateY(-1px);
-  box-shadow: 0 10px 26px rgba(199, 255, 47, 0.26);
 }
 
 .nav-contact-cta span:last-child,
@@ -433,7 +431,7 @@ h4 {
 }
 
 :root[data-theme='light'] .nav {
-  box-shadow: 0 12px 30px rgba(17, 21, 32, 0.1);
+  box-shadow: none;
 }
 
 :root[data-theme='light'] .nav-links {
@@ -461,6 +459,19 @@ h4 {
 
 :root[data-theme='light'] .nav-link.active {
   color: var(--nav-link-hover-text);
+}
+
+:root[data-theme='light'] .nav-contact-cta {
+  color: #111520;
+  border-color: rgba(17, 21, 32, 0.2);
+  background: rgba(17, 21, 32, 0.03);
+}
+
+:root[data-theme='light'] .nav-contact-cta:hover,
+:root[data-theme='light'] .nav-contact-cta:focus-visible {
+  border-color: rgba(104, 149, 27, 0.62);
+  background: rgba(139, 190, 43, 0.15);
+  color: #111520;
 }
 
 :root[data-theme='light'] .theme-toggle {
