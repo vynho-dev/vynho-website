@@ -125,7 +125,7 @@ export function Home() {
         primaryLabel={homeFinalCtaContent.primaryLabel}
         eyebrowClassName="vh-final-eyebrow"
         titleClassName="vh-section-title cta-title"
-        descriptionClassName="vh-section-copy vh-center-copy cta-copy"
+        descriptionClassName="vh-section-copy cta-copy"
         actionsClassName="vh-final-actions cta-actions"
       />
     </main>

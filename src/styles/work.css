@@ -5,12 +5,17 @@
 }
 
 .vwk-hero-inner {
+  position: relative;
+  min-height: clamp(590px, 78svh, 780px);
+  align-content: center;
   display: grid;
   justify-items: center;
   text-align: center;
 }
 
 .vwk-hero-title {
+  width: 100%;
+  max-width: none;
   font-size: clamp(44px, 8.5vw, 118px);
   line-height: 0.9;
   color: #fff;
@@ -18,13 +23,13 @@
 }
 
 .vwk-hero-copy {
-  margin-top: 14px;
+  margin-top: 28px;
   max-width: 74ch;
   color: var(--agency-text-muted);
 }
 
 .vwk-hero-count {
-  margin-top: 12px;
+  margin-top: 26px;
   color: var(--agency-text-soft);
   font-size: 12px;
   font-family: var(--font-mono);

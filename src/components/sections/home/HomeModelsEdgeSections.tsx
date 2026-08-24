@@ -1,6 +1,7 @@
 import { Reveal } from '@/components/motion/Reveal'
 import { SectionHeader } from '@/components/patterns/SectionHeader'
 import { type HomeEdgeCardContent, type HomeEngagementCardContent } from '@/content/sections'
+import { SignalCore } from '@/components/brand/SignalCore'
 
 function ModelCheckIcon() {
   return (
@@ -16,17 +17,13 @@ export function HomeModelsSection({ cards }: { cards: HomeEngagementCardContent[
     <section className="vh-section vh-models-editorial" id="models">
       <div className="container">
         <SectionHeader
-          title="ENGAGEMENT MODELS"
+          title="WAYS TO WORK"
           titleClassName="vh-section-title vh-center"
-          copy="Our engagement models are designed for flexibility, allowing us to adapt each partnership to your product and team structure."
+          copy="Two clear structures, chosen around the amount of ownership your team needs from us."
           copyClassName="vh-section-copy vh-center-copy"
         />
         <div className="vh-model-duo">
-          <span className="vh-model-star" aria-hidden="true">
-            <svg viewBox="0 0 44 44" fill="none">
-              <path d="M22 2L24 20L42 22L24 24L22 42L20 24L2 22L20 20Z" fill="currentColor" />
-            </svg>
-          </span>
+          <SignalCore className="vh-model-star" label="Vynho engagement signal" />
           {cards.map((card, index) => (
             <Reveal
               key={card.title}
@@ -60,9 +57,9 @@ export function HomeEdgeSection({ cards }: { cards: HomeEdgeCardContent[] }) {
       <div className="container vh-edge-shell">
         <p className="vh-edge-bg" aria-hidden="true">OUR EDGE OUR EDGE OUR EDGE</p>
         <SectionHeader
-          title="OUR EDGE"
+          title="WHY VYNHO"
           titleClassName="vh-section-title"
-          copy="Clear advantages engineered to compound quality, speed, and long-term product leverage."
+          copy="The working principles that keep ambitious products distinctive, usable, and durable."
           copyClassName="vh-section-copy vh-center-copy"
         />
         <div className="vh-edge-grid">

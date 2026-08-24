@@ -2,12 +2,12 @@ import { type MouseEvent } from 'react'
 import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 import { Button } from '@/components/ui/button'
 import { useReducedMotionPreference } from '@/lib/motion'
+import { SignalCore } from '@/components/brand/SignalCore'
 
-const HERO_TITLE_LINES = ['HIGH-END DESIGN.', 'CRAFTED CODE.'] as const
+const HERO_TITLE_LINES = ['AMBITION, MADE', 'TANGIBLE.'] as const
 const HERO_COPY_LINES = [
-  'We are a digital product studio for teams who see design and engineering as their',
-  'competitive advantage. From flagship websites to scalable applications, we build',
-  'products where world-class aesthetics meet robust infrastructure.',
+  'Vynho is a senior product studio shaping ambitious ideas into distinctive digital systems —',
+  'from strategy and interface to resilient engineering.',
 ] as const
 
 export function HomeHeroSection({ onExploreClick }: { onExploreClick: () => void }) {
@@ -28,6 +28,8 @@ export function HomeHeroSection({ onExploreClick }: { onExploreClick: () => void
   return (
     <section className="vh-hero">
       <div className="container vh-hero-inner">
+        <p className="vh-hero-kicker">VYNHO / INDEPENDENT PRODUCT STUDIO</p>
+        <SignalCore className="vh-hero-signal" />
         <HeroTextAnimation
           titleLines={HERO_TITLE_LINES}
           copyLines={HERO_COPY_LINES}

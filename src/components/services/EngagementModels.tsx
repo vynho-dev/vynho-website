@@ -39,12 +39,12 @@ export function EngagementModels() {
     <section className="vsv-section" id="engagement">
       <div className="container">
         <h2 className="vsv-section-title vsv-center">
-          ENGAGEMENT
+          WAYS TO
           <br />
-          MODELS
+          WORK
         </h2>
         <p className="vsv-section-copy vsv-center-copy">
-          Flexible ways to work with us depending on your product stage, team structure, and delivery needs.
+          Choose complete ownership or focused senior support. The boundary stays clear either way.
         </p>
         <div className="vsv-model-grid">
           {models.map((model, index) => (

@@ -40,10 +40,10 @@ export function AboutValuesSection() {
   return (
     <SectionShell id="values" className="vabt-section vabt-values">
       <SectionHeader
-        title="OUR VALUES"
+        title="STUDIO PRINCIPLES"
         titleClassName="vabt-section-title vabt-center-copy"
         titleDelayMs={90}
-        copy="Principles that guide how we think, build, collaborate, and deliver."
+        copy="The behaviours we protect when the work becomes difficult, fast, or uncertain."
         copyClassName="vabt-section-copy vabt-center-copy"
         copyDelayMs={130}
       />

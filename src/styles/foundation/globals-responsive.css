@@ -251,6 +251,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .footer-monogram {
+    font-size: 20.2vw;
+  }
+
   .hero {
     min-height: auto;
     padding-top: 64px;
@@ -431,6 +435,15 @@
 
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-signal-line {
+    gap: 10px;
+    font-size: 8px;
+  }
+
+  .footer-monogram {
+    font-size: 19.8vw;
   }
 
   .contact-panel {

@@ -97,7 +97,7 @@ async function inspectPage(page, deviceKey, theme, route) {
     const brokenImages = [...document.images]
       .filter((image) => image.complete && image.naturalWidth === 0)
       .map((image) => image.currentSrc || image.src)
-    const centeredCopies = [...document.querySelectorAll('.vsv-center-copy, .vabt-center-copy, .cta-copy')].map((element) => {
+    const centeredCopies = [...document.querySelectorAll('.vsv-center-copy, .vabt-center-copy')].map((element) => {
       const rect = element.getBoundingClientRect()
       const parentRect = element.parentElement?.getBoundingClientRect() ?? rect
       return {

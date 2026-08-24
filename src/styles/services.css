@@ -9,12 +9,17 @@
 }
 
 .vsv-hero-inner {
+  position: relative;
+  min-height: clamp(590px, 78svh, 780px);
+  align-content: center;
   display: grid;
   justify-items: center;
   text-align: center;
 }
 
 .vsv-hero-title {
+  width: 100%;
+  max-width: none;
   color: #fff;
   font-size: clamp(50px, 8.4vw, 118px);
   line-height: 0.88;
@@ -22,7 +27,7 @@
 }
 
 .vsv-hero-copy {
-  margin-top: 14px;
+  margin-top: 28px;
   max-width: 74ch;
   color: var(--agency-text-muted);
 }
@@ -472,7 +477,7 @@
 .vsv-contact-actions {
   margin-top: 16px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
 }

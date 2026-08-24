@@ -102,6 +102,7 @@
 }
 
 .vh-hero-inner {
+  position: relative;
   min-height: calc(100svh - 65px);
   padding-block: clamp(96px, 13vh, 142px) 34px;
   display: flex;
@@ -110,7 +111,28 @@
   text-align: center;
 }
 
+.vh-hero-kicker {
+  position: relative;
+  z-index: 3;
+  margin-bottom: clamp(28px, 5vh, 52px);
+  color: var(--vh-accent-ink);
+  font: 500 10px/1 var(--font-mono);
+  letter-spacing: 0.16em;
+}
+
+.vh-hero-signal {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: min(64vw, 680px);
+  opacity: 0.72;
+  transform: translate(-50%, -48%) scale(calc(0.94 + var(--vh-hero-progress, 0) * 0.08));
+}
+
 .vh-hero-title {
+  position: relative;
+  z-index: 2;
   max-width: 12.8ch;
   margin: 0 auto;
   color: var(--vh-text);
@@ -123,6 +145,8 @@
 }
 
 .vh-hero-copy {
+  position: relative;
+  z-index: 2;
   max-width: 70ch;
   margin: clamp(38px, 5.5vh, 56px) auto 0;
   color: var(--vh-muted);
@@ -133,6 +157,8 @@
 }
 
 .vh-hero-actions {
+  position: relative;
+  z-index: 3;
   margin-top: auto;
   padding-top: 40px;
   will-change: transform;
@@ -780,8 +806,8 @@
   z-index: 3;
   top: 50%;
   left: 50%;
-  width: 44px;
-  height: 44px;
+  width: 72px;
+  height: 72px;
   display: grid;
   place-items: center;
   transform: translate(-50%, -50%);
@@ -791,8 +817,13 @@
   background: var(--vh-bg);
 }
 
-.vh-model-star svg {
-  width: 20px;
+.vh-model-star .signal-core-svg {
+  width: 100%;
+}
+
+.vh-model-star .signal-core-caption,
+.vh-model-star .signal-core-scan {
+  display: none;
 }
 
 .vh-model-footer {
@@ -1109,30 +1140,17 @@
 }
 
 .vh-final-shell {
-  min-height: 430px;
-  padding: clamp(52px, 7vw, 84px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  border: 1px solid rgba(199, 255, 47, 0.2);
-  border-radius: 28px;
   color: #f7f8fb;
-  background:
-    radial-gradient(36rem 22rem at 50% 0%, rgba(199, 255, 47, 0.12), transparent 68%),
-    #080a0f;
 }
 
 .vh-final-shell .vh-section-title {
   color: #f7f8fb;
-  text-align: center;
+  text-align: left;
 }
 
 .vh-final-shell .vh-section-copy {
   color: rgba(237, 241, 249, 0.72);
-  text-align: center;
+  text-align: left;
 }
 
 .vh-final-eyebrow {
@@ -1145,6 +1163,7 @@
 
 .vh-final-actions {
   margin-top: 26px;
+  justify-content: flex-start;
 }
 
 /* Purposeful motion: media breathes with viewport travel and reverses on scroll-up. */
@@ -1363,9 +1382,13 @@
   }
 
   .vh-final-shell {
-    min-height: 390px;
-    padding: 46px 20px;
-    border-radius: 20px;
+    min-height: 620px;
+    padding: 32px 24px 54px;
+  }
+
+  .vh-final-shell .vh-section-title,
+  .vh-final-shell .vh-section-copy {
+    text-align: center;
   }
 }
 

@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Reveal } from '@/components/motion/Reveal'
 import { ContactActionLink } from '@/components/patterns/ContactActionLink'
 import { SectionShell } from '@/components/patterns/SectionShell'
+import { SignalCore } from '@/components/brand/SignalCore'
 
 type SectionCTAProps = {
   id?: string
@@ -38,27 +39,31 @@ export function SectionCTA({
 }: SectionCTAProps) {
   return (
     <SectionShell id={id} className={sectionClassName} containerClassName={containerClassName}>
-      <Reveal as="p" className={eyebrowClassName} delayMs={80}>
-        {eyebrow}
-      </Reveal>
-      <Reveal as="h2" className={titleClassName} delayMs={130}>
-        {title}
-      </Reveal>
-      {description ? (
-        <Reveal as="p" className={descriptionClassName} delayMs={170}>
-          {description}
+      <SignalCore className="cta-signal" label="Vynho contact signal" />
+      <div className="cta-content">
+        <Reveal as="p" className={eyebrowClassName} delayMs={80}>
+          {eyebrow}
         </Reveal>
-      ) : null}
-      <Reveal className={actionsClassName} delayMs={210}>
-        <Button asChild>
-          <ContactActionLink source={source}>{primaryLabel}</ContactActionLink>
-        </Button>
-        {secondaryLabel && secondaryHref ? (
-          <Button asChild variant="outline">
-            <a href={secondaryHref}>{secondaryLabel}</a>
-          </Button>
+        <Reveal as="h2" className={titleClassName} delayMs={130}>
+          {title}
+        </Reveal>
+        {description ? (
+          <Reveal as="p" className={descriptionClassName} delayMs={170}>
+            {description}
+          </Reveal>
         ) : null}
-      </Reveal>
+        <Reveal className={actionsClassName} delayMs={210}>
+          <Button asChild>
+            <ContactActionLink source={source}>{primaryLabel}</ContactActionLink>
+          </Button>
+          {secondaryLabel && secondaryHref ? (
+            <Button asChild variant="outline">
+              <a href={secondaryHref}>{secondaryLabel}</a>
+            </Button>
+          ) : null}
+        </Reveal>
+      </div>
+      <span className="cta-coordinate" aria-hidden="true">17.3850° N / 78.4867° E</span>
     </SectionShell>
   )
 }

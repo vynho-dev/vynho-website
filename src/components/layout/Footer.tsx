@@ -12,6 +12,11 @@ export function Footer() {
 
   return (
     <footer className="footer">
+      <div className="container footer-signal-line" aria-hidden="true">
+        <span>VYNHO / HYDERABAD</span>
+        <i />
+        <span>AVAILABLE WORLDWIDE</span>
+      </div>
       <div className="container footer-grid">
         <div className="footer-brand">
           <Wordmark variant="black-transparent" className="wordmark-image footer-wordmark" />
@@ -47,6 +52,7 @@ export function Footer() {
           </div>
         </div>
       </div>
+      <div className="footer-monogram" aria-hidden="true">VYNHO<span>.</span></div>
       <div className="container footer-bottom">
         <p>&copy; 2026 Vynho. All rights reserved.</p>
         <nav className="footer-links" aria-label="Footer navigation">

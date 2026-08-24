@@ -67,9 +67,9 @@ export type HomeFaqItemContent = {
 }
 
 export const workSpecialtyContent = {
-  eyebrow: 'Beyond Websites',
-  title: 'HIGH-END DESIGN. CRAFTED CODE.',
-  description: 'We build digital systems that turn brand, product, and technology into one scalable experience.',
+  eyebrow: 'Beyond the screen',
+  title: 'SYSTEMS WITH A POINT OF VIEW.',
+  description: 'Identity, product thinking, and technology become one coherent experience—not three disconnected deliverables.',
   ctaLabel: 'Explore Capabilities',
   ctaHref: '/services',
 } as const
@@ -222,123 +222,75 @@ export const homeFaqContent: HomeFaqItemContent[] = [
   {
     q: 'What kinds of projects are a good fit for Vynho?',
     blocks: [
-      { type: 'p', text: 'Our core areas include high-end websites and digital experiences, applications and SaaS platforms, premium e-commerce, and Web3 or AI products.' },
-      { type: 'p', text: 'We also take on projects where design and engineering create a real advantage – from 3D visualisations and immersive brand experiences to interactive motion, real-time systems, and fan-driven or content-led platforms.' },
-      { type: 'p', text: 'We work with both global enterprises and early-stage startups. Company size matters less than the ambition behind the product.' },
-      { type: 'p', text: "If you're unsure whether it's a fit, reach out – the first conversation is always exploratory." },
+      { type: 'p', text: 'The strongest fit is a digital product with real ambition: a flagship website, application, commerce experience, AI interface, or platform that cannot afford to feel interchangeable.' },
+      { type: 'p', text: 'We are most useful when the work needs both a clear product position and thoughtful technical execution. The size of the company matters less than the importance of the outcome.' },
+      { type: 'p', text: 'If the problem is still loosely defined, that is fine. An exploratory conversation is often the right first step.' },
     ],
   },
   {
     q: 'What does a project like this typically cost?',
     blocks: [
-      { type: 'p', text: 'It depends on scope and complexity. As a general reference:' },
-      { type: 'ul', items: ['Focused projects such as landing pages or campaign sites start from $10,000', 'A full web presence with a design system typically ranges $40,000–$150,000', 'End-to-end product delivery – applications, SaaS platforms, or complex Web3 systems – starts from $80,000'] },
-      { type: 'p', text: "We don't quote before understanding the context. After the first conversation, you'll receive an indicative budget and timeline before any commitment. Payments are milestone-based, with no large upfront sums or surprise invoices." },
+      { type: 'p', text: 'Budget follows the complexity of the problem, the depth of the experience, and the amount of system design involved.' },
+      { type: 'ul', items: ['Focused launches usually begin around $10,000', 'Multi-page brand and product sites commonly sit between $40,000 and $150,000', 'Complex applications and platforms generally begin around $80,000'] },
+      { type: 'p', text: 'After an initial conversation, we share a clear range, timeline, and milestone structure before either side commits.' },
     ],
   },
   {
     q: 'How do you approach pricing and project models?',
     blocks: [
-      { type: 'p', text: 'It depends on how clearly the scope is defined.' },
-      { type: 'p', text: 'If the project is well specified from the start, we can offer a fixed-time, fixed-price model with clear deliverables and budget.' },
-      { type: 'p', text: 'If there are still open questions, we usually propose a few structured options – for example, different levels of design or technical complexity – each with its own scope and pricing.' },
-      { type: 'p', text: 'For more complex projects, we typically recommend starting with a Discovery & Definition phase. This helps clarify requirements, resolve key unknowns, and define a realistic roadmap and budget.' },
-      { type: 'p', text: 'In cases where the scope evolves over time, we often work in a more flexible, agile model. This allows us to adapt to new insights while keeping the focus on delivering the most valuable outcome.' },
-      { type: 'p', text: 'Every project is different. We aim to stay flexible, while also setting clear expectations from the start.' },
+      { type: 'p', text: 'A defined scope can be priced as a fixed engagement. An evolving product is better served by a dedicated team and a steady delivery cadence.' },
+      { type: 'p', text: 'When important questions remain, we start with a short definition phase. It turns assumptions into decisions and gives the following work a credible plan.' },
+      { type: 'p', text: 'Whichever model fits, responsibilities, checkpoints, and commercial boundaries stay visible from the beginning.' },
     ],
   },
   {
     q: "We're working with a tight deadline – how fast can you move?",
     blocks: [
-      { type: 'p', text: 'Faster than most studios. Typical timelines look like this:' },
-      { type: 'ul', items: ['Landing page or campaign site: as little as 14 days', 'Full web presence: 6–10 weeks', 'Digital product or application: 3–6 months'] },
-      { type: 'p', text: "Rush timelines are possible. We'll always be transparent about what level of quality is achievable within a compressed schedule. In practice, the biggest delays tend to come from unclear scope or slow feedback on the client side – not production speed." },
+      { type: 'p', text: 'A focused launch can move in weeks; a full website usually needs several more; a substantial product is measured in months.' },
+      { type: 'p', text: 'For a hard deadline, we reduce uncertainty and scope before reducing quality. Fast decisions and a single accountable feedback path make the biggest difference.' },
     ],
   },
   {
     q: 'Will we actually work with the senior team we meet at the start?',
     blocks: [
-      { type: 'p', text: 'Yes. Vynho is a senior-led studio, which means the team you meet during the first conversation is the team that works on your project.' },
-      { type: 'p', text: 'Each engagement is led by senior contributors and supported by the right specialists from our extended network across strategy, design, frontend, backend, AI, and emerging technology.' },
-      { type: 'p', text: "We don't pitch with seniors and deliver with juniors." },
+      { type: 'p', text: 'Yes. The people shaping the proposal remain close to the decisions, reviews, and shipped work.' },
+      { type: 'p', text: 'When a specialist joins, they join for a defined reason and work directly with the core team. There is no hidden handoff after the pitch.' },
     ],
   },
   {
     q: 'How is your team structured, and how do you handle international collaboration?',
     blocks: [
-      { type: 'p', text: 'We are a Hyderabad-based, remote-first studio working with clients in India and internationally.' },
-      { type: 'p', text: 'Remote collaboration is a natural part of how we operate. We typically use tools such as Slack or Teams for communication, Figma for design, and platforms like Asana or Linear for project management.' },
-      { type: 'p', text: 'We agree working hours and decision windows at the start of each engagement so international collaboration stays predictable.' },
+      { type: 'p', text: 'Vynho is based in Hyderabad and designed for remote collaboration. Each engagement has a small accountable core with specialists added only where they improve the work.' },
+      { type: 'p', text: 'We agree overlap hours, decision owners, review windows, and working tools at kickoff so distance never becomes ambiguity.' },
     ],
   },
   {
     q: 'Can you work alongside our internal team?',
     blocks: [
-      { type: 'p', text: 'Yes – this is one of our core engagement models.' },
-      { type: 'p', text: "Through Embedded Expertise, our senior specialists integrate directly into your team, using your tools, joining your standups, and strengthening specific workstreams. From the start, we define clear ownership – what's ours, what's yours, and what's shared." },
-      { type: 'p', text: 'The goal is simple: to strengthen your team, not replace it.' },
-    ],
-  },
-  {
-    q: "We don't have a clear brief yet – can we still start?",
-    blocks: [
-      { type: 'p', text: 'Yes – we can start, just not with production right away.' },
-      { type: 'p', text: "If the scope isn't clearly defined, we usually begin with a Discovery & Definition phase, where we help shape the brief, validate key assumptions, and define a clear roadmap for delivery." },
-      { type: 'p', text: 'This step is especially important for more complex projects. It allows us to validate technical feasibility early, reduce risk before development begins, and translate high-level ideas into concrete specifications. It also helps prevent scope creep and enables more accurate planning of timeline and budget.' },
-      { type: 'p', text: "You don't need a finished brief to get started – just a rough idea. We'll take it from there." },
-    ],
-  },
-  {
-    q: 'Do you help shape the product, or mainly execute on briefs?',
-    blocks: [
-      { type: 'p', text: 'Strategy is the first service we offer – not an add-on.' },
-      { type: 'p', text: 'Our Product Strategy work includes discovery, user research, competitive analysis, technical feasibility, roadmapping, and MVP scoping. Every collaboration begins with Exploration & Alignment, regardless of how detailed the initial brief is.' },
-      { type: 'p', text: 'In many cases, we help refine the problem before building the solution.' },
-    ],
-  },
-  {
-    q: 'Is your team experienced enough to handle complex, large-scale technical projects?',
-    blocks: [
-      { type: 'p', text: 'Yes – this is a core part of our work.' },
-      { type: 'p', text: 'We design and build systems such as scalable backend architectures, real-time platforms, SaaS products, multi-chain Web3 infrastructure, NFT marketplaces, and performance-critical applications.' },
-      { type: 'p', text: "What sets us apart is the ability to combine that level of engineering with high-end design. We don't treat design and development as separate layers – both are developed together to create products that are not only robust, but also intuitive and visually distinctive." },
-    ],
-  },
-  {
-    q: 'How do you approach AI in your work?',
-    blocks: [
-      { type: 'p', text: 'Selectively and transparently.' },
-      { type: 'p', text: 'In design, generative tools help accelerate early concept exploration. In development, we use tools such as Claude Code to support code generation and rapid prototyping – always using up-to-date, paid versions for reliability and performance.' },
-      { type: 'p', text: 'AI never replaces senior judgment. Every AI-assisted output is reviewed by experienced designers or engineers before it reaches you. If AI contributes to final deliverables, we’re transparent about it, including any relevant IP or licensing considerations.' },
-    ],
-  },
-  {
-    q: 'What happens after launch?',
-    blocks: [
-      { type: 'p', text: 'Many clients continue working with us after launch through ongoing product development – in fact, we often prefer long-term partnerships.' },
-      { type: 'p', text: 'This may include feature development, performance optimisation, analytics, or iterative UX improvements. Some teams also choose our Embedded Expertise model, where senior specialists remain integrated in the product team long-term.' },
+      { type: 'p', text: 'Yes. We can own a complete stream or place senior design and engineering capacity inside an existing one.' },
+      { type: 'p', text: 'The useful part is not extra attendance; it is clear ownership. We define what Vynho leads, what your team leads, and where decisions are shared.' },
     ],
   },
 ]
 
 export const workContactCtaContent: PageContactCTAConfig = {
-  eyebrow: 'Start a conversation',
-  title: "LET'S TALK",
-  description: "Tell us what you're building. We'll help shape the right strategy, scope, and delivery model.",
+  eyebrow: 'Open a channel',
+  title: 'MAKE IT REAL.',
+  description: "Bring us the ambition, the constraint, or the half-formed idea. We'll help find the strongest way forward.",
   source: 'work_contact_cta',
   primaryLabel: 'Contact Us',
   sectionClassName: 'vwk-section vwk-contact-cta',
   containerClassName: 'container vwk-contact-shell cta-shell',
   eyebrowClassName: 'vwk-contact-eyebrow',
   titleClassName: 'vwk-contact-title cta-title',
-  descriptionClassName: 'vwk-section-copy u-center-copy cta-copy',
+  descriptionClassName: 'vwk-section-copy cta-copy',
   actionsClassName: 'cta-actions',
 }
 
 export const servicesContactCtaContent: PageContactCTAConfig = {
-  eyebrow: 'Start a conversation',
-  title: "LET'S TALK",
-  description: "Tell us what you're building. We'll help shape the right strategy, scope, and delivery model.",
+  eyebrow: 'Open a channel',
+  title: 'MAKE IT REAL.',
+  description: "Bring us the ambition, the constraint, or the half-formed idea. We'll help find the strongest way forward.",
   source: 'services_contact_cta',
   primaryLabel: 'Contact Us',
   secondaryLabel: 'View Work',
@@ -347,28 +299,28 @@ export const servicesContactCtaContent: PageContactCTAConfig = {
   containerClassName: 'container vsv-center-shell cta-shell',
   eyebrowClassName: 'vsv-contact-eyebrow',
   titleClassName: 'vsv-contact-title cta-title',
-  descriptionClassName: 'vsv-section-copy vsv-center-copy cta-copy',
+  descriptionClassName: 'vsv-section-copy cta-copy',
   actionsClassName: 'vsv-contact-actions cta-actions',
 }
 
 export const aboutContactCtaContent: PageContactCTAConfig = {
-  eyebrow: 'Start a conversation',
-  title: "LET'S TALK",
-  description: "Tell us what you're building. We'll help shape the right strategy, scope, and delivery model.",
+  eyebrow: 'Open a channel',
+  title: 'MAKE IT REAL.',
+  description: "Bring us the ambition, the constraint, or the half-formed idea. We'll help find the strongest way forward.",
   source: 'about_contact_cta',
   primaryLabel: 'Contact Us',
   sectionClassName: 'vabt-section vabt-contact',
   containerClassName: 'container vabt-center-shell cta-shell',
   eyebrowClassName: 'vabt-contact-eyebrow',
   titleClassName: 'vabt-contact-title cta-title',
-  descriptionClassName: 'vabt-section-copy u-center-copy cta-copy',
+  descriptionClassName: 'vabt-section-copy cta-copy',
   actionsClassName: 'cta-actions',
 }
 
 export const homeFinalCtaContent: SectionCTAContent = {
-  eyebrow: 'Start a conversation',
-  title: "LET'S TALK",
-  description: "Tell us what you're building. We'll help shape the right strategy, scope, and delivery model.",
+  eyebrow: 'Open a channel',
+  title: 'MAKE IT REAL.',
+  description: "Bring us the ambition, the constraint, or the half-formed idea. We'll help find the strongest way forward.",
   source: 'home_final_cta',
   primaryLabel: 'Contact Us',
 }
