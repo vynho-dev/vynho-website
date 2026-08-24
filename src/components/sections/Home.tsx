@@ -36,6 +36,8 @@ export function Home() {
       const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
       const progress = Math.min(1, Math.max(0, window.scrollY / max))
       document.documentElement.style.setProperty('--vh-scroll-progress', progress.toFixed(4))
+      const heroProgress = Math.min(1, Math.max(0, window.scrollY / Math.max(1, window.innerHeight)))
+      document.documentElement.style.setProperty('--vh-hero-progress', heroProgress.toFixed(4))
 
       const node = buildSectionRef.current
       if (!node) return
@@ -52,7 +54,11 @@ export function Home() {
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      document.documentElement.style.removeProperty('--vh-scroll-progress')
+      document.documentElement.style.removeProperty('--vh-hero-progress')
+    }
   }, [])
 
   useEffect(() => {
@@ -108,7 +114,7 @@ export function Home() {
         metrics={homeStudioMetricsContent}
         onMeetStudio={() => trackEvent('cta_click', { cta: 'studio_meet_team' })}
       />
-      <HomeFaqSection faqs={homeFaqContent} openFaq={openFaq} setOpenFaq={setOpenFaq} />
+      <HomeFaqSection faqs={homeFaqContent.slice(0, 5)} openFaq={openFaq} setOpenFaq={setOpenFaq} />
       <SectionCTA
         sectionClassName="vh-final-cta"
         containerClassName="container vh-final-shell cta-shell"

@@ -6,9 +6,9 @@ import { type HomeWorkCardContent } from '@/content/sections'
 import { useInView } from '@/lib/motion'
 
 const trustSignals = [
-  { number: '01', title: 'Founder-led', copy: 'Senior oversight from first conversation to final release.' },
-  { number: '02', title: 'One integrated team', copy: 'Strategy, design, and engineering move together.' },
-  { number: '03', title: 'Built to last', copy: 'Clear systems, measured performance, and honest trade-offs.' },
+  { label: 'Rated 5.0 by clients', icon: '★' },
+  { label: 'Award-level craft', icon: '✦' },
+  { label: 'Built for global teams', icon: '↗' },
 ] as const
 
 export function HomeTrustSection() {
@@ -26,11 +26,10 @@ export function HomeTrustSection() {
         once
       >
         {trustSignals.map((signal, index) => (
-          <WaveRevealItem key={signal.title} className="vh-trust-line" index={index}>
+          <WaveRevealItem key={signal.label} className="vh-trust-line" index={index}>
             <article className="vh-trust-card">
-              <span>{signal.number}</span>
-              <strong>{signal.title}</strong>
-              <p>{signal.copy}</p>
+              <span className="vh-trust-icon" aria-hidden="true">{signal.icon}</span>
+              <p>{signal.label}</p>
             </article>
           </WaveRevealItem>
         ))}
@@ -110,12 +109,11 @@ function WorkCard({ card, index, mediaTier, onCardClick, onCardView }: WorkCardP
       </div>
 
       <div className="vh-work-overlay">
-        <p className="vh-work-overlay-title">
-          {card.title}
-        </p>
-        <span className="vh-work-overlay-tag">
-          {card.tag}
-        </span>
+        <p className="vh-work-overlay-title">{card.title}</p>
+        <div className="vh-work-overlay-meta">
+          <span className="vh-work-overlay-tag">{card.tag}</span>
+          <span className="vh-work-overlay-view" aria-hidden="true">View ↗</span>
+        </div>
       </div>
     </div>
   )
@@ -154,7 +152,7 @@ export function HomeWorkSection({
         </Reveal>
       </div>
 
-      <div className="vh-work-stack">
+      <div className="container vh-work-stack">
         {workCards.map((card, i) => (
           <WorkCard
             key={card.id}

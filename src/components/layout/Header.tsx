@@ -88,7 +88,7 @@ export function Header() {
 
   return (
     <>
-      <div className="nav-wrap">
+      <div className={path === '/' ? 'nav-wrap nav-wrap-home' : 'nav-wrap'}>
         <nav className={open ? 'container nav nav-shell opened' : 'container nav nav-shell'} aria-label="Main">
         <a href="/" className="nav-brand-anchor" aria-label="Vynho home">
           <img

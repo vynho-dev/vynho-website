@@ -32,7 +32,7 @@ export function HomeBuildSection({
               <Reveal
                 as="article"
                 key={item.id}
-                className={`vh-build-card vh-build-card-${index + 1}${isActive ? ' is-active' : ''}`}
+                className={`vh-build-card vh-build-card-${index + 1}${item.lime ? ' vh-build-card-lime' : ''}${isActive ? ' is-active' : ''}`}
                 distance={32}
                 delayMs={index * 80}
               >

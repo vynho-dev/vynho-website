@@ -33,9 +33,9 @@ export function HomeHeroSection({ onExploreClick }: { onExploreClick: () => void
           copyLines={HERO_COPY_LINES}
           titleClassName="vh-hero-title"
           copyClassName="vh-hero-copy"
-          copyStyle={{ transform: 'translateY(calc(var(--vh-scroll-progress, 0) * 60px))' }}
+          copyStyle={{ transform: 'translateY(calc(var(--vh-hero-progress, 0) * 20px))' }}
         />
-        <div className="vh-hero-actions" style={{ transform: 'translateY(calc(var(--vh-scroll-progress, 0) * 100px))' }}>
+        <div className="vh-hero-actions" style={{ transform: 'translateY(calc(var(--vh-hero-progress, 0) * 32px))' }}>
           <div style={{ display: 'inline-block' }}>
             <Button asChild className="vh-lime-btn">
               <a href="#work" aria-label="Scroll to work section" onClick={handleScrollToWork}>
