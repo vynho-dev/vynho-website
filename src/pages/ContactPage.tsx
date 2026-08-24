@@ -3,7 +3,6 @@ import { ContactForm } from '@/components/contact/ContactForm'
 import { ContactInfoCards } from '@/components/contact/ContactInfoCards'
 import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 import { founder } from '@/content/site'
-import '@/styles/contact.css'
 
 export function ContactPage() {
   const titleLines = ['START A', 'PROJECT'] as const

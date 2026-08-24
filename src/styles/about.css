@@ -387,6 +387,10 @@
   color: #101520;
 }
 
+:root[data-theme='light'] .vabt-section-title {
+  color: #101520;
+}
+
 :root[data-theme='light'] .vabt-contact .vabt-contact-title {
   color: #fff;
 }

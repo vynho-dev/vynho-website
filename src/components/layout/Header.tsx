@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react'
 import { navLinks } from '@/content/site'
 import { Button } from '@/components/ui/button'
+import { ContactActionLink } from '@/components/patterns/ContactActionLink'
+import { useReducedMotionPreference } from '@/lib/motion'
 
 type Theme = 'dark' | 'light'
 
 export function Header() {
   const [open, setOpen] = useState(false)
   const [theme, setTheme] = useState<Theme>('dark')
+  const [compact, setCompact] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const reducedMotion = useReducedMotionPreference()
   const path = window.location.pathname.replace(/\/+$/, '') || '/'
   const desktopLinks = navLinks
 
@@ -38,6 +43,36 @@ export function Header() {
       document.removeEventListener('keydown', onKeyDown)
     }
   }, [open])
+
+  useEffect(() => {
+    let lastY = window.scrollY
+    let frame = 0
+
+    const update = () => {
+      frame = 0
+      const nextY = window.scrollY
+      const delta = nextY - lastY
+      setCompact(nextY > 24)
+
+      if (!open && !reducedMotion && Math.abs(delta) > 6) {
+        setHidden(nextY > 180 && delta > 0)
+      }
+      if (reducedMotion) setHidden(false)
+      if (nextY < 80) setHidden(false)
+      lastY = nextY
+    }
+
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [open, reducedMotion])
 
   const setThemeMode = (nextTheme: Theme) => {
     setTheme(nextTheme)
@@ -87,7 +122,7 @@ export function Header() {
 
   return (
     <>
-      <div className="nav-wrap">
+      <div className={`nav-wrap${compact ? ' is-compact' : ''}${hidden ? ' is-hidden' : ''}${open ? ' has-open-menu' : ''}`}>
         <nav className={open ? 'container nav nav-shell opened' : 'container nav nav-shell'} aria-label="Main">
         <a href="/" className="nav-brand-anchor" aria-label="Vynho home">
           <img
@@ -120,6 +155,10 @@ export function Header() {
 
         <div className="nav-actions">
           {renderThemeSwitch('theme-toggle nav-theme-center')}
+          <ContactActionLink source="header_lets_talk" className="nav-contact-cta">
+            <span>Let&apos;s Talk</span>
+            <span aria-hidden="true">↗</span>
+          </ContactActionLink>
           <button
             type="button"
             className="mobile-nav-toggle"
@@ -151,6 +190,10 @@ export function Header() {
                 <span className="nav-link-label">{item.label}</span>
               </a>
             ))}
+            <ContactActionLink source="mobile_navigation" className="mobile-contact-cta">
+              <span>Start a project</span>
+              <span aria-hidden="true">↗</span>
+            </ContactActionLink>
           </div>
         </div>
       ) : null}

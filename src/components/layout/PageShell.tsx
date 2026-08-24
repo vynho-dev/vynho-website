@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { ContactSheet } from '@/components/contact/ContactSheet'
 
 type PageShellProps = {
   children: ReactNode
@@ -22,6 +23,7 @@ export function PageShell({ children, mainClassName, mainId, wrapMain = true }: 
         children
       )}
       <Footer />
+      <ContactSheet />
     </>
   )
 }

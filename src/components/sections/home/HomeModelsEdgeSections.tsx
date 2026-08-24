@@ -1,6 +1,5 @@
 import { Reveal } from '@/components/motion/Reveal'
 import { SectionHeader } from '@/components/patterns/SectionHeader'
-import { ContactActionLink } from '@/components/patterns/ContactActionLink'
 import { type HomeEdgeCardContent, type HomeEngagementCardContent } from '@/content/sections'
 
 function ModelCheckIcon() {
@@ -49,12 +48,6 @@ export function HomeModelsSection({ cards }: { cards: HomeEngagementCardContent[
               </ul>
             </Reveal>
           ))}
-        </div>
-        <div className="vh-model-footer">
-          <ContactActionLink href="/contact" source="home_models_footer" className="vh-model-contact-pill">
-            <span>Let&apos;s Talk</span>
-            <span className="vh-model-contact-arrow" aria-hidden="true">›</span>
-          </ContactActionLink>
         </div>
       </div>
     </section>

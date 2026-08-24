@@ -134,10 +134,14 @@ async function auditCriticalContrast(page, deviceKey, theme, route) {
       '.footer-links a',
       '.footer-top-btn',
       '.vsv-expertise-eyebrow',
+      '.vsv-section-title',
+      '.vsv-process-card strong',
       '.vsv-market-card strong',
       '.vsv-market-card span',
       '.vabt-team-meta strong',
       '.vabt-team-meta p',
+      '.vabt-section-title',
+      '.vabt-mission-copy',
       '.vabt-value-card h3',
       '.vabt-value-card p',
       '.vabt-value-card a',
@@ -320,12 +324,16 @@ async function run() {
       await gotoSettled(page, `${BASE_URL}/about?theme=dark`)
       await page.locator('.cta-shell a[href="/contact"]').click()
       await page.waitForTimeout(300)
-      if (!page.url().includes('/contact')) qa.errors.push(`[${deviceCfg.key}] Contact CTA did not reach the Contact page`)
-      qa.checks.push(`Contact CTA route (${deviceCfg.key}): ${page.url()}`)
+      if (!(await page.locator('.vct-sheet[open]').isVisible())) qa.errors.push(`[${deviceCfg.key}] Contact CTA did not open the contact sheet`)
+      if (!page.url().includes('contact=open')) qa.errors.push(`[${deviceCfg.key}] Contact sheet URL state was not set`)
+      await page.goBack()
+      await page.waitForTimeout(200)
+      if (await page.locator('.vct-sheet[open]').count()) qa.errors.push(`[${deviceCfg.key}] Browser Back did not close the contact sheet`)
+      qa.checks.push(`Contact sheet open and Back close (${deviceCfg.key}): ok`)
 
       await gotoSettled(page, `${BASE_URL}/contact?theme=dark`)
-      await page.locator('.vct-form button[type="submit"]').click()
-      const validationErrors = await page.locator('.vct-form [role="alert"]').count()
+      await page.locator('main .vct-form button[type="submit"]').click()
+      const validationErrors = await page.locator('main .vct-form [role="alert"]').count()
       if (validationErrors !== 4) qa.errors.push(`[${deviceCfg.key}] Contact validation expected 4 errors, found ${validationErrors}`)
       qa.checks.push(`Contact form validation (${deviceCfg.key}): ${validationErrors} errors shown`)
 

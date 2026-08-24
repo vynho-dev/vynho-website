@@ -19,7 +19,7 @@ const initialValues: FormValues = {
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-export function ContactForm() {
+export function ContactForm({ idPrefix = 'contact', variant = 'page' }: { idPrefix?: string; variant?: 'page' | 'sheet' }) {
   const [values, setValues] = useState<FormValues>(initialValues)
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
@@ -44,9 +44,10 @@ export function ContactForm() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    const form = event.currentTarget
     if (!validate()) {
       window.requestAnimationFrame(() => {
-        document.querySelector<HTMLElement>('.vct-form [aria-invalid="true"]')?.focus()
+        form.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus()
       })
       return
     }
@@ -57,10 +58,10 @@ export function ContactForm() {
   }
 
   return (
-    <form className="vct-form" aria-label="Project inquiry" noValidate onSubmit={handleSubmit}>
+    <form className={variant === 'sheet' ? 'vct-form vct-form-sheet' : 'vct-form'} aria-label="Project inquiry" noValidate onSubmit={handleSubmit}>
       <div className="vct-grid-two">
         <FormField
-          id="contact-first-name"
+          id={`${idPrefix}-first-name`}
           label="First name"
           required
           value={values.firstName}
@@ -69,7 +70,7 @@ export function ContactForm() {
           error={errors.firstName}
         />
         <FormField
-          id="contact-last-name"
+          id={`${idPrefix}-last-name`}
           label="Last name"
           required
           value={values.lastName}
@@ -81,7 +82,7 @@ export function ContactForm() {
 
       <div className="vct-grid-two">
         <FormField
-          id="contact-email"
+          id={`${idPrefix}-email`}
           label="Email address"
           required
           type="email"
@@ -91,7 +92,7 @@ export function ContactForm() {
           error={errors.email}
         />
         <FormField
-          id="contact-phone"
+          id={`${idPrefix}-phone`}
           label="Phone number"
           type="tel"
           value={values.phone}
@@ -101,7 +102,7 @@ export function ContactForm() {
       </div>
 
       <TextAreaField
-        id="contact-message"
+        id={`${idPrefix}-message`}
         label="Message"
         required
         value={values.message}
