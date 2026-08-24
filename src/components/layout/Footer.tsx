@@ -14,50 +14,55 @@ export function Footer() {
     <footer className="footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <Wordmark variant="white-transparent" className="wordmark-image footer-wordmark footer-wordmark-dark" />
-          <Wordmark variant="black-transparent" className="wordmark-image footer-wordmark footer-wordmark-light" />
+          <Wordmark variant="black-transparent" className="wordmark-image footer-wordmark" />
           <p>
             Premium AI, product design, and engineering systems for teams building their next serious digital product.
           </p>
-          <p className="footer-contact">
-            <span>{founder.location}</span>
-            <a href={`mailto:${founder.email}`}>{founder.email}</a>
-          </p>
+        </div>
+        <div className="footer-column footer-contact-column">
+          <strong>Want to ask something?</strong>
+          <a href={`mailto:${founder.email}`}>{founder.email}</a>
+          <a href={`tel:${founder.phoneHref}`}>{founder.phone}</a>
+        </div>
+        <div className="footer-column footer-contact-column">
+          <strong>Want to visit us?</strong>
+          <span>{founder.location}</span>
+          <span>{founder.studioMode}</span>
+        </div>
+        <div className="footer-column footer-contact-column">
+          <strong>Stay in the loop</strong>
           <div className="footer-socials">
-            {socialLinks.map((social) => (
-              <a key={social.label} href={social.href} target="_blank" rel="noreferrer noopener">
-                {social.label}
-              </a>
-            ))}
+            {socialLinks.map((social) => {
+              const isMailLink = social.href.startsWith('mailto:')
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  {...(!isMailLink ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
+                >
+                  {social.label}
+                </a>
+              )
+            })}
           </div>
-        </div>
-        <div className="footer-column">
-          <strong>Navigation</strong>
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href}>
-              {link.label}
-            </a>
-          ))}
-        </div>
-        <div className="footer-column">
-          <strong>Legal</strong>
-          {legalLinks.map((link) => (
-            <a key={link.href} href={link.href}>
-              {link.label}
-            </a>
-          ))}
         </div>
       </div>
       <div className="container footer-bottom">
         <p>&copy; 2026 Vynho. All rights reserved.</p>
-        <div className="footer-links">
+        <nav className="footer-links" aria-label="Footer navigation">
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href}>{link.label}</a>
+          ))}
+          {legalLinks.map((link) => (
+            <a key={link.href} href={link.href}>{link.label}</a>
+          ))}
           <button type="button" className="footer-top-btn" onClick={handleBackToTop}>
             Back to top
           </button>
           <ContactActionLink source="footer_lets_talk">
-            Let&apos;s Talk
+            Contact Us
           </ContactActionLink>
-        </div>
+        </nav>
       </div>
     </footer>
   )

@@ -12,14 +12,16 @@ export function ContactPage() {
 
   return (
     <PageShell mainClassName="vct-page" mainId="top">
-      <section className="vct-page-hero u-center-copy">
+      <section className="vct-page-hero">
         <div className="container">
-          <HeroTextAnimation
-            titleLines={titleLines}
-            copyLines={copyLines}
-            titleClassName="vct-page-hero-title"
-            copyClassName="vct-page-hero-copy u-center-copy"
-          />
+          <div className="vct-page-hero-copy-group">
+            <HeroTextAnimation
+              titleLines={titleLines}
+              copyLines={copyLines}
+              titleClassName="vct-page-hero-title"
+              copyClassName="vct-page-hero-copy"
+            />
+          </div>
           <section className="vct-panel vct-panel-inline" aria-labelledby="contact-page-title">
             <h2 id="contact-page-title">LET&apos;S TALK</h2>
             <p className="vct-intro">

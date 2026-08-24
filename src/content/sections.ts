@@ -322,23 +322,25 @@ export const homeFaqContent: HomeFaqItemContent[] = [
 ]
 
 export const workContactCtaContent: PageContactCTAConfig = {
-  eyebrow: 'Got a project in mind?',
+  eyebrow: 'Start a conversation',
   title: "LET'S TALK",
+  description: "Tell us what you're building. We'll help shape the right strategy, scope, and delivery model.",
   source: 'work_contact_cta',
-  primaryLabel: "Let's Talk",
+  primaryLabel: 'Contact Us',
   sectionClassName: 'vwk-section vwk-contact-cta',
   containerClassName: 'container vwk-contact-shell cta-shell',
   eyebrowClassName: 'vwk-contact-eyebrow',
   titleClassName: 'vwk-contact-title cta-title',
+  descriptionClassName: 'vwk-section-copy u-center-copy cta-copy',
   actionsClassName: 'cta-actions',
 }
 
 export const servicesContactCtaContent: PageContactCTAConfig = {
-  eyebrow: 'Want to collaborate?',
+  eyebrow: 'Start a conversation',
   title: "LET'S TALK",
   description: "Tell us what you're building. We'll help shape the right strategy, scope, and delivery model.",
   source: 'services_contact_cta',
-  primaryLabel: "Let's Talk",
+  primaryLabel: 'Contact Us',
   secondaryLabel: 'View Work',
   secondaryHref: '/work',
   sectionClassName: 'vsv-section vsv-contact',
@@ -350,11 +352,11 @@ export const servicesContactCtaContent: PageContactCTAConfig = {
 }
 
 export const aboutContactCtaContent: PageContactCTAConfig = {
-  eyebrow: 'Want to collaborate?',
+  eyebrow: 'Start a conversation',
   title: "LET'S TALK",
-  description: 'Tell us what you are building. We will help shape the right strategy, team, and delivery model.',
+  description: "Tell us what you're building. We'll help shape the right strategy, scope, and delivery model.",
   source: 'about_contact_cta',
-  primaryLabel: "Let's Talk",
+  primaryLabel: 'Contact Us',
   sectionClassName: 'vabt-section vabt-contact',
   containerClassName: 'container vabt-center-shell cta-shell',
   eyebrowClassName: 'vabt-contact-eyebrow',
@@ -364,11 +366,11 @@ export const aboutContactCtaContent: PageContactCTAConfig = {
 }
 
 export const homeFinalCtaContent: SectionCTAContent = {
-  eyebrow: 'Want to collaborate?',
+  eyebrow: 'Start a conversation',
   title: "LET'S TALK",
-  description: "Tell us what you're building. We'll help shape strategy, scope, and the right delivery model.",
+  description: "Tell us what you're building. We'll help shape the right strategy, scope, and delivery model.",
   source: 'home_final_cta',
-  primaryLabel: "Let's Talk",
+  primaryLabel: 'Contact Us',
 }
 
 export const openRolesContent = {

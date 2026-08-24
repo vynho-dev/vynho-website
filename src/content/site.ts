@@ -8,7 +8,10 @@ export const navLinks = [
 
 export const founder = {
   email: 'info@vynho.com',
+  phone: '+91 8179266373',
+  phoneHref: '+918179266373',
   location: 'Hyderabad, India',
+  studioMode: 'Remote-first / Global studio',
 }
 
 export const founderCapabilities = [

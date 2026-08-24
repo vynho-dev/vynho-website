@@ -8,6 +8,7 @@ interface WordmarkProps {
     | 'black-transparent'
     | 'white-transparent'
   className?: string
+  alt?: string
 }
 
 const variantToFile: Record<NonNullable<WordmarkProps['variant']>, string> = {
@@ -20,11 +21,11 @@ const variantToFile: Record<NonNullable<WordmarkProps['variant']>, string> = {
   'white-transparent': 'wordmark-white-transparent.svg',
 }
 
-export function Wordmark({ variant = 'black', className }: WordmarkProps) {
+export function Wordmark({ variant = 'black', className, alt = 'Vynho' }: WordmarkProps) {
   return (
     <img
       src={`/assets/brand/${variantToFile[variant]}`}
-      alt={`Vynho wordmark ${variant}`}
+      alt={alt}
       className={className ?? 'wordmark-image'}
     />
   )

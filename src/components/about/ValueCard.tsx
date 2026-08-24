@@ -22,7 +22,7 @@ export function ValueCard({ title, description, image }: ValueCardProps) {
             aria-hidden="true"
           />
         ) : (
-          <img src={image} alt="" aria-hidden="true" className="vabt-value-image" loading="lazy" />
+          <img src={image} alt="" aria-hidden="true" className="vabt-value-image" loading="eager" />
         )
       ) : null}
       <h3>{title}</h3>

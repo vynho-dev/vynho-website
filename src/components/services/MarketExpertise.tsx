@@ -14,16 +14,20 @@ const markets = [
 export function MarketExpertise() {
   return (
     <SectionShell id="expertise" className="vsv-section">
+      <Reveal as="p" className="vsv-expertise-eyebrow" delayMs={50}>
+        Where craft meets context
+      </Reveal>
       <SectionHeader
-        title="MARKET EXPERTISE"
+        title="EXPERTISE"
         titleClassName="vsv-section-title"
-        copy="We work across industries where design, performance, and technical reliability directly affect customer trust and growth."
+        copy="Deep product thinking, industry context, and senior execution for markets where customer trust depends on every detail."
         copyClassName="vsv-section-copy"
       />
       <div className="vsv-market-grid">
         {markets.map((market, index) => (
           <Reveal key={market} className="vsv-market-card" delayMs={index * 70}>
-            {market}
+            <span aria-hidden="true">0{index + 1}</span>
+            <strong>{market}</strong>
           </Reveal>
         ))}
       </div>

@@ -6,3 +6,4 @@ coverage
 .vscode
 .playwright-mcp
 qa-artifacts
+/artifacts/

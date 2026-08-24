@@ -11,7 +11,7 @@ import '@/styles/work.css'
 const projects: WorkProject[] = [
   {
     title: 'Pallet Ross',
-    category: 'Platforms',
+    category: 'Websites',
     tag: 'New Age Art Platform',
     image: '/assets/services/build-websites.mp4',
     tags: ['SaaS', 'UX/UI', 'Frontend', 'Backend'],
@@ -26,7 +26,7 @@ const projects: WorkProject[] = [
   },
   {
     title: 'Pasar Marketing',
-    category: 'Products',
+    category: 'Platforms',
     tag: 'Real-Time Analytics Dashboard',
     image: '/assets/projects/signaldash-saas.webp',
     tags: ['Dashboard', 'Data', 'SaaS'],
@@ -47,7 +47,7 @@ const projects: WorkProject[] = [
   },
   {
     title: 'Helio Mobile',
-    category: 'Apps',
+    category: 'Products',
     tag: 'Consumer Mobile App',
     image: '/assets/services/build-apps.mp4',
     tags: ['Mobile', 'Design', 'API'],

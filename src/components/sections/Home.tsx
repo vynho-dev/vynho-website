@@ -111,16 +111,16 @@ export function Home() {
       <HomeFaqSection faqs={homeFaqContent} openFaq={openFaq} setOpenFaq={setOpenFaq} />
       <SectionCTA
         sectionClassName="vh-final-cta"
-        containerClassName="container vh-final-shell"
+        containerClassName="container vh-final-shell cta-shell"
         eyebrow={homeFinalCtaContent.eyebrow}
         title={homeFinalCtaContent.title}
         description={homeFinalCtaContent.description}
         source={homeFinalCtaContent.source}
         primaryLabel={homeFinalCtaContent.primaryLabel}
         eyebrowClassName="vh-final-eyebrow"
-        titleClassName="vh-section-title"
-        descriptionClassName="vh-section-copy vh-center-copy"
-        actionsClassName="vh-final-actions"
+        titleClassName="vh-section-title cta-title"
+        descriptionClassName="vh-section-copy vh-center-copy cta-copy"
+        actionsClassName="vh-final-actions cta-actions"
       />
     </main>
   )

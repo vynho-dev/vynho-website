@@ -4,7 +4,7 @@ import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 import { SectionShell } from '@/components/patterns/SectionShell'
 import { CategoryPills } from '@/components/work/CategoryPills'
 
-const categories = ['All', 'Platforms', 'Apps', 'Products', 'Commerce', 'Immersive']
+const categories = ['All', 'Websites', 'Products', 'Apps', 'Platforms', 'Commerce', 'Immersive']
 
 interface WorkHeroProps {
   onFilter: (category: string) => void

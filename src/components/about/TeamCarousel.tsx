@@ -1,5 +1,27 @@
 import { Reveal } from '@/components/motion/Reveal'
-import { founderCapabilities } from '@/content/site'
+
+const teamMembers = [
+  {
+    name: 'Kishore',
+    role: 'CEO, Strategy',
+    image: '/assets/team/editorial/kishore.jpg',
+  },
+  {
+    name: 'Evan',
+    role: 'Director, Design',
+    image: '/assets/team/editorial/evan.jpg',
+  },
+  {
+    name: 'Niko',
+    role: 'Lead, Engineering',
+    image: '/assets/team/editorial/niko.jpg',
+  },
+  {
+    name: 'Sofia',
+    role: 'Lead, Product Strategy',
+    image: '/assets/team/editorial/sofia.jpg',
+  },
+] as const
 
 export function TeamCarousel() {
   return (
@@ -7,18 +29,30 @@ export function TeamCarousel() {
       <div className="container">
         <p className="vabt-watermark">SMALL BY DESIGN</p>
         <Reveal as="p" className="vabt-team-intro" delayMs={90}>
-          Vynho pairs founder-level ownership with a trusted specialist network, giving each project the right range
-          without layers of account management.
+          A senior, hands-on team connecting product strategy, design, and engineering from the first decision to the
+          final detail.
         </Reveal>
         <div className="vabt-team-row">
-          {founderCapabilities.map((capability, index) => (
-            <Reveal key={capability.title} className="vabt-team-card" delayMs={index * 70}>
-              <span className="vabt-team-number">0{index + 1}</span>
-              <strong>{capability.title}</strong>
-              <p>{capability.description}</p>
+          {teamMembers.map((member, index) => (
+            <Reveal key={member.name} className="vabt-team-card" delayMs={index * 70}>
+              <div className="vabt-team-portrait-wrap">
+                <img
+                  className="vabt-team-portrait"
+                  src={member.image}
+                  alt={`Editorial illustration for ${member.name}'s ${member.role} role`}
+                  loading="eager"
+                  fetchPriority={index < 2 ? 'high' : 'auto'}
+                />
+                <span className="vabt-team-number" aria-hidden="true">0{index + 1}</span>
+              </div>
+              <div className="vabt-team-meta">
+                <strong>{member.name}</strong>
+                <p>{member.role}</p>
+              </div>
             </Reveal>
           ))}
         </div>
+        <p className="u-visually-hidden">Team portraits are original editorial illustrations.</p>
       </div>
     </section>
   )

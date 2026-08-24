@@ -65,6 +65,26 @@ async function prepareScreenshot(page) {
       }
     `,
   })
+  await page.evaluate(async () => {
+    document.querySelectorAll('img').forEach((image) => {
+      image.loading = 'eager'
+    })
+    const step = Math.max(window.innerHeight * 0.8, 420)
+    const bottom = document.documentElement.scrollHeight
+    for (let y = 0; y < bottom; y += step) {
+      window.scrollTo(0, y)
+      await new Promise((resolve) => window.setTimeout(resolve, 24))
+    }
+    window.scrollTo(0, 0)
+    await Promise.all([...document.images].map((image) => {
+      if (image.complete) return image.decode?.().catch(() => undefined)
+      return new Promise((resolve) => {
+        image.addEventListener('load', resolve, { once: true })
+        image.addEventListener('error', resolve, { once: true })
+      })
+    }))
+  })
+  await page.waitForTimeout(120)
   await page.evaluate(() => {
     document.querySelectorAll('video').forEach((video) => video.pause())
   })
@@ -97,11 +117,105 @@ async function inspectPage(page, deviceKey, theme, route) {
   if (!result.title.trim()) qa.errors.push(`${prefix} missing document title`)
 }
 
+async function auditCriticalContrast(page, deviceKey, theme, route) {
+  const failures = await page.evaluate(() => {
+    const selectors = [
+      '.vwk-pill',
+      '.vwk-specialty-shell a',
+      '.cta-shell .cta-title',
+      '.cta-shell .cta-copy',
+      '.cta-shell > p:first-child',
+      '.cta-shell .cta-actions a',
+      '.footer-brand p',
+      '.footer-column strong',
+      '.footer-column a',
+      '.footer-column span',
+      '.footer-bottom p',
+      '.footer-links a',
+      '.footer-top-btn',
+      '.vsv-expertise-eyebrow',
+      '.vsv-market-card strong',
+      '.vsv-market-card span',
+      '.vabt-team-meta strong',
+      '.vabt-team-meta p',
+      '.vabt-value-card h3',
+      '.vabt-value-card p',
+      '.vabt-value-card a',
+      '.vct-page-hero h1',
+      '.vct-page-hero p',
+      '.vct-info-card strong',
+      '.vct-info-card p',
+      '.vct-info-card a',
+    ]
+
+    const parseColor = (value) => {
+      const channels = value.match(/[\d.]+/g)?.map(Number) ?? []
+      return { r: channels[0] ?? 0, g: channels[1] ?? 0, b: channels[2] ?? 0, a: channels[3] ?? 1 }
+    }
+    const blend = (top, bottom) => ({
+      r: top.r * top.a + bottom.r * (1 - top.a),
+      g: top.g * top.a + bottom.g * (1 - top.a),
+      b: top.b * top.a + bottom.b * (1 - top.a),
+      a: 1,
+    })
+    const luminance = ({ r, g, b }) => {
+      const linear = (channel) => {
+        const value = channel / 255
+        return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4
+      }
+      return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b)
+    }
+    const contrast = (foreground, background) => {
+      const foregroundLuminance = luminance(foreground)
+      const backgroundLuminance = luminance(background)
+      return (Math.max(foregroundLuminance, backgroundLuminance) + 0.05)
+        / (Math.min(foregroundLuminance, backgroundLuminance) + 0.05)
+    }
+    const nearestBackground = (element) => {
+      const fallback = document.documentElement.dataset.theme === 'light'
+        ? { r: 244, g: 245, b: 248, a: 1 }
+        : { r: 5, g: 5, b: 5, a: 1 }
+      const layers = []
+      let current = element
+      while (current) {
+        const color = parseColor(getComputedStyle(current).backgroundColor)
+        if (color.a > 0) layers.push(color)
+        if (color.a >= 0.99) break
+        current = current.parentElement
+      }
+      return layers.reverse().reduce((background, layer) => blend(layer, background), fallback)
+    }
+
+    return selectors.flatMap((selector) => [...document.querySelectorAll(selector)].flatMap((element) => {
+      const style = getComputedStyle(element)
+      const rect = element.getBoundingClientRect()
+      if (style.display === 'none' || style.visibility === 'hidden' || rect.width === 0 || rect.height === 0) return []
+      if (!element.textContent?.trim()) return []
+      const foreground = parseColor(style.color)
+      const background = nearestBackground(element)
+      const ratio = contrast(foreground, background)
+      const fontSize = Number.parseFloat(style.fontSize)
+      const fontWeight = Number.parseInt(style.fontWeight, 10) || 400
+      const largeText = fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700)
+      const minimum = largeText ? 3 : 4.5
+      return ratio + 0.01 < minimum
+        ? [{ selector, text: element.textContent.trim().slice(0, 72), ratio: Number(ratio.toFixed(2)), minimum }]
+        : []
+    }))
+  })
+
+  qa.contrastAudits += 1
+  failures.forEach((failure) => {
+    qa.errors.push(`[${deviceKey}/${theme}/${route.key}] WCAG contrast ${failure.ratio}:1 < ${failure.minimum}:1 for ${failure.selector} (${failure.text})`)
+  })
+}
+
 const qa = {
   errors: [],
   failedRequests: [],
   badResponses: [],
   checks: [],
+  contrastAudits: 0,
 }
 
 function pushUnique(arr, value) {
@@ -149,8 +263,9 @@ async function run() {
       for (const theme of themes) {
         for (const route of routes) {
           await gotoSettled(page, `${BASE_URL}${route.path}?theme=${theme}`)
-          await inspectPage(page, deviceCfg.key, theme, route)
           await prepareScreenshot(page)
+          await auditCriticalContrast(page, deviceCfg.key, theme, route)
+          await inspectPage(page, deviceCfg.key, theme, route)
           const file = `${route.key}-${theme}-${deviceCfg.key}.png`
           await page.screenshot({ path: path.join(outDir, file), fullPage: true })
         }
@@ -195,7 +310,7 @@ async function run() {
       qa.checks.push(`Home accordions and back-to-top control (${deviceCfg.key}): ok`)
 
       await gotoSettled(page, `${BASE_URL}/work?theme=dark`)
-      for (const filter of ['Platforms', 'Apps', 'Products', 'Commerce', 'Immersive', 'All']) {
+      for (const filter of ['Websites', 'Products', 'Apps', 'Platforms', 'Commerce', 'Immersive', 'All']) {
         await page.getByRole('tab', { name: filter, exact: true }).click()
         const cards = await page.locator('.vwk-project-card').count()
         if (cards < 1) qa.errors.push(`[${deviceCfg.key}] Work filter ${filter} returned no cards`)

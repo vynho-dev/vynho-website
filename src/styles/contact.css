@@ -6,6 +6,14 @@
 
 .vct-page-hero { text-align: center; }
 
+.vct-page-hero-copy-group {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
 .vct-page-hero h1 {
   color: #fff;
   font-size: clamp(56px, 10vw, 144px);
@@ -15,8 +23,9 @@
 
 .vct-page-hero p {
   margin: 14px auto 0;
-  max-width: 74ch;
+  max-width: 62ch;
   color: var(--agency-text-muted);
+  text-wrap: balance;
 }
 
 .vct-panel {
@@ -272,6 +281,28 @@
 :root[data-theme='light'] .vct-info-card p,
 :root[data-theme='light'] .vct-info-card a {
   color: var(--ds-text-muted);
+}
+
+:root[data-theme='light'] .vct-field input {
+  border-bottom-color: #8c98aa;
+  background: transparent;
+  color: #101520;
+}
+
+:root[data-theme='light'] .vct-textarea-field textarea {
+  border-color: #a2adbc;
+  background: rgba(249, 250, 252, 0.94);
+  color: #101520;
+}
+
+:root[data-theme='light'] .vct-field input::placeholder,
+:root[data-theme='light'] .vct-textarea-field textarea::placeholder {
+  color: #5b6880;
+  opacity: 1;
+}
+
+:root[data-theme='light'] .vct-privacy a {
+  color: #162033;
 }
 
 :root[data-theme='light'] .vct-modal-close {

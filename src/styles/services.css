@@ -398,17 +398,58 @@
 }
 
 .vsv-market-grid {
-  margin-top: 18px;
+  margin-top: 28px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: 12px;
+}
+
+.vsv-expertise-eyebrow {
+  width: fit-content;
+  margin-bottom: 14px;
+  border-left: 3px solid #c7ff2f;
+  padding-left: 12px;
+  color: #d9ff85;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .vsv-market-card {
-  border-radius: 12px;
-  padding: 14px;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.03);
+  position: relative;
+  min-height: 154px;
+  border-radius: 16px;
+  padding: 18px;
+  color: #f7faff;
+  background:
+    radial-gradient(180px 110px at 100% 0%, rgba(199, 255, 47, 0.12), transparent 72%),
+    #0d1016;
+  display: grid;
+  align-content: space-between;
+  overflow: hidden;
+  transition:
+    transform var(--ds-motion-base) var(--ds-ease),
+    border-color var(--ds-motion-fast) var(--ds-ease),
+    background-color var(--ds-motion-fast) var(--ds-ease);
+}
+
+.vsv-market-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(199, 255, 47, 0.5);
+}
+
+.vsv-market-card span {
+  color: #c7ff2f;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.vsv-market-card strong {
+  max-width: 18ch;
+  font-size: clamp(17px, 1.6vw, 23px);
+  line-height: 1.08;
+  text-wrap: balance;
 }
 
 .vsv-contact {
@@ -491,9 +532,24 @@
 }
 
 :root[data-theme='light'] .vsv-market-card {
-  border-color: rgba(15, 22, 38, 0.1);
-  background: rgba(15, 22, 38, 0.03);
-  color: #0f1626;
+  border-color: rgba(15, 22, 38, 0.14);
+  background:
+    radial-gradient(180px 110px at 100% 0%, rgba(111, 151, 34, 0.16), transparent 72%),
+    rgba(255, 255, 255, 0.9);
+  color: #101520;
+}
+
+:root[data-theme='light'] .vsv-market-card:hover {
+  border-color: rgba(75, 108, 19, 0.52);
+}
+
+:root[data-theme='light'] .vsv-market-card span,
+:root[data-theme='light'] .vsv-expertise-eyebrow {
+  color: #3d670f;
+}
+
+:root[data-theme='light'] .vsv-expertise-eyebrow {
+  border-color: #6b961c;
 }
 
 :root[data-theme='light'] .vsv-client-row p {

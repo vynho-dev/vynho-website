@@ -298,21 +298,51 @@ select:focus-visible,
 
 /* Shared final CTA pattern (cross-page, non-home-specific). */
 .cta-shell {
+  --cta-heading: #f7faff;
+  --cta-copy: #c2ccdc;
+  --cta-eyebrow: #d9ff85;
   text-align: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(199, 255, 47, 0.24);
   border-radius: 28px;
   padding: clamp(36px, 6vw, 76px);
   background:
-    radial-gradient(800px 320px at 50% -10%, rgba(193, 255, 53, 0.22), transparent 70%),
-    radial-gradient(600px 280px at 50% 120%, rgba(76, 142, 251, 0.12), transparent 60%),
+    radial-gradient(800px 320px at 50% -10%, rgba(193, 255, 53, 0.24), transparent 70%),
+    radial-gradient(600px 280px at 50% 120%, rgba(193, 255, 53, 0.08), transparent 62%),
     rgba(6, 8, 12, 0.96);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+}
+
+.cta-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(118deg, transparent 18%, rgba(255, 255, 255, 0.035) 48%, transparent 76%);
+  transform: translateX(-100%);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta-shell:hover::after {
+  transform: translateX(100%);
 }
 
 .cta-title {
-  color: #fff;
+  color: var(--cta-heading) !important;
 }
 
 .cta-copy {
-  color: var(--agency-text-muted);
+  color: var(--cta-copy) !important;
+}
+
+.cta-shell > p:first-child {
+  color: var(--cta-eyebrow);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .cta-actions {
@@ -321,6 +351,17 @@ select:focus-visible,
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+}
+
+.cta-shell .cta-actions .inline-flex {
+  box-shadow: 0 14px 34px rgba(130, 176, 29, 0.2);
+}
+
+.cta-shell .cta-actions .inline-flex:nth-child(2) {
+  border-color: rgba(247, 250, 255, 0.34) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #f7faff !important;
+  box-shadow: none;
 }
 
 .vlegal-home-link {
@@ -373,5 +414,9 @@ select:focus-visible,
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+  }
+
+  .cta-shell::after {
+    display: none;
   }
 }
