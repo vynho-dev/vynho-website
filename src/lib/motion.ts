@@ -35,7 +35,7 @@ export function useInView(options?: { once?: boolean; rootMargin?: string; thres
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+        if (entry.isIntersecting || (once && entry.boundingClientRect.top < 0)) {
           setVisible(true)
           if (once) observer.unobserve(node)
           return
