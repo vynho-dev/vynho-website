@@ -334,6 +334,10 @@ select:focus-visible,
 
 .cta-copy {
   color: var(--cta-copy) !important;
+  width: min(100%, 64ch);
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center;
 }
 
 .cta-shell > p:first-child {

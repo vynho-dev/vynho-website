@@ -25,9 +25,10 @@ export function ValueCard({ title, description, image }: ValueCardProps) {
           <img src={image} alt="" aria-hidden="true" className="vabt-value-image" loading="eager" />
         )
       ) : null}
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <a href="/about">Discover more</a>
+      <div className="vabt-value-content">
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </div>
     </article>
   )
 }

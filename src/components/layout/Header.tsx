@@ -116,7 +116,10 @@ export function Header() {
                   className={path === item.href ? 'nav-link active' : 'nav-link'}
                   aria-current={path === item.href ? 'page' : undefined}
                 >
-                  <span className="nav-link-label">{item.label}</span>
+                  <span className="nav-link-label">
+                    <span>{item.label}</span>
+                    <span aria-hidden="true">{item.label}</span>
+                  </span>
                 </a>
               </li>
             ))}
@@ -153,7 +156,10 @@ export function Header() {
                 className={path === item.href ? 'nav-link active' : 'nav-link'}
                 aria-current={path === item.href ? 'page' : undefined}
               >
-                <span className="nav-link-label">{item.label}</span>
+                <span className="nav-link-label">
+                  <span>{item.label}</span>
+                  <span aria-hidden="true">{item.label}</span>
+                </span>
               </a>
             ))}
             <ContactActionLink source="mobile_navigation" className="mobile-contact-cta">

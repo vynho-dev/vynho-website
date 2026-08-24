@@ -235,12 +235,15 @@
 
 .vabt-center-copy {
   max-width: 64ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .vabt-values-stage {
   margin-top: 28px;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -259,16 +262,16 @@
 
 .vabt-value-slot {
   position: static;
-  grid-column: span 2;
+  grid-column: auto;
   min-width: 0;
 }
 
 .vabt-value-slot-4 {
-  grid-column: 2 / span 2;
+  grid-column: auto;
 }
 
 .vabt-value-slot-5 {
-  grid-column: 4 / span 2;
+  grid-column: auto;
 }
 
 .vabt-value-slot-1,
@@ -282,19 +285,30 @@
 }
 
 .vabt-value-card {
+  position: relative;
   width: 100%;
-  height: 100%;
+  min-height: clamp(340px, 32vw, 460px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
-  padding: 14px;
-  background: rgba(20, 22, 28, 0.88);
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  align-content: start;
+  padding: 0;
+  background: #0d1016;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+  overflow: hidden;
   transition:
     transform var(--ds-motion-base) var(--ds-ease),
     border-color var(--ds-motion-fast) var(--ds-ease),
     box-shadow var(--ds-motion-fast) var(--ds-ease);
+}
+
+.vabt-value-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(4, 6, 10, 0.02) 28%, rgba(4, 6, 10, 0.24) 52%, rgba(4, 6, 10, 0.94) 100%);
+  pointer-events: none;
 }
 
 .vabt-value-card:hover {
@@ -304,44 +318,40 @@
 }
 
 .vabt-value-image {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  border-radius: inherit;
+  margin: 0;
+  transition: transform 720ms cubic-bezier(0.22, 1, 0.36, 1), filter 420ms ease;
+}
+
+.vabt-value-card:hover .vabt-value-image {
+  transform: scale(1.045);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.vabt-value-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 22px 18px;
 }
 
 .vabt-value-card h3 {
   color: #fff;
-  font-size: 18px;
+  font-size: clamp(18px, 1.65vw, 24px);
   line-height: 1;
 }
 
 .vabt-value-card p {
   margin-top: 8px;
-  color: var(--agency-text-muted);
+  color: rgba(247, 250, 255, 0.82);
   font-size: 13px;
-}
-
-.vabt-value-card a {
-  margin-top: 10px;
-  display: inline-flex;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  padding: 5px 8px;
-  color: var(--agency-text-soft);
-  font-size: 11px;
-  font-family: var(--font-mono);
-  transition:
-    color var(--ds-motion-fast) var(--ds-ease),
-    border-color var(--ds-motion-fast) var(--ds-ease),
-    background-color var(--ds-motion-fast) var(--ds-ease);
-}
-
-.vabt-value-card a:hover,
-.vabt-value-card a:focus-visible {
-  border-color: rgba(199, 255, 47, 0.58);
-  background: rgba(199, 255, 47, 0.08);
-  color: #d9ff85;
+  line-height: 1.45;
+  text-wrap: balance;
 }
 
 .vabt-muted-note {
@@ -367,13 +377,25 @@
   }
 
   .vabt-values-stage {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 42vw);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
+    padding-bottom: 12px;
+  }
+
+  .vabt-values-core {
+    display: none;
   }
 
   .vabt-value-slot,
   .vabt-value-slot-4,
   .vabt-value-slot-5 {
     grid-column: auto;
+    scroll-snap-align: start;
   }
 }
 
@@ -412,28 +434,16 @@
 }
 
 :root[data-theme='light'] .vabt-value-card {
-  background: rgba(255, 255, 255, 0.92);
+  background: #0d1016;
   border-color: rgba(15, 22, 38, 0.12);
 }
 
 :root[data-theme='light'] .vabt-value-card h3 {
-  color: #0f1626;
+  color: #fff;
 }
 
 :root[data-theme='light'] .vabt-value-card p {
-  color: rgba(15, 22, 38, 0.7);
-}
-
-:root[data-theme='light'] .vabt-value-card a {
-  border-color: rgba(15, 22, 38, 0.24);
-  color: #334156;
-}
-
-:root[data-theme='light'] .vabt-value-card a:hover,
-:root[data-theme='light'] .vabt-value-card a:focus-visible {
-  border-color: rgba(69, 102, 16, 0.5);
-  background: rgba(111, 151, 34, 0.1);
-  color: #294b0c;
+  color: rgba(247, 250, 255, 0.84);
 }
 
 :root[data-theme='light'] .vabt-team-card {
@@ -451,15 +461,18 @@
 
 @media (max-width: 680px) {
   .vabt-metrics-grid,
-  .vabt-team-row,
-  .vabt-values-stage {
+  .vabt-team-row {
     grid-template-columns: 1fr;
+  }
+
+  .vabt-values-stage {
+    grid-auto-columns: minmax(280px, 84vw);
   }
 
   .vabt-value-slot,
   .vabt-value-slot-4,
   .vabt-value-slot-5 {
-    grid-column: 1;
+    grid-column: auto;
   }
 
   .vabt-mission-copy {

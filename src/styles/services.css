@@ -191,6 +191,9 @@
 
 .vsv-center-copy {
   max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .vsv-accordion {

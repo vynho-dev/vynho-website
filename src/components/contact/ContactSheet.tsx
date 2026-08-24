@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ContactForm } from '@/components/contact/ContactForm'
+import { ContactInfoCards } from '@/components/contact/ContactInfoCards'
 import { CONTACT_SHEET_EVENT } from '@/components/patterns/ContactActionLink'
-import { founder } from '@/content/site'
 
 const CONTACT_QUERY_KEY = 'contact'
 
@@ -83,16 +83,12 @@ export function ContactSheet() {
         </header>
 
         <p className="vct-sheet-intro">
-          Tell us what you&apos;re building. We&apos;ll help shape the right strategy, scope, and delivery model.
+          Leave your contact information and expect to hear from us within 24 hours. We&apos;ll help clarify your needs,
+          shape the requirements, and identify the right next step.
         </p>
 
         <ContactForm idPrefix="contact-sheet" variant="sheet" />
-
-        <footer className="vct-sheet-footer">
-          <span>Prefer direct contact?</span>
-          <a href={`mailto:${founder.email}`}>{founder.email}</a>
-          <a href={`tel:${founder.phoneHref}`}>{founder.phone}</a>
-        </footer>
+        <ContactInfoCards />
       </div>
     </dialog>
   )

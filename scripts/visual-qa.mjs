@@ -97,12 +97,26 @@ async function inspectPage(page, deviceKey, theme, route) {
     const brokenImages = [...document.images]
       .filter((image) => image.complete && image.naturalWidth === 0)
       .map((image) => image.currentSrc || image.src)
+    const centeredCopies = [...document.querySelectorAll('.vsv-center-copy, .vabt-center-copy, .cta-copy')].map((element) => {
+      const rect = element.getBoundingClientRect()
+      const parentRect = element.parentElement?.getBoundingClientRect() ?? rect
+      return {
+        selector: element.className,
+        centerDelta: Math.abs((rect.left + rect.width / 2) - (parentRect.left + parentRect.width / 2)),
+        textAlign: getComputedStyle(element).textAlign,
+      }
+    })
+    const valueCards = [...document.querySelectorAll('.vabt-value-card')]
+    const valueCardTops = valueCards.map((card) => Math.round(card.getBoundingClientRect().top))
 
     return {
       h1Count: document.querySelectorAll('h1').length,
       horizontalOverflow: document.documentElement.scrollWidth - window.innerWidth,
       duplicateIds: [...new Set(duplicateIds)],
       brokenImages,
+      centeredCopies,
+      valueCardTops,
+      valueCardSelfLinks: document.querySelectorAll('.vabt-value-card a[href="/about"]').length,
       title: document.title,
       theme: document.documentElement.dataset.theme,
     }
@@ -113,6 +127,13 @@ async function inspectPage(page, deviceKey, theme, route) {
   if (result.horizontalOverflow > 1) qa.errors.push(`${prefix} horizontal overflow: ${result.horizontalOverflow}px`)
   if (result.duplicateIds.length) qa.errors.push(`${prefix} duplicate ids: ${result.duplicateIds.join(', ')}`)
   if (result.brokenImages.length) qa.errors.push(`${prefix} broken images: ${result.brokenImages.join(', ')}`)
+  result.centeredCopies.forEach((copy) => {
+    if (copy.textAlign !== 'center' || copy.centerDelta > 2) {
+      qa.errors.push(`${prefix} centered copy drifted (${copy.selector}, ${copy.centerDelta.toFixed(1)}px, ${copy.textAlign})`)
+    }
+  })
+  if (route.key === 'about' && new Set(result.valueCardTops).size > 1) qa.errors.push(`${prefix} value cards are not one horizontal row`)
+  if (route.key === 'about' && result.valueCardSelfLinks) qa.errors.push(`${prefix} value cards contain redundant /about links`)
   if (result.theme !== theme) qa.errors.push(`${prefix} expected ${theme} theme, found ${result.theme}`)
   if (!result.title.trim()) qa.errors.push(`${prefix} missing document title`)
 }

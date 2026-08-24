@@ -206,6 +206,20 @@
     transform-origin: left;
   }
 
+  .mobile-drawer-inner .nav-link-label {
+    height: auto;
+    overflow: visible;
+  }
+
+  .mobile-drawer-inner .nav-link-label > span:last-child {
+    display: none;
+  }
+
+  .mobile-drawer-inner .nav-link:hover .nav-link-label > span:first-child,
+  .mobile-drawer-inner .nav-link:focus-visible .nav-link-label > span:first-child {
+    transform: none;
+  }
+
   .mobile-theme-toggle {
     display: inline-flex;
     width: 100%;
