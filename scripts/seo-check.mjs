@@ -42,4 +42,6 @@ for (const page of pages) assert.ok(sitemap.includes(canonical(page.path)), `Sit
 
 const notFound = await readFile(join(dist, '404.html'), 'utf8')
 assert.match(notFound, /<meta name="robots" content="noindex,follow"/)
+assert.doesNotMatch(notFound, /<link rel="canonical"/)
+assert.doesNotMatch(notFound, /id="vynho-schema"/)
 console.log(`SEO static-output check passed for ${pages.length} canonical pages.`)

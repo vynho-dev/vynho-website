@@ -57,10 +57,14 @@ export default function App() {
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', meta.title)
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', meta.description)
     document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', `${SITE_ORIGIN}${SOCIAL_IMAGE_PATH}`)
-    document.querySelector('meta[name="robots"]')?.setAttribute('content', getSeoPage(path) ? 'index,follow,max-image-preview:large' : 'noindex,follow')
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl)
+    const pageMeta = getSeoPage(path)
+    document.querySelector('meta[name="robots"]')?.setAttribute('content', pageMeta ? 'index,follow,max-image-preview:large' : 'noindex,follow')
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (pageMeta) canonical?.setAttribute('href', canonicalUrl)
+    else canonical?.remove()
     const schema = document.querySelector<HTMLScriptElement>('#vynho-schema')
-    if (schema) schema.textContent = JSON.stringify(getStructuredData({ ...meta, path }))
+    if (pageMeta && schema) schema.textContent = JSON.stringify(getStructuredData(pageMeta))
+    else schema?.remove()
   }, [path])
 
   function renderPage() {
