@@ -6,7 +6,7 @@ const repoRoot = dirname(dirname(fileURLToPath(import.meta.url)))
 const outputDir = join(repoRoot, 'dist')
 const seoPages = JSON.parse(await readFile(join(repoRoot, 'src/content/seo-pages.json'), 'utf8'))
 const origin = 'https://vynho.com'
-const socialImage = `${origin}/assets/og/vynho-social.png`
+const socialImage = `${origin}/assets/og/vynho-social.jpg`
 
 function canonicalUrl(path) {
   return path === '/' ? `${origin}/` : `${origin}${path}/`
@@ -25,6 +25,7 @@ function structuredData(page) {
       name: 'Vynho',
       url: `${origin}/`,
       logo: `${origin}/assets/brand/wordmark-primary.svg`,
+      image: socialImage,
       email: 'info@vynho.com',
       telephone: '+91 8179266373',
       description: 'Founder-led product design and engineering studio for ambitious digital products.',

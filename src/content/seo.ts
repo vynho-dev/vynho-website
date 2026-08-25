@@ -2,7 +2,7 @@ import pages from '@/content/seo-pages.json'
 
 export const SITE_ORIGIN = 'https://vynho.com'
 export const SITE_NAME = 'Vynho'
-export const SOCIAL_IMAGE_PATH = '/assets/og/vynho-social.png'
+export const SOCIAL_IMAGE_PATH = '/assets/og/vynho-social.jpg'
 
 export type SeoPage = {
   path: string
@@ -31,6 +31,7 @@ export function getStructuredData(page: SeoPage) {
       name: SITE_NAME,
       url: `${SITE_ORIGIN}/`,
       logo: `${SITE_ORIGIN}/assets/brand/wordmark-primary.svg`,
+      image: `${SITE_ORIGIN}${SOCIAL_IMAGE_PATH}`,
       email: 'info@vynho.com',
       telephone: '+91 8179266373',
       description: 'Founder-led product design and engineering studio for ambitious digital products.',

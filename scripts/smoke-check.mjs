@@ -126,7 +126,7 @@ async function run() {
     await gotoAndSettle(page, `${BASE_URL}/`)
     await page.click('.mobile-nav-toggle')
     await page.waitForTimeout(200)
-    const mobileServicesLink = page.locator('.mobile-drawer a[href="/services"]').first()
+    const mobileServicesLink = page.locator('.mobile-drawer a[href="/services/"]').first()
     await mobileServicesLink.waitFor({ state: 'visible' })
     await mobileServicesLink.click()
     await page.waitForTimeout(400)
