@@ -49,9 +49,9 @@ export function ServicesAccordion() {
   return (
     <SectionShell id="services" className="vsv-section">
       <SectionHeader
-        title="CAPABILITIES"
+        title="OUR SERVICES"
         titleClassName="vsv-section-title vsv-center"
-        copy="Strategy, design, motion, and engineering connected by one product point of view."
+        copy="From strategy to launch, we provide full-scope delivery or targeted senior expertise across design, engineering, and product systems."
         copyClassName="vsv-section-copy vsv-center-copy"
       />
       <div className="vsv-accordion">

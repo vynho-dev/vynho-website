@@ -5,25 +5,25 @@ import { SectionShell } from '@/components/patterns/SectionShell'
 const steps = [
   {
     number: '01',
-    title: 'Find the Signal',
+    title: 'Exploration & Alignment',
     description:
       'We clarify business goals, user needs, technical constraints, and success metrics before defining the direction.',
   },
   {
     number: '02',
-    title: 'Shape the System',
+    title: 'Strategy & System Design',
     description:
       'We shape product architecture, design direction, user flows, content structure, and technical roadmap.',
   },
   {
     number: '03',
-    title: 'Build in One Room',
+    title: 'Design & Engineering',
     description:
       'We build the interface and system together, combining visual craft with reliable frontend and backend implementation.',
   },
   {
     number: '04',
-    title: 'Release & Learn',
+    title: 'Launch & Growth',
     description:
       'We test, optimize, deploy, and support the product after launch through iteration, analytics, and continuous improvement.',
   },
@@ -33,9 +33,9 @@ export function ProcessSection() {
   return (
     <SectionShell id="process" className="vsv-section">
       <SectionHeader
-        title="HOW WE MOVE"
+        title="OUR PROCESS"
         titleClassName="vsv-section-title vsv-center"
-        copy="A visible sequence of decisions that carries an uncertain idea into production without losing its character."
+        copy="A senior-led workflow designed to move from ambiguity to launch with clarity, speed, and craft."
         copyClassName="vsv-section-copy vsv-center-copy"
       />
       <div className="vsv-process-grid">

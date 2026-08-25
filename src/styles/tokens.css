@@ -38,7 +38,6 @@
   --motion-delay: 0ms;
   --parallax-y: 0;
   --parallax-intensity: 16px;
-  --vh-scroll-progress: 0;
   /* 0.6 subtle, 1 medium, 1.4 cinematic */
   --bg-motion-intensity: 0.9;
   --bg-motion-preset: medium; /* editorial | medium | cinematic */

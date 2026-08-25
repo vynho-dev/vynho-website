@@ -363,6 +363,12 @@
   overflow: hidden;
 }
 
+.vwk-specialty-shell .vwk-section-title,
+.vwk-specialty-shell .vwk-section-copy {
+  margin-inline: auto;
+  text-align: center;
+}
+
 .vwk-specialty-shell > :not(.vwk-specialty-text) {
   position: relative;
   z-index: 1;

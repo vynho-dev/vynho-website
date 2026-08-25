@@ -1,17 +1,15 @@
 import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
-import { SignalCore } from '@/components/brand/SignalCore'
 
 export function AboutHero() {
-  const titleLines = ['SMALL TEAM.', 'LARGE ORBIT.'] as const
+  const titleLines = ['PEOPLE BEHIND', 'THE CRAFT'] as const
   const copyLines = [
-    'A senior-led studio in Hyderabad, connected to specialist talent across disciplines and borders —',
-    'close enough to care, experienced enough to carry the complexity.',
+    'A senior-led team of designers, engineers, strategists, and creative technologists building digital',
+    'products with uncommon craft and technical depth.',
   ] as const
 
   return (
     <section className="vabt-hero" id="top">
       <div className="container vabt-hero-inner">
-        <SignalCore className="page-hero-signal vabt-hero-signal" label="Vynho studio signal" />
         <HeroTextAnimation
           titleLines={titleLines}
           copyLines={copyLines}

@@ -21,7 +21,7 @@ export function HomeBuildSection({
             WHAT WE BUILD
           </CharReveal>
           <Reveal as="p" className="vh-section-copy vh-build-section-copy" delayMs={160}>
-            Four territories where strong product thinking and expressive technology can change how a brand is understood.
+            We focus on the intersection of high-end design and technical complexity — where our approach creates the highest product and business impact.
           </Reveal>
         </div>
 
@@ -87,7 +87,7 @@ export function HomeServicesSection({
             OUR SERVICES
           </CharReveal>
           <Reveal as="p" className="vh-services-copy" delayMs={120}>
-            One senior team from the first unresolved question to the final production detail.
+            From strategy to deployment — full-scope delivery or targeted expertise to solve your specific design and technical challenges.
           </Reveal>
           <Reveal delayMs={200}>
             <Button variant="outline" size="lg" asChild className="vh-services-cta-btn">

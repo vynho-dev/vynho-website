@@ -3,7 +3,6 @@ import { Reveal } from '@/components/motion/Reveal'
 import { HeroTextAnimation } from '@/components/motion/HeroTextAnimation'
 import { SectionShell } from '@/components/patterns/SectionShell'
 import { CategoryPills } from '@/components/work/CategoryPills'
-import { SignalCore } from '@/components/brand/SignalCore'
 
 const categories = ['All', 'Websites', 'Products', 'Apps', 'Platforms', 'Commerce', 'Immersive']
 
@@ -13,10 +12,10 @@ interface WorkHeroProps {
 
 export function WorkHero({ onFilter }: WorkHeroProps) {
   const [active, setActive] = useState('All')
-  const titleLines = ['SELECTED WORK.', 'BUILT TO MOVE.'] as const
+  const titleLines = ['GLOBAL WORK.', 'ENGINEERED.'] as const
   const copyLines = [
-    'A focused selection of products where strategy, visual character, and technical execution',
-    'move as one system.',
+    'We partner with ambitious teams to design, build, and launch digital products',
+    'where refined aesthetics meet reliable engineering.',
   ] as const
 
   const handleSelect = (value: string) => {
@@ -26,7 +25,6 @@ export function WorkHero({ onFilter }: WorkHeroProps) {
 
   return (
     <SectionShell id="top" className="vwk-hero" containerClassName="container vwk-hero-inner">
-        <SignalCore className="page-hero-signal vwk-hero-signal" label="Vynho work signal" />
         <HeroTextAnimation
           titleLines={titleLines}
           copyLines={copyLines}
@@ -34,7 +32,7 @@ export function WorkHero({ onFilter }: WorkHeroProps) {
           copyClassName="vwk-hero-copy"
         />
         <Reveal as="p" className="vwk-hero-count" delayMs={170}>
-          Filter the signal
+          Explore by discipline
         </Reveal>
         <Reveal delayMs={210}>
           <CategoryPills items={categories} active={active} onSelect={handleSelect} />

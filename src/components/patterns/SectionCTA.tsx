@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button'
 import { Reveal } from '@/components/motion/Reveal'
 import { ContactActionLink } from '@/components/patterns/ContactActionLink'
 import { SectionShell } from '@/components/patterns/SectionShell'
-import { SignalCore } from '@/components/brand/SignalCore'
 
 type SectionCTAProps = {
   id?: string
@@ -39,7 +38,6 @@ export function SectionCTA({
 }: SectionCTAProps) {
   return (
     <SectionShell id={id} className={sectionClassName} containerClassName={containerClassName}>
-      <SignalCore className="cta-signal" label="Vynho contact signal" />
       <div className="cta-content">
         <Reveal as="p" className={eyebrowClassName} delayMs={80}>
           {eyebrow}
@@ -63,7 +61,6 @@ export function SectionCTA({
           ) : null}
         </Reveal>
       </div>
-      <span className="cta-coordinate" aria-hidden="true">17.3850° N / 78.4867° E</span>
     </SectionShell>
   )
 }

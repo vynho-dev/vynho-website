@@ -33,9 +33,6 @@ export function Home() {
 
   useEffect(() => {
     const onScroll = () => {
-      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
-      const progress = Math.min(1, Math.max(0, window.scrollY / max))
-      document.documentElement.style.setProperty('--vh-scroll-progress', progress.toFixed(4))
       const heroProgress = Math.min(1, Math.max(0, window.scrollY / Math.max(1, window.innerHeight)))
       document.documentElement.style.setProperty('--vh-hero-progress', heroProgress.toFixed(4))
 
@@ -56,7 +53,6 @@ export function Home() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', onScroll)
-      document.documentElement.style.removeProperty('--vh-scroll-progress')
       document.documentElement.style.removeProperty('--vh-hero-progress')
     }
   }, [])
@@ -125,7 +121,7 @@ export function Home() {
         primaryLabel={homeFinalCtaContent.primaryLabel}
         eyebrowClassName="vh-final-eyebrow"
         titleClassName="vh-section-title cta-title"
-        descriptionClassName="vh-section-copy cta-copy"
+        descriptionClassName="vh-section-copy vh-center-copy cta-copy"
         actionsClassName="vh-final-actions cta-actions"
       />
     </main>

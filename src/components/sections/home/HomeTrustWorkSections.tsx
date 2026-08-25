@@ -6,9 +6,9 @@ import { type HomeWorkCardContent } from '@/content/sections'
 import { useInView } from '@/lib/motion'
 
 const trustSignals = [
-  { label: 'Senior attention, end to end', icon: '01' },
-  { label: 'Design and engineering, together', icon: '02' },
-  { label: 'Hyderabad based, working globally', icon: '03' },
+  { label: 'Rated 5.0 by clients', icon: '★' },
+  { label: 'Award-level craft', icon: '✦' },
+  { label: 'Built for global teams', icon: '↗' },
 ] as const
 
 export function HomeTrustSection() {
@@ -141,7 +141,8 @@ export function HomeWorkSection({
           WORK
         </CharReveal>
         <Reveal as="p" className="vh-section-copy vh-center-copy vh-work-copy" delayMs={280}>
-          Selected systems where identity, interaction, and engineering work as one.
+          Focused craft, technical reliability, and measurable outcomes across premium web,
+          app, and commerce systems.
         </Reveal>
         <Reveal as="div" className="vh-work-view-all-wrap vh-work-view-all-wrap--center" delayMs={400}>
           <a href="/work" className="vh-work-view-all" aria-label="View all work">
