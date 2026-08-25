@@ -77,7 +77,7 @@ export function HomeStudioSection({
         </div>
         <Reveal className="vh-studio-cta" delayMs={250}>
           <Button asChild variant="outline" className="vh-dark-btn">
-            <a href="/about" onClick={onMeetStudio}>Meet the Studio</a>
+            <a href="/about/" onClick={onMeetStudio}>Meet the Studio</a>
           </Button>
         </Reveal>
       </div>

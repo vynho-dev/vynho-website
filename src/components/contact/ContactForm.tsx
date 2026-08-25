@@ -114,7 +114,7 @@ export function ContactForm({ idPrefix = 'contact', variant = 'page' }: { idPref
       <p className="vct-privacy">
         This form creates a pre-filled email draft. By continuing, you agree that Vynho may process your details to
         respond to your inquiry. Read our{' '}
-        <a href="/privacy">Privacy Policy</a> for more information.
+        <a href="/privacy/">Privacy Policy</a> for more information.
       </p>
 
       <div className="vct-submit-row">

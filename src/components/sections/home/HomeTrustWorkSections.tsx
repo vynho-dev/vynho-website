@@ -74,7 +74,7 @@ function WorkCard({ card, index, mediaTier, onCardClick, onCardView }: WorkCardP
     >
       <a
         className="vh-work-card-hit"
-        href="/work"
+        href="/work/"
         aria-label={`View work: ${card.title}`}
         onClick={() => onCardClick(card.id)}
       />
@@ -145,7 +145,7 @@ export function HomeWorkSection({
           app, and commerce systems.
         </Reveal>
         <Reveal as="div" className="vh-work-view-all-wrap vh-work-view-all-wrap--center" delayMs={400}>
-          <a href="/work" className="vh-work-view-all" aria-label="View all work">
+          <a href="/work/" className="vh-work-view-all" aria-label="View all work">
             View all work
             <span className="vh-work-view-all-arrow" aria-hidden="true">→</span>
           </a>

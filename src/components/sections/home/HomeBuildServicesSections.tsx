@@ -91,7 +91,7 @@ export function HomeServicesSection({
           </Reveal>
           <Reveal delayMs={200}>
             <Button variant="outline" size="lg" asChild className="vh-services-cta-btn">
-              <a href="/services" onClick={onExploreServices}>
+              <a href="/services/" onClick={onExploreServices}>
                 Explore Services
                 <span aria-hidden="true">→</span>
               </a>

@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc -b --force",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/generate-seo-pages.mjs && node scripts/prerender-pages.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest",
     "test:run": "vitest run --coverage",
     "perf:check": "node scripts/perf-budget.mjs",
+    "seo:check": "node scripts/seo-check.mjs",
     "smoke:check": "node scripts/smoke-check.mjs",
     "visual:check": "node scripts/visual-qa.mjs",
     "styles:health": "node scripts/styles-health.mjs"

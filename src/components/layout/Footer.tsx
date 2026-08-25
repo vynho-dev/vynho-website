@@ -4,9 +4,9 @@ import { ContactActionLink } from '@/components/patterns/ContactActionLink'
 
 export function Footer() {
   const legalLinks = [
-    { href: '/privacy', label: 'Privacy policy' },
-    { href: '/terms', label: 'Terms' },
-    { href: '/cookies', label: 'Cookies' },
+    { href: '/privacy/', label: 'Privacy policy' },
+    { href: '/terms/', label: 'Terms' },
+    { href: '/cookies/', label: 'Cookies' },
   ]
   const handleBackToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 

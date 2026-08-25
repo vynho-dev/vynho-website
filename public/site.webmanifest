@@ -1,0 +1,16 @@
+{
+  "name": "Vynho — Product Design & Engineering Studio",
+  "short_name": "Vynho",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#050609",
+  "theme_color": "#050609",
+  "icons": [
+    {
+      "src": "/assets/icons/vmark-monochrome-white.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

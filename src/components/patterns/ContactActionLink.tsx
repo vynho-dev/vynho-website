@@ -13,7 +13,7 @@ type ContactActionLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'hre
 export function ContactActionLink({
   children,
   source,
-  href = '/contact',
+  href = '/contact/',
   onClick,
   ...props
 }: ContactActionLinkProps) {

@@ -1,0 +1,65 @@
+[
+  {
+    "path": "/",
+    "title": "Vynho | Product Design & Engineering Studio",
+    "description": "Vynho is a founder-led product design and engineering studio in Hyderabad, working globally across websites, apps, SaaS, commerce, and AI systems.",
+    "pageType": "WebPage",
+    "indexable": true
+  },
+  {
+    "path": "/work",
+    "title": "Selected Digital Product Work | Vynho",
+    "description": "Explore selected websites, apps, platforms, commerce, and immersive digital product work from Vynho.",
+    "pageType": "CollectionPage",
+    "indexable": true
+  },
+  {
+    "path": "/services",
+    "title": "Product Design & Engineering Services | Vynho",
+    "description": "Vynho combines product strategy, UX/UI design, web and app engineering, AI workflows, and technical delivery in one senior team.",
+    "pageType": "WebPage",
+    "indexable": true
+  },
+  {
+    "path": "/about",
+    "title": "About Vynho | Founder-Led Product Studio",
+    "description": "Meet Vynho, a founder-led Hyderabad product studio bringing strategy, design, and engineering together for ambitious teams worldwide.",
+    "pageType": "AboutPage",
+    "indexable": true
+  },
+  {
+    "path": "/careers",
+    "title": "Careers at Vynho | Design & Engineering Studio",
+    "description": "Explore opportunities to collaborate with Vynho across product design, engineering, strategy, and creative technology.",
+    "pageType": "CollectionPage",
+    "indexable": true
+  },
+  {
+    "path": "/contact",
+    "title": "Contact Vynho | Start a Product Project",
+    "description": "Tell Vynho what you are building. Start a practical conversation about product strategy, design, engineering, scope, and delivery.",
+    "pageType": "ContactPage",
+    "indexable": true
+  },
+  {
+    "path": "/privacy",
+    "title": "Privacy Policy | Vynho",
+    "description": "Read how Vynho handles the information shared through this website and project inquiries.",
+    "pageType": "WebPage",
+    "indexable": true
+  },
+  {
+    "path": "/terms",
+    "title": "Terms of Use | Vynho",
+    "description": "Read the terms governing use of the Vynho website.",
+    "pageType": "WebPage",
+    "indexable": true
+  },
+  {
+    "path": "/cookies",
+    "title": "Cookie Policy | Vynho",
+    "description": "Read how Vynho uses cookies and related technologies.",
+    "pageType": "WebPage",
+    "indexable": true
+  }
+]

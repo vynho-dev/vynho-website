@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import { privacyContent, termsContent, cookiesContent } from '@/content/legal'
+import { getCanonicalUrl, getSeoPage, getStructuredData, SITE_ORIGIN, SOCIAL_IMAGE_PATH, type SeoPage } from '@/content/seo'
 
 const HomePage = lazy(() => import('@/pages/HomePage').then((m) => ({ default: m.HomePage })))
 const AboutPage = lazy(() => import('@/pages/AboutPage').then((m) => ({ default: m.AboutPage })))
@@ -10,16 +11,12 @@ const ContactPage = lazy(() => import('@/pages/ContactPage').then((m) => ({ defa
 const LegalPage = lazy(() => import('@/pages/LegalPage').then((m) => ({ default: m.LegalPage })))
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })))
 
-const PAGE_META: Record<string, { title: string; description: string }> = {
-  '/': { title: 'Vynho — High-End Design & Engineered Products', description: 'Founder-led product strategy, design, and engineering for ambitious digital products.' },
-  '/work': { title: 'Vynho Work — Digital Products, Engineered', description: 'Explore selected product, platform, mobile, commerce, and immersive work from Vynho.' },
-  '/services': { title: 'Vynho Services — Full-Stack Expertise', description: 'Product strategy, UX, web, mobile, AI workflows, and scalable engineering in one focused studio.' },
-  '/about': { title: 'About Vynho — Small by Design', description: 'Meet the founder-led operating model and specialist network behind Vynho.' },
-  '/careers': { title: 'Careers at Vynho', description: 'Collaborate with Vynho on thoughtful product design, engineering, and AI systems.' },
-  '/contact': { title: "Contact Vynho — Let's Talk", description: 'Tell Vynho what you are building and start a practical conversation about scope, strategy, and delivery.' },
-  '/privacy': { title: 'Privacy Policy — Vynho', description: 'How Vynho handles information shared through this website.' },
-  '/terms': { title: 'Terms — Vynho', description: 'Terms for using the Vynho website.' },
-  '/cookies': { title: 'Cookies — Vynho', description: 'Information about cookies and related technologies on the Vynho website.' },
+const notFoundMeta: SeoPage = {
+  path: '/404',
+  title: 'Page not found | Vynho',
+  description: 'The requested Vynho page could not be found.',
+  pageType: 'WebPage',
+  indexable: false,
 }
 
 function getPath() {
@@ -49,14 +46,21 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    const meta = PAGE_META[path] ?? { title: 'Page not found — Vynho', description: 'The requested Vynho page could not be found.' }
-    const canonicalUrl = `https://vynho.com${path === '/' ? '' : path}`
+    const meta = getSeoPage(path) ?? notFoundMeta
+    const canonicalUrl = getCanonicalUrl(path)
     document.title = meta.title
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description)
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', meta.title)
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', meta.description)
     document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl)
+    document.querySelector('meta[property="og:image"]')?.setAttribute('content', `${SITE_ORIGIN}${SOCIAL_IMAGE_PATH}`)
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', meta.title)
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', meta.description)
+    document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', `${SITE_ORIGIN}${SOCIAL_IMAGE_PATH}`)
+    document.querySelector('meta[name="robots"]')?.setAttribute('content', getSeoPage(path) ? 'index,follow,max-image-preview:large' : 'noindex,follow')
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl)
+    const schema = document.querySelector<HTMLScriptElement>('#vynho-schema')
+    if (schema) schema.textContent = JSON.stringify(getStructuredData({ ...meta, path }))
   }, [path])
 
   function renderPage() {

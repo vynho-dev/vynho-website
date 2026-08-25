@@ -71,7 +71,7 @@ export const workSpecialtyContent = {
   title: 'HIGH-END DESIGN. CRAFTED CODE.',
   description: 'Identity, product thinking, and technology become one coherent experience—not three disconnected deliverables.',
   ctaLabel: 'Explore Capabilities',
-  ctaHref: '/services',
+  ctaHref: '/services/',
 } as const
 
 export const aboutMetricsContent: MetricItemContent[] = [
@@ -342,7 +342,7 @@ export const servicesContactCtaContent: PageContactCTAConfig = {
   source: 'services_contact_cta',
   primaryLabel: 'Contact Us',
   secondaryLabel: 'View Work',
-  secondaryHref: '/work',
+  secondaryHref: '/work/',
   sectionClassName: 'vsv-section vsv-contact',
   containerClassName: 'container vsv-center-shell cta-shell',
   eyebrowClassName: 'vsv-contact-eyebrow',
@@ -378,6 +378,6 @@ export const openRolesContent = {
   description:
     'We are always looking for senior designers, engineers, strategists, and creative technologists who care deeply about craft.',
   ctaLabel: 'View Open Roles',
-  ctaHref: '/careers',
+  ctaHref: '/careers/',
   note: 'No active roles? Send us your portfolio anyway.',
 } as const
