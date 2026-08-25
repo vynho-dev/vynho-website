@@ -12,29 +12,48 @@ const baseUrl = `http://127.0.0.1:${port}`
 
 function waitForPreview() {
   return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error('Timed out waiting for the Vite preview server.')), 15_000)
-    const preview = spawn('npx', ['vite', 'preview', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], {
+    const preview = spawn(process.execPath, [
+      join(repoRoot, 'node_modules', 'vite', 'bin', 'vite.js'),
+      'preview',
+      '--host',
+      '127.0.0.1',
+      '--port',
+      String(port),
+      '--strictPort',
+    ], {
       cwd: repoRoot,
       stdio: ['ignore', 'pipe', 'pipe'],
     })
+    let settled = false
     let output = ''
-    const onData = (chunk) => {
-      output += chunk.toString()
-      if (!output.includes('Local:')) return
+    const settle = (error) => {
+      if (settled) return
+      settled = true
       clearTimeout(timer)
-      resolve(preview)
+      clearInterval(poll)
+      if (error) reject(error)
+      else resolve(preview)
     }
-    preview.stdout.on('data', onData)
-    preview.stderr.on('data', onData)
+    const pollPreview = async () => {
+      try {
+        const response = await fetch(baseUrl)
+        if (response.ok) settle()
+      } catch {
+        // The preview process is still starting.
+      }
+    }
+    const poll = setInterval(() => void pollPreview(), 200)
+    const timer = setTimeout(() => settle(new Error(`Timed out waiting for the Vite preview server. ${output}`)), 15_000)
+    preview.stdout.on('data', (chunk) => { output += chunk.toString() })
+    preview.stderr.on('data', (chunk) => { output += chunk.toString() })
     preview.on('error', (error) => {
-      clearTimeout(timer)
-      reject(error)
+      settle(error)
     })
     preview.on('exit', (code) => {
-      if (output.includes('Local:')) return
-      clearTimeout(timer)
-      reject(new Error(`Vite preview exited before it was ready (${code ?? 'unknown'}). ${output}`))
+      if (settled) return
+      settle(new Error(`Vite preview exited before it was ready (${code ?? 'unknown'}). ${output}`))
     })
+    void pollPreview()
   })
 }
 
