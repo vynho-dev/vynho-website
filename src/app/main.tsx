@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from '@/app/App'
 import '@/styles/globals.css'
 import '@/styles/contact.css'
+import '@/styles/analytics-consent.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

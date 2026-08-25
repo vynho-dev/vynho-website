@@ -8,6 +8,7 @@ export const privacyContent: LegalPageContent = {
   body: [
     'This website does not send contact-form data to a Vynho server. The form opens a draft in your email application, and nothing is shared until you choose to send it.',
     'Information you send by email is used only to respond to your inquiry, discuss potential work, or support an active engagement. It is not sold to third parties.',
+    'If you opt in to analytics, Vynho uses Google Analytics to understand aggregate site use, such as pages visited, browser and device information, and referral sources. We do not send the contents of contact enquiries or email addresses to Google Analytics.',
     'For data requests, updates, or removal, contact info@vynho.com.',
   ],
 }
@@ -24,8 +25,8 @@ export const termsContent: LegalPageContent = {
 export const cookiesContent: LegalPageContent = {
   title: 'Cookies',
   body: [
-    'This website does not currently set advertising or analytics cookies.',
+    'Vynho uses essential local storage for your theme preference and cookie choice. These preferences remain in your browser.',
     'Your light or dark theme preference is stored locally in your browser so the site can remember your choice. It is not sent to Vynho.',
-    'If measurement tools that use cookies are introduced later, this notice will be updated before they are enabled.',
+    'Optional Google Analytics is loaded only after you choose “Accept analytics”. It helps us measure aggregate site use and is not used for advertising or personalised advertising.',
   ],
 }

@@ -1,6 +1,8 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import { privacyContent, termsContent, cookiesContent } from '@/content/legal'
 import { getCanonicalUrl, getSeoPage, getStructuredData, SITE_ORIGIN, SOCIAL_IMAGE_PATH, type SeoPage } from '@/content/seo'
+import { trackPageView } from '@/lib/analytics'
+import { AnalyticsConsent } from '@/components/analytics/AnalyticsConsent'
 
 const HomePage = lazy(() => import('@/pages/HomePage').then((m) => ({ default: m.HomePage })))
 const AboutPage = lazy(() => import('@/pages/AboutPage').then((m) => ({ default: m.AboutPage })))
@@ -65,6 +67,7 @@ export default function App() {
     const schema = document.querySelector<HTMLScriptElement>('#vynho-schema')
     if (pageMeta && schema) schema.textContent = JSON.stringify(getStructuredData(pageMeta))
     else schema?.remove()
+    trackPageView()
   }, [path])
 
   function renderPage() {
@@ -83,6 +86,9 @@ export default function App() {
   }
 
   return (
-    <Suspense fallback={null}>{renderPage()}</Suspense>
+    <>
+      <Suspense fallback={null}>{renderPage()}</Suspense>
+      <AnalyticsConsent />
+    </>
   )
 }

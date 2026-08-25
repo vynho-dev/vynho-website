@@ -1,0 +1,23 @@
+.vha-consent {
+  position: fixed;
+  z-index: 100;
+  right: 1rem;
+  bottom: 1rem;
+  max-width: 31rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--line) 82%, white);
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--surface) 96%, black);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .3);
+}
+
+.vha-consent p { margin: 0; font: 500 .85rem/1.5 var(--font-sans); }
+.vha-consent a { color: inherit; }
+.vha-consent div { display: flex; gap: .6rem; margin-top: .8rem; }
+.vha-consent button { min-height: 2.35rem; padding: .45rem .75rem; border: 1px solid var(--line); border-radius: .4rem; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.vha-consent button:last-child { border-color: var(--accent); background: var(--accent); color: #050609; }
+
+@media (max-width: 540px) {
+  .vha-consent { right: .75rem; bottom: .75rem; left: .75rem; max-width: none; }
+  .vha-consent div { flex-direction: column; }
+}
