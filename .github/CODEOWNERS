@@ -1,4 +1,7 @@
-# Repository policy, automation, and dependency changes require owner review.
+# Every change requires repository-owner review.
+* @vynho-dev
+
+# Repository policy, automation, and dependency changes are owner-only areas.
 /.github/ @vynho-dev
 /CONTRIBUTING.md @vynho-dev
 /SECURITY.md @vynho-dev
