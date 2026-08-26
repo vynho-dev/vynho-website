@@ -1,0 +1,6 @@
+# Repository policy, automation, and dependency changes require owner review.
+/.github/ @vynho-dev
+/CONTRIBUTING.md @vynho-dev
+/SECURITY.md @vynho-dev
+/package.json @vynho-dev
+/package-lock.json @vynho-dev

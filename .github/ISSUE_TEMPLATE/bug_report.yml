@@ -1,0 +1,23 @@
+name: Bug report
+description: Report a reproducible problem in the site.
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: Include the expected and actual result.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Evidence
+      description: Add screenshots, a recording, URL, browser, and viewport when available.
