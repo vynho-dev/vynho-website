@@ -1,0 +1,9 @@
+# Every change requires repository-owner review.
+* @vynho-dev
+
+# Repository policy, automation, and dependency changes are owner-only areas.
+/.github/ @vynho-dev
+/CONTRIBUTING.md @vynho-dev
+/SECURITY.md @vynho-dev
+/package.json @vynho-dev
+/package-lock.json @vynho-dev
