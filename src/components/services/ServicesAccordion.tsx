@@ -63,7 +63,7 @@ export function ServicesAccordion() {
                 idPrefix="vsv-service"
                 index={index}
                 open={open}
-                onToggle={() => setActive(index)}
+                onToggle={() => setActive(active === index ? -1 : index)}   // -1 means all accordion items are closed
                 className={open ? 'vsv-accordion-item is-open' : 'vsv-accordion-item'}
                 leading={<span className="vsv-acc-no">{item.number}</span>}
                 title={item.title}
