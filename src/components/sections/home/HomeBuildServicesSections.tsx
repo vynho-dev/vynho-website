@@ -114,7 +114,7 @@ export function HomeServicesSection({
                   idPrefix="vh-service"
                   index={index}
                   open={open}
-                  onToggle={() => setOpenService(index)}
+                  onToggle={() => setOpenService(openService === index ? -1 : index)}  // -1 means all accordion items are closed
                   className="vh-service-accordion-item"
                   triggerClassName="vh-service-trigger"
                   panelClassName="vh-service-panel"
